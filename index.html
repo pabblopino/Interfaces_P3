@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mochileros sin fronteras</title>
+        <link rel="stylesheet" href="style/styles.css">
+        <script src=""></script>
+        <script src="" type="module" defer></script>
+    </head>
+    <body>
+        <!-- HEADER -->
+        <header>
+            <!-- Izquierda -->
+            <div class="" id="foto-perfil">
+                <img src="images/foto_perfil.png" alt="foto_perfil">
+            </div>
+            <!-- Centro -->
+            <div class="enlaces-iniciales">
+                <a href="home.html">Inicio</a>
+                <a href="">Destinos</a>
+                <a href="">Foro/Comunidad</a>
+                <a href="">Sobre Nosotros</a>
+                <a href="">Recientes</a>
+                <a href="">Otros Rincones</a>
+            </div>
+
+            <!-- Derecha -->
+            <div class="inicio-sesion">
+                <!--Apartado de registro-->
+                <div class="registro">
+                    <div class="input-usuario">
+                        <input type="text" id="usuario" placeholder="Usuario">
+                    </div>
+                    <div class="input-usuario">
+                        <input type="password" id="password" placeholder="Contraseña">
+                
+                    </div>
+
+                    <div class="botones">
+                        <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
+                        <a href=""><button type="button">Registro</button></a>
+                    </div>
+                </div> 
+            </div>
+        </header>
+
+        <!-- MAIN -->
+        <main>
+            <div class="contenedor-flex">
+
+                <!-- GALERÍA DE VIAJES -->
+                <div class="galeria">
+                    
+                    <div class="card">
+                        <img src="img1.jpg" alt="Viaje 1">
+                        <h3>Playa Paraíso</h3>
+                        <p class="precio">450 €</p>
+                        <div class="acciones">
+                            <button class="btn-like">❤</button>
+                            <button class="btn-reservar">Reservar ahora</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="img2.jpg" alt="Viaje 2">
+                        <h3>Montañas Nevadas</h3>
+                        <p class="precio">520€</p>
+                        <div class="acciones">
+                            <button class="btn-like">❤</button>
+                            <button class="btn-reservar">Reservar ahora</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="img3.jpg" alt="Viaje 3">
+                        <h3>Selva Tropical</h3>
+                        <p class="precio">380€</p>
+                        <div class="acciones">
+                            <button class="btn-like">❤</button>
+                            <button class="btn-reservar">Reservar ahora</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="img4.jpg" alt="Viaje 4">
+                        <h3>Desierto Dorado</h3>
+                        <p class="precio">290€</p>
+                        <div class="acciones">
+                            <button class="btn-like">❤</button>
+                            <button class="btn-reservar">Reservar ahora</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="img5.jpg" alt="Viaje 5">
+                        <h3>Islas del Sur</h3>
+                        <p class="precio">610€</p>
+                        <div class="acciones">
+                            <button class="btn-like">❤</button>
+                            <button class="btn-reservar">Reservar ahora</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="img6.jpg" alt="Viaje 6">
+                        <h3>Ciudad Antigua</h3>
+                        <p class="precio">450€</p>
+                        <div class="acciones">
+                            <button class="btn-like">❤</button>
+                            <button class="btn-reservar">Reservar ahora</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="carrusel">
+
+                    <button class="flecha">⟨</button>
+
+                    <div class="opiniones">
+                        <div class="slide">
+                            <p>"El mejor servicio!"</p>
+                            <span>- Juan</span>
+                        </div>
+
+                        <div class="slide">
+                            <p>"Todo perfecto!"</p>
+                            <span>- Laura</span>
+                        </div>
+
+                        <div class="slide">
+                            <p>"Increíble viaje"</p>
+                            <span>- Pedro</span>
+                        </div>
+                    </div>
+
+                    <button class="flecha">⟩</button>
+
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="redes-sociales">
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="images/logo_instagram.png" alt="Instagram">
+                </a>
+                <a href="https://www.tiktok.com/" target="_blank">
+                    <img src="images/logo_tiktok.png" alt="TikTok">
+                </a>
+                <a href="https://www.youtube.com/" target="_blank">
+                    <img src="images/logo_youtube.png" alt="YouTube">
+                </a>
+                <p>&copy; 2025 Mochileros sin fronteras</p>
+            </div>
+            <div class="compania">
+                <h4>Compañía</h4>
+                <a href="">Sobre Nosotros</a>
+                <a href="">Contacto</a>
+                <a href="">Trabaja con Nosotros</a>
+                <a href="">Blog</a>
+            </div>
+            <div class="legal">
+                <h4>Legal</h4>
+                <a href="">Términos</a>
+                <a href="">Privacidad</a>
+                <a href="">Cookies</a>
+                <a href="">Política de Reembolso</a>
+            </div>
+            <div class="newsletter">
+                <h4>Newsletter</h4>
+                <a href="">Recibe ofertas y consejos de viaje</a>
+                <input type="text" name="Email" placeholder="Email">
+                <form action="home.html" method="get">
+                    <button type="submit">Registro</button>
+                </form>
+            </div>
+        </footer>
+    </body>
