@@ -1,8 +1,13 @@
+body{
+    font: 400 15px 'Poppins', sans-serif;
+}
+
 header{
     display: grid;
     grid-template-columns: auto 1fr auto;
     gap: 20px;
     background-color: lightgrey;
+    padding:20px
 }
 
 .enlaces-iniciales{
@@ -17,16 +22,93 @@ header{
     gap: 10px;
 }
 
-img {
-    height: 25px;
-    width: 25px;
+.registro input{
+    background-color: rgb(98, 98, 98);
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+}
+
+.registro input::placeholder {
+    color: white; /* Color del texto de ayuda */
+}
+
+/* El texto de ayuda desaparece al clicar encima */
+.registro input:focus::placeholder {
+    color: transparent;
+}
+
+/* Contenedor de los botones para alinearlos */
+.botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+/* Estilo general de los botones del header */
+.botones button {
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+#btnIniciarSesion{
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+#btnIniciarSesion:hover {
+    background-color: #d0d0d0;
+}
+
+#btnRegistro{
+    background-color: #333;
+    color: white;
+    border: none;
+}
+
+#btnRegistro:hover{
+    background-color: #8e8e8e;
 }
 
 footer{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    align-items: center;
     gap: 20px;
     background-color: lightgrey;
+    padding:20px;
+    border-top: 5px;
+    border-top-color: grey;
+}
+
+.footer-grid{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+a {
+  color: inherit;          /* hereda el color del texto del padre */
+  text-decoration: none;   /* quita el subrayado */
+  transition: color 0.3s;  /* opcional: efecto suave al pasar el cursor */
+}
+
+a:hover {
+  color: #e4f1ee;          /* cualquier color que quieras */
+}
+
+img {
+    height: 25px;
+    width: 25px;
 }
 
 /* ---------------- CONTENEDOR PRINCIPAL ---------------- */
@@ -41,6 +123,36 @@ footer{
     width: 100%;
 }
 
+/* ---------------- BUSCADOR ---------------- */
+
+.contenedor-buscador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 1260px; 
+}
+
+.contenedor-buscador input {
+    flex: 1; 
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.contenedor-buscador button {
+    padding: 10px 15px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
 /* ---------------- GALERÍA DE VIAJES ---------------- */
 
 .galeria {
@@ -48,7 +160,7 @@ footer{
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     width: 100%;
-    max-width: 960px; /* opcional para no crecer demasiado */
+    max-width: 1260px; /* opcional para no crecer demasiado */
 }
 
 /* tarjetas, botones y demás quedan igual que antes */
@@ -63,7 +175,7 @@ footer{
 
 .card img {
     width: 100%;
-    height: 110px;
+    height: 160px;
     object-fit: cover;
     border-radius: 8px;
 }
@@ -75,7 +187,6 @@ footer{
 
 .precio {
     font-weight: bold;
-    color: #1e90ff;
     margin-bottom: 10px;
 }
 
@@ -100,7 +211,7 @@ footer{
 }
 
 .btn-reservar {
-    background: #1e90ff;
+    background: black;
     border: none;
     padding: 8px 12px;
     color: white;
@@ -113,17 +224,38 @@ footer{
     background: #187bdb;
 }
 
+.titulo-seccion {
+    width: 100%;
+    max-width: 1260px; 
+    margin-bottom: 20px;
+}
+
+.titulo-seccion h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.titulo-seccion hr {
+    border: 0;
+    height: 2px;
+    background-color: black;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+
 /* ---------------- OPINIONES / SECCIÓN DERECHA ---------------- */
 
 .carrusel {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 25px;
 }
 
 /* Flechas */
 .flecha {
-    background: #333;
+    background: gray;
     color: white;
     border: none;
     padding: 10px 14px;
@@ -144,25 +276,59 @@ footer{
 /* Contenedor horizontal de las opiniones */
 .opiniones {
     display: flex;
-    gap: 15px;
+    gap: 35px;
+    overflow-x: auto; /* permite scroll si hay muchas opiniones */
+    padding-bottom: 10px;
 }
 
-/* Tarjetas de opinión */
+/* Tarjetas de opinión más grandes */
 .slide {
-    min-width: 180px;
+    min-width: 220px;
+    max-width: 260px;
     background: #f4f4f4;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    flex-shrink: 0; /* evita que se achique en flex */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
+/* Foto de perfil */
+.slide img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 2px solid white;
+}
+/* Contenedor de estrellas */
+.estrellas {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 10px;
+}
+
+/* Estilos de las estrellas */
+.estrellas span {
+    
+    font-size: 16px;
+}
+
+
+/* Texto de la reseña */
 .slide p {
-    margin: 0 0 8px;
+    margin: 0 0 12px;
     font-size: 14px;
+    line-height: 1.5;
 }
 
+/* Nombre del autor */
 .slide span {
     font-weight: bold;
-    color: #444;
-    font-size: 13px;
+    font-size: 14px;
+    display: block;
 }
