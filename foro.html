@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="style/styles.css">
         <script src=""></script>
         <script src="script/foro.js" type="module" defer></script>
+        <script type="module" src="script/sesion.js" defer></script>
+
 
     </head>
     <body>
@@ -14,7 +16,7 @@
         <header>
             <!-- Izquierda -->
             <div class="" id="foto-perfil">
-                <img src="images/foto_perfil.png" alt="foto_perfil">
+                <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
             </div>
             <!-- Centro -->
             <div class="enlaces-iniciales">
@@ -44,6 +46,11 @@
                     </div>
                 </div> 
             </div>
+            <div class="usuario-activo" style="display:none;">
+                <span id="nombreUsuario"></span>
+                <img id="imagenUsuario" src="" alt="">
+                <button class="boton-cerrar">Cerrar sesión</button>
+            </div>
         </header>
 
         <!-- MAIN -->
@@ -56,31 +63,31 @@
                 <form class="form-review">
 
                     <!-- FOTO DE PERFIL -->
-                    <div class="campo foto-perfil">
+                    <div class="campo-foro foto-perfil">
                         <label>Foto de perfil</label>
                         <input type="file" accept="image/*">
                     </div>
 
                     <!-- NOMBRE -->
-                    <div class="campo">
+                    <div class="campo-foro">
                         <label>Tu nombre</label>
                         <input type="text" placeholder="Ingresa tu nombre">
                     </div>
 
                     <!-- TÍTULO -->
-                    <div class="campo">
+                    <div class="campo-foro">
                         <label>Título de la reseña</label>
                         <input type="text" placeholder="Ej: Una experiencia inolvidable">
                     </div>
 
                     <!-- DESCRIPCIÓN -->
-                    <div class="campo">
+                    <div class="campo-foro">
                         <label>Descripción</label>
                         <textarea rows="5" placeholder="Escribe aquí tu reseña..."></textarea>
                     </div>
 
                     <!-- ESTRELLAS -->
-                    <div class="campo estrellas-input">
+                    <div class="campo-foro estrellas-input">
                         <label>Valoración</label>
 
                         <div class="rating">

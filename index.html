@@ -6,14 +6,16 @@
         <title>Mochileros sin fronteras</title>
         <link rel="stylesheet" href="style/styles.css">
         <script src=""></script>
-        <script src="" type="module" defer></script>
+        <script src="script/index.js" type="module" defer></script>
+        <script type="module" src="script/sesion.js" defer></script>
+
     </head>
     <body>
         <!-- HEADER -->
         <header>
             <!-- Izquierda -->
             <div class="" id="foto-perfil">
-                <img src="images/foto_perfil.png" alt="foto_perfil">
+                <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
             </div>
             <!-- Centro -->
             <div class="enlaces-iniciales">
@@ -42,6 +44,11 @@
                         <button type="button" class="btnRegistro">Registro</button>
                     </div>
                 </div> 
+            </div>
+            <div class="usuario-activo" style="display:none;">
+                <span id="nombreUsuario"></span>
+                <img id="imagenUsuario" src="" alt="">
+                <button class="boton-cerrar">Cerrar sesión</button>
             </div>
         </header>
 
