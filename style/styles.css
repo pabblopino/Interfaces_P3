@@ -332,3 +332,51 @@ img {
     font-size: 14px;
     display: block;
 }
+
+/* Contenedor confirmación de reserva */
+.fondo-web {
+    background-color: #8e8e8e;
+}
+
+.confirmacion-reserva {
+    display: flex;
+    flex-direction: column;
+    background-color: white ;
+    width: 400px;
+    height: 400px; 
+    margin: auto;
+    align-items: center;
+    justify-content: flex-start; 
+    padding-top: 5%;
+    position: fixed; 
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.confirmacion-reserva img{
+    width: 150px; 
+    height: auto;
+}
+
+.confirmacion-texto{
+    color: green;
+}
+.confirmacion-texto-2{
+    color: black;
+}
+
+.btn-volver{
+    margin-top: 25%;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px 0;
+    text-align: center;
+    width: 90%;
+    margin-top: auto;
+    margin-bottom: 25%;
+}
