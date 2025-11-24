@@ -46,8 +46,67 @@
         </header>
 
         <!-- MAIN -->
-        <main>
+        <main class="reserva">
+          <!-- Pack -->
+          <div class="bloque-compra-izq">
 
+              <div class="packs-contenido" id="pack-formulario">
+                <div class="cabecera-packs">
+                    <h3>Packs fiordos noruegos</h3>
+                    <h3>700€</h3>
+                </div>
+                  <p>Noruega: avión, hotel y excursión por los fiordos noruegos</p>
+              </div>
+                <!-- Descripción pack -->
+              <div class="descripcion-pack">
+                <h3>Descripción del pack</h3>
+                <p>Los fiordos noruegos son profundas y estrechas entradas de mar, con laderas empinadas y acantilados altos, formadas por la erosión de glaciares que tallaron valles en forma de "U". Se caracterizan por su belleza escénica, con cascadas espectaculares, montañas escarpadas y exuberante vegetación. Noruega es famosa por tener algunos de los fiordos más impresionantes del mundo, como el Sognefjord y el Geirangerfjord, y son un destino popular para actividades al aire libre y para explorar su singular naturaleza.</p>
+              </div>
+            
+          </div>
+
+          <!-- Formulario -->
+          <div class="formulario-registro">
+            <h2>Formulario de compra</h2>
+
+            <form id="formularioCompra" name="compra" novalidate>
+              <input type="text" id="nombreCompleto" name="nombreCompleto" placeholder="Nombre Completo*" required><br>
+              <p class="error-texto" id="errorNombreCompleto"></p>
+
+              <input type="email" id="correo" name="correo" placeholder="Correo electrónico*" required><br>
+              <p class="error-texto" id="errorCorreo"></p>
+
+              <select id="tipoTarjeta" name="tipoTarjeta" required>
+                <option value="">Tipo de tarjeta*</option>
+                <option value="Visa">Visa</option>
+                <option value="Mastercard">MasterCard</option>
+                <option value="AMEX">American Express</option>
+              </select><br>
+              <p class="error-texto" id="errorTipoTarjeta"></p>
+
+              
+              <input type="text" id="numeroTarjeta" name="numeroTarjeta" placeholder="Número de tarjeta*" required><br>
+              <p class="error-texto" id="errorNumeroTarjeta"></p>
+
+              <input type="text" id="titularTarjeta" name="titularTarjeta" placeholder="Titular de la tarjeta*" required><br>
+              <p class="error-texto" id="errorTitularTarjeta"></p>
+
+              <!-- Fecha caducidad y CVV -->
+              <div class="pago-tarjeta">
+                <input type="month" id="fechaCaducidad" name="fechaCaducidad" required>
+                <input type="text" id="cvv" name="cvv" placeholder="CVV*" required>
+              </div>
+              <div class="fila-error">
+                <p class="error-texto" id="errorFechaCaducidad"></p>
+                <p class="error-texto" id="errorCvv"></p>
+            </div>
+              <!-- Botones -->
+              <div class="botones-form">
+                <button type="submit" id="btnComprar">Comprar</button>
+                <button type="button" id="btnBorrar">Borrar</button>
+              </div>
+            </form>
+          </div>  
         </main>
 
         <!-- FOOTER -->
