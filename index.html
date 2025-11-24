@@ -17,7 +17,7 @@
             </div>
             <!-- Centro -->
             <div class="enlaces-iniciales">
-                <a href="">Inicio</a>
+                <a href="" class="activo">Inicio</a>
                 <a href="destinos.html">Destinos</a>
                 <a href="foro.html">Foro/Comunidad</a>
                 <a href="sobre-nosotros.html">Sobre Nosotros</a>
@@ -39,7 +39,7 @@
 
                     <div class="botones">
                         <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
-                        <button type="button" id="btnRegistro">Registro</button>
+                        <button type="button" class="btnRegistro">Registro</button>
                     </div>
                 </div> 
             </div>
@@ -210,11 +210,13 @@
             </div>
             <div class="footer-grid" id="newsletter">
                 <h4>Newsletter</h4>
-                <a href="">Recibe ofertas y consejos de viaje</a>
-                <input type="text" name="Email" placeholder="Email">
-                <form action="" method="get">
-                    <button type="submit">Registro</button>
-                </form>
+                <div id="campos-newsletter">
+                    <a href="">Recibe ofertas y consejos de viaje</a>
+                    <form action="" method="get">
+                        <input id="input-email" type="text" name="Tu Email" placeholder="Email">
+                        <button class="btnRegistro" type="submit">Registro</button>
+                    </form>
+                </div>
             </div>
         </footer>
     </body>
