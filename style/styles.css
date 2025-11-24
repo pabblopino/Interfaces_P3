@@ -2,6 +2,10 @@ body{
     font: 400 15px 'Poppins', sans-serif;
 }
 
+/* ================== */
+/* ===== HEADER ===== */
+/* ================== */
+
 header{
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -56,7 +60,7 @@ header{
     gap: 10px;
 }
 
-.registro input{
+.inicio-sesion .registro input{
     background-color: rgb(98, 98, 98);
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -65,11 +69,11 @@ header{
     width: 100%;
     box-sizing: border-box;
     text-align: center;
-    color: black;
+    color: white;
 }
 
 .registro input::placeholder {
-    color: gray; /* Color del texto de ayuda */
+    color: white; /* Color del texto de ayuda */
 }
 
 /* El texto de ayuda desaparece al clicar encima */
@@ -111,6 +115,10 @@ header{
     background-color: #8e8e8e;
 }
 
+/* ================== */
+/* ===== FOOTER ===== */
+/* ================== */
+
 footer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -131,7 +139,7 @@ footer {
 #enlaces-redes img {
     height: 35px;
     width: 35px;
-    transition: transform 0.2s; /* Un efectito extra */
+    transition: transform 0.2s;
 }
 
 #enlaces-redes img:hover {
@@ -171,9 +179,121 @@ a {
 }
 
 a:hover {
-  color: #e4f1ee;          /* cualquier color que quieras */
+  color: #444444;          /* cualquier color que quieras */
 }
 
+
+/* ---------------- OTROS RINCONES ---------------- */
+.cabecera-seccion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.cabecera-seccion h1 {
+    font-weight: 400;
+    font-size: 28px;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+/* Esto es un truco para poder acortar el borde que hay debajo del h1*/
+.cabecera-seccion h1::after {
+    content: '';        /* Crea un elemento vacío */
+    display: block;
+    width: 750px;       /* Largo de la línea */
+    height: 2px;        /* Grosor de la línea */
+    background-color: black;
+    
+    /* Truco para centrar la línea perfectamente debajo del texto */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.selector-idioma {
+    position: absolute;
+    right: 0;
+}
+
+.selector-idioma select {
+    padding: 5px 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.barra-filtros {
+    background-color: #f0f0f0;
+    border-radius: 50px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    width: 95%;
+    max-width: 1000px;
+    margin: 0 auto 40px auto; /* "0" arriba, "auto" a los lados (centrar), "40px" abajo */
+}
+
+.filtro-btn {
+    background: transparent;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    border-radius: 40px; /* Botones redondos */
+    flex: 1; /* Para que ocupen el mismo espacio cada uno */
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.filtro-btn:hover {
+    color: black;
+}
+
+.filtro-btn.activo {
+    background-color: white;
+    color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#contenedor-grid-rincones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto
+}
+
+.card-rincon {
+    background-color: white;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    overflow: hidden; /* Para que la imagen no se salga de las esquinas redondeadas */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+}
+
+.card-rincon img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;   /* Recorta la imagen para llenar el hueco sin deformarse */
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.card-rincon:hover {
+    transform: translateY(-5px); /* Sube un poquito */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* La sombra crece */
+}
+
+.info-rincon {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
 
 /* ---------------- CONTENEDOR PRINCIPAL ---------------- */
 
