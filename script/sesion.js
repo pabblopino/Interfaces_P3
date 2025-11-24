@@ -1,4 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
+import { iniciarSesion } from './usuario.mjs';
+
+document.addEventListener("DOMContentLoaded", () => {
+    // --- BOTÓN DE REGISTRO ---
+    const btnRegistro = document.querySelector(".btnRegistro");
+    if (btnRegistro) {
+        btnRegistro.addEventListener("click", () => {
+            window.location.href = "registro.html";
+        });
+    }
+
+    // --- LOGIN ---
+    const btnLogin = document.querySelector("#btnIniciarSesion");
+    const inputUsuario = document.querySelector("#usuario");
+    const inputPassword = document.querySelector("#password");
+
+    if (btnLogin && inputUsuario && inputPassword) {
+        btnLogin.addEventListener("click", () => {
+            const usuario = inputUsuario.value.trim();
+            const password = inputPassword.value;
+
+            if (!usuario || !password) {
+                alert('Debes introducir usuario y contraseña');
+                return;
+            }
+
+            iniciarSesion(usuario, password);
+        });
+    }
+
+    // --- USUARIO ACTIVO ---
     const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
 
     const divLogin = document.querySelector('.inicio-sesion');
@@ -7,19 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const imagenUsuario = document.querySelector('#imagenUsuario');
 
     if (usuarioActivo) {
-        if(divLogin) divLogin.style.display = 'none';
-        if(divUsuario) divUsuario.style.display = 'flex';
-        if(nombreUsuario) nombreUsuario.textContent = usuarioActivo.nombre + ' ' + usuarioActivo.apellidos;
-        if(imagenUsuario) {
+        if (divLogin) divLogin.style.display = 'none';
+        if (divUsuario) divUsuario.style.display = 'flex';
+        if (nombreUsuario) nombreUsuario.textContent = `${usuarioActivo.nombre} ${usuarioActivo.apellidos}`;
+        if (imagenUsuario) {
             imagenUsuario.src = usuarioActivo.imagen;
             imagenUsuario.alt = `Foto de ${usuarioActivo.nombre}`;
         }
     } else {
-        if(divLogin) divLogin.style.display = 'flex';
-        if(divUsuario) divUsuario.style.display = 'none';
+        if (divLogin) divLogin.style.display = 'flex';
+        if (divUsuario) divUsuario.style.display = 'none';
     }
 
-    // Cerrar sesión
+    // --- CERRAR SESIÓN ---
     const btnCerrar = document.querySelector('.boton-cerrar');
     if (btnCerrar) {
         btnCerrar.addEventListener('click', () => {
@@ -30,4 +60,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
 

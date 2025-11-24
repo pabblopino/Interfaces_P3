@@ -65,11 +65,11 @@ header{
     width: 100%;
     box-sizing: border-box;
     text-align: center;
-    color: white;
+    color: black;
 }
 
 .registro input::placeholder {
-    color: white; /* Color del texto de ayuda */
+    color: gray; /* Color del texto de ayuda */
 }
 
 /* El texto de ayuda desaparece al clicar encima */

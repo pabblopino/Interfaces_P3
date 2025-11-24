@@ -65,13 +65,13 @@
                     <!-- FOTO DE PERFIL -->
                     <div class="campo-foro foto-perfil">
                         <label>Foto de perfil</label>
-                        <input type="file" accept="image/*">
+                        <img id="fotoReseña" src="images/foto_perfil.png" alt="Foto de usuario" style="width:50px; height:50px; border-radius:50%;">
                     </div>
 
                     <!-- NOMBRE -->
                     <div class="campo-foro">
                         <label>Tu nombre</label>
-                        <input type="text" placeholder="Ingresa tu nombre">
+                        <input type="text" placeholder="Ingresa tu nombre" id="nombreReseña" disabled>
                     </div>
 
                     <!-- TÍTULO -->
@@ -89,7 +89,6 @@
                     <!-- ESTRELLAS -->
                     <div class="campo-foro estrellas-input">
                         <label>Valoración</label>
-
                         <div class="rating">
                             <span data-star="5">★</span>
                             <span data-star="4">★</span>
@@ -103,6 +102,7 @@
                     <button type="submit" class="btn-enviar">Enviar reseña</button>
 
                 </form>
+
                 <h2>Reseñas publicadas</h2>
                 <div id="lista-reseñas" class="lista-reseñas"></div>
 
