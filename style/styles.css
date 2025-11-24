@@ -4,16 +4,49 @@ body{
 
 header{
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto 1fr;
     gap: 20px;
+    align-items: center;
     background-color: lightgrey;
-    padding:20px
+    padding:20px;
+    border-bottom: 1px solid black;
+}
+
+/* Asegura que la foto se pegue a la izquierda */
+#foto-perfil {
+    justify-self: start; 
+}
+
+#foto-perfil img {
+    height: 75px;
+    width: 75px;
+    object-fit: cover;
+}
+
+/* Asegura que el login se pegue a la derecha */
+.inicio-sesion {
+    justify-self: end;
 }
 
 .enlaces-iniciales{
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 20px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.enlaces-iniciales a.activo {
+    background-color: white;
+    color: black;
+    padding: 8px 18px;
+    border-radius: 8px;
+}
+
+.enlaces-iniciales a.activo:hover {
+    color: black; 
+    background-color: #f2f2f2;
 }
 
 .registro{
@@ -28,7 +61,6 @@ header{
     border-radius: 6px;
     padding: 6px 10px;
     font-size: 14px;
-    font-weight: bold;
     width: 100%;
     box-sizing: border-box;
     text-align: center;
@@ -52,15 +84,14 @@ header{
 }
 
 /* Estilo general de los botones del header */
-.botones button {
+.botones button, .footer-grid button {
     padding: 8px 15px;
     border-radius: 6px;
-    font-weight: bold;
     cursor: pointer;
     font-size: 13px;
 }
 
-#btnIniciarSesion{
+#btnIniciarSesion {
     background-color: #e0e0e0;
     color: #333;
 }
@@ -69,31 +100,67 @@ header{
     background-color: #d0d0d0;
 }
 
-#btnRegistro{
+.btnRegistro {
     background-color: #333;
     color: white;
     border: none;
 }
 
-#btnRegistro:hover{
+.btnRegistro:hover {
     background-color: #8e8e8e;
 }
 
-footer{
+footer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     align-items: center;
     gap: 20px;
     background-color: lightgrey;
     padding:20px;
-    border-top: 5px;
-    border-top-color: grey;
+    border-top: 1px solid black;
 }
 
-.footer-grid{
+.footer-grid {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    padding-left: 20px;
+}
+
+#enlaces-redes img {
+    height: 35px;
+    width: 35px;
+    transition: transform 0.2s; /* Un efectito extra */
+}
+
+#enlaces-redes img:hover {
+    transform: scale(1.1); /* Crecen un poco al pasar el ratón */
+}
+
+#campos-newsletter{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+#newsletter form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Espacio entre el input y el botón */
+}
+
+#input-email {
+    border: 1px solid #000000;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#newsletter button {
+    width: auto; /* El botón solo ocupa lo que necesita su texto */
 }
 
 a {
@@ -106,12 +173,9 @@ a:hover {
   color: #e4f1ee;          /* cualquier color que quieras */
 }
 
-img {
-    height: 25px;
-    width: 25px;
-}
 
 /* ---------------- CONTENEDOR PRINCIPAL ---------------- */
+
 
 .contenedor-flex {
     display: flex;
@@ -536,3 +600,52 @@ img {
 }
 
 
+
+
+/* Contenedor confirmación de reserva */
+.fondo-web {
+    background-color: #8e8e8e;
+}
+
+.confirmacion-reserva {
+    display: flex;
+    flex-direction: column;
+    background-color: white ;
+    width: 400px;
+    height: 400px; 
+    margin: auto;
+    align-items: center;
+    justify-content: flex-start; 
+    padding-top: 5%;
+    position: fixed; 
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.confirmacion-reserva img{
+    width: 150px; 
+    height: auto;
+}
+
+.confirmacion-texto{
+    color: green;
+}
+.confirmacion-texto-2{
+    color: black;
+}
+
+.btn-volver{
+    margin-top: 25%;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px 0;
+    text-align: center;
+    width: 90%;
+    margin-top: auto;
+    margin-bottom: 25%;
+}
