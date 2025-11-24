@@ -1223,6 +1223,46 @@ input[type="month"] {
     display:block;
 }
 
+/* MAIN específico para la clase destinos */
+.destino {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor-destinos-page {
+    width: 100%;            /* Ocupa el 100% de la pantalla */
+    max-width: none;        /* ELIMINAMOS el límite de 1200px */
+    padding: 0 60px;        /* Espacio a los lados para que respire */
+    box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.titulo-destinos-main {
+    text-align: center;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.titulo-destinos-main h1 {
+    font-weight: 400;
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.titulo-destinos-main hr {
+    border: 0;
+    height: 1px;
+    background-color: #999;
+    width: 100%; /* La línea ocupará todo el ancho del contenedor */
+    margin-top: 20px;
+}
+
 /* RESPONSIVE */
 @media (max-width: 1024px) {
     .contenedor-reserva-page {
