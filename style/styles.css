@@ -183,7 +183,7 @@ a:hover {
     justify-content: center;
     align-items: center; /* centra horizontalmente */
     gap: 50px; /* espacio entre galería y opiniones */
-    padding: 40px;
+    padding: 40px 0px;
     width: 100%;
 }
 
