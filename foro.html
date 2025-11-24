@@ -17,12 +17,12 @@
             </div>
             <!-- Centro -->
             <div class="enlaces-iniciales">
-                <a href="home.html">Inicio</a>
-                <a href="">Destinos</a>
-                <a href="">Foro/Comunidad</a>
-                <a href="">Sobre Nosotros</a>
+                <a href="index.html">Inicio</a>
+                <a href="destinos.html">Destinos</a>
+                <a href="foro.html" class="activo">Foro/Comunidad</a>
+                <a href="sobre-nosotros.html">Sobre Nosotros</a>
                 <a href="">Recientes</a>
-                <a href="">Otros Rincones</a>
+                <a href="otros-rincones.html">Otros Rincones</a>
             </div>
 
             <!-- Derecha -->
@@ -68,7 +68,7 @@
             </div>
             <div class="footer-grid" id="compania">
                 <h4>Compañía</h4>
-                <a href="">Sobre Nosotros</a>
+                <a href="sobre-nosotros.html">Sobre Nosotros</a>
                 <a href="">Contacto</a>
                 <a href="">Trabaja con Nosotros</a>
                 <a href="">Blog</a>
@@ -82,11 +82,13 @@
             </div>
             <div class="footer-grid" id="newsletter">
                 <h4>Newsletter</h4>
-                <a href="">Recibe ofertas y consejos de viaje</a>
-                <input type="text" name="Email" placeholder="Email">
-                <form action="home.html" method="get">
-                    <button type="submit">Registro</button>
-                </form>
+                <div id="campos-newsletter">
+                    <a href="">Recibe ofertas y consejos de viaje</a>
+                    <form action="" method="get">
+                        <input id="input-email" type="text" name="Tu Email" placeholder="Email">
+                        <button class="btnRegistro" type="submit">Registro</button>
+                    </form>
+                </div>
             </div>
         </footer>
     </body>
