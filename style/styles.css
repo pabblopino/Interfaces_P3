@@ -568,6 +568,7 @@ a:hover {
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 14px;
+    resize: none;
 }
 
 /* FOTO PERFIL */
