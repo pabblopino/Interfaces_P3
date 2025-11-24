@@ -787,3 +787,160 @@ input[type="file"] {
 .boton-cerrar:hover {
     background-color: darkred;
 }
+
+
+/* MAIN específico para la clase compra */
+.reserva {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+/* Contenedor del pack */
+.packs-contenido {
+    background-image: url("../images/fiordos.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    height: auto;
+}
+
+/* Cabecera del pack */
+.cabecera-packs {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.cabecera-packs h3 {
+    background: rgba(0,0,0,0.45);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+/* Texto del pack */
+.packs-contenido p {
+    margin: 5px 0;
+    margin-bottom: 150px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    border-radius: 10px;
+    padding: 4px 8px;
+    width: fit-content;
+}
+
+/* Espaciado arriba del pack dentro del formulario */
+#pack-formulario {
+    margin-top: 25px;
+}
+
+/* Descripción del pack */
+.descripcion-pack {
+    border: 2px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 20px 0;
+    height: 300px;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* FORMULARIO */
+.formulario-registro {
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formulario-registro h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.formulario-registro input[type="text"],
+.formulario-registro input[type="email"],
+.formulario-registro input[type="password"],
+.formulario-registro input[type="date"],
+.formulario-registro input[type="file"],
+.formulario-registro select,
+input[type="month"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+/* Mensajes de error */
+.error-texto {
+    color: #e63946;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    height: 16px;
+}
+
+/* Fila con fecha y CVV */
+.pago-tarjeta {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
+.pago-tarjeta input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+/* fila doble para errores */
+.fila-error {
+    display: flex;
+    gap: 10px;
+}
+
+.fila-error > p {
+    flex: 1;
+}
+
+/* Botones de comprar y borrar */
+.botones-form {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.botones-form button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid #000;
+}
+
+/* RESPONSIVE solo si afecta a .compra */
+@media only screen and (max-width: 768px) {
+    .compra {
+        grid-template-columns: 1fr;
+        align-items: center;
+        gap: 10px;
+    }
+}
