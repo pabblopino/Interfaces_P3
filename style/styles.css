@@ -791,8 +791,11 @@ input[type="file"] {
 
 /* MAIN específico para la clase compra */
 .reserva {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Contenedor del pack */
@@ -942,5 +945,175 @@ input[type="month"] {
         grid-template-columns: 1fr;
         align-items: center;
         gap: 10px;
+    }
+}
+/* =========================================
+   NUEVOS ESTILOS PARA LA PAGINA DE RESERVA (VERSIÓN ANCHO COMPLETO)
+   ========================================= */
+
+/* Contenedor que ocupa todo el ancho */
+.contenedor-reserva-page {
+    width: 100%;            /* Ocupa el 100% de la pantalla */
+    max-width: none;        /* ELIMINAMOS el límite de 1200px */
+    padding: 0 60px;        /* Espacio a los lados para que respire */
+    box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* 1. TITULO Y RAYA SUPERIOR */
+.titulo-reserva-main {
+    text-align: center;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.titulo-reserva-main h1 {
+    font-weight: 400;
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.titulo-reserva-main hr {
+    border: 0;
+    height: 1px;
+    background-color: #999;
+    width: 100%; /* La línea ocupará todo el ancho del contenedor */
+    margin-top: 20px;
+}
+
+/* 2. GRID PRINCIPAL (Dos columnas) */
+.reserva-grid {
+    display: grid;
+    /* Ajustamos proporciones para pantalla completa: 
+       La columna izquierda (65%) y la derecha (35%) aprox */
+    grid-template-columns: 1.5fr 0.8fr; 
+    gap: 80px; /* Aumentamos el hueco entre columnas ya que hay más espacio */
+    align-items: start;
+}
+
+/* --- COLUMNA IZQUIERDA (INFO) --- */
+.titulo-destino, .titulo-descripcion {
+    text-align: center;
+    font-weight: 400;
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.marco-foto {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 40px;
+}
+
+.marco-foto img {
+    width: 100%;
+    height: auto; 
+    /* Si la foto es pequeña y quieres que ocupe todo el ancho de su columna: */
+    width: 100%; 
+    object-fit: cover;
+    display: block;
+}
+
+.texto-descripcion {
+    background-color: #f4f4f4;
+    padding: 30px; /* Un poco más de relleno */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    font-size: 16px; /* Letra un pelín más grande para pantalla completa */
+    color: #555;
+    line-height: 1.8;
+    position: relative;
+    text-align: justify; /* Queda mejor en anchos grandes */
+}
+
+/* --- COLUMNA DERECHA (SIDEBAR) --- */
+.sidebar-compra {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* CAJA DE PRECIO */
+.caja-precio {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 40px; /* Más padding interno */
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.caja-precio h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 0 15px 0;
+    color: #333;
+}
+
+.precio-numero {
+    font-size: 60px; /* Precio más grande */
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+.lista-incluye {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: inline-block;
+    color: #666;
+    font-size: 15px;
+}
+
+.lista-incluye li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.lista-incluye li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* FORMULARIO */
+.sidebar-compra .formulario-registro {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #333;
+    padding: 30px; /* Más espacio interno */
+}
+
+.label-form {
+    font-weight: bold; 
+    font-size: 14px; 
+    margin-bottom: 5px; 
+    display:block;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .contenedor-reserva-page {
+        padding: 0 20px; /* Menos margen lateral en tablets */
+    }
+    
+    .reserva-grid {
+        grid-template-columns: 1fr; /* Una sola columna */
+        gap: 40px;
+    }
+    
+    .marco-foto img {
+        height: auto;
     }
 }
