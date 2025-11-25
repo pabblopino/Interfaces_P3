@@ -8,6 +8,8 @@
         <script src=""></script>
         <script src="" type="module" defer></script>
         <script type="module" src="script/sesion.js" defer></script>
+        <script type="module" src="script/perfil.js" defer></script>
+
 
     </head>
     <body>
@@ -49,12 +51,22 @@
                 <span id="nombreUsuario"></span>
                 <img id="imagenUsuario" src="" alt="">
                 <button class="boton-cerrar">Cerrar sesión</button>
-            </div>
+            </disv>
         </header>
 
         <!-- MAIN -->
         <main>
+            <div id="mi-perfil" class="perfil-container">
+                <div class="perfil-card">
+                    <img id="perfil-foto" src="images/foto_perfil.png" alt="Foto de usuario">
+                    <h2 id="perfil-nombre">Nombre Usuario</h2>
+                    <p id="perfil-correo">correo@ejemplo.com</p>
 
+                    <button id="btnCambiarPassword">Cambiar contraseña</button>
+                    <button id="btnMisViajes">Mis viajes</button>
+                    <button id="btnCerrarSesion">Cerrar sesión</button>
+                </div>
+            </div>
         </main>
 
         <!-- FOOTER -->

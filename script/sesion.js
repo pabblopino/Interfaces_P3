@@ -59,6 +59,21 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+    // --- BOTÓN "MI PERFIL" ---
+    if (usuarioActivo) {
+        const btnMiPerfil = document.createElement('button');
+        btnMiPerfil.textContent = 'Mi perfil';
+        btnMiPerfil.classList.add('btnMiPerfil');
+        btnMiPerfil.style.marginLeft = '10px';
+
+        btnMiPerfil.addEventListener('click', () => {
+            window.location.href = 'perfil.html';
+        });
+
+        // Añadir al div del usuario activo
+        if (divUsuario) divUsuario.appendChild(btnMiPerfil);
+    }
+
 });
 
 

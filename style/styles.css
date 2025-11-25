@@ -18,7 +18,7 @@ header{
 
 /* Asegura que la foto se pegue a la izquierda */
 #foto-perfil {
-    justify-self: start; 
+    justify-content: center; 
 }
 
 #foto-perfil img {
@@ -114,6 +114,20 @@ header{
 .btnRegistro:hover {
     background-color: #8e8e8e;
 }
+.btnMiPerfil {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btnMiPerfil:hover {
+    background-color: #555;
+}
+
 
 /* ================== */
 /* ===== FOOTER ===== */
@@ -517,6 +531,66 @@ a:hover {
     font-size: 14px;
     display: block;
 }
+
+/* ---------------- PERFIL ---------------- */
+
+.perfil-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    width: 100%;
+}
+
+.perfil-card {
+    background: #f4f4f4;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    text-align: center;
+    max-width: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.perfil-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.perfil-card h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.perfil-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+.perfil-card button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: black;
+    color: white;
+    transition: background 0.3s;
+}
+
+.perfil-card button:hover {
+    background-color: #333;
+}
+
+
 
 /* ---------------- FORO ---------------- */
 /* CONTENEDOR PRINCIPAL */
