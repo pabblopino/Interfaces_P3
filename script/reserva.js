@@ -4,26 +4,73 @@ $(document).ready(function() {
     const params = new URLSearchParams(window.location.search);
     const packId = params.get("id_pack"); 
 
-    // 2. Definir los packs disponibles
+    // 2. Definir los packs disponibles con la NUEVA propiedad 'incluye'
     const packs = {
-        fiordos: {
-            nombre: "FIORDOS NORUEGOS",
-            precio: "700€",
-            // Usaremos 'detalle' para la descripción larga del nuevo diseño
-            detalle: "Los fiordos noruegos son profundas y estrechas entradas de mar, con laderas empinadas y acantilados altos, formadas por la erosión de glaciares. Se caracterizan por su belleza escénica, con cascadas espectaculares, montañas escarpadas y exuberante vegetación.",
-            imagen: "images/fiordos.jpg"
+        camping: {
+            nombre: "CAMPING AL ATARDECER",
+            precio: "450€",
+            detalle: "Conecta con la naturaleza durmiendo bajo las estrellas. Disfruta de una experiencia única de acampada en alta montaña, con amaneceres inolvidables, aire puro y la tranquilidad que solo el bosque puede ofrecer.",
+            imagen: "images/camping.jpg",
+            incluye: [
+                "Tienda de campaña pro",
+                "Saco de dormir térmico",
+                "Linterna frontal"
+            ]
         },
-        ruta66: {
-            nombre: "RUTA 66 EN MOTO",
-            precio: "1500€",
-            detalle: "La Ruta 66 recorre Estados Unidos de costa a costa, pasando por desiertos, moteles clásicos y paisajes icónicos. Una experiencia ideal para los amantes de la carretera y la libertad. Vive la aventura americana por excelencia.",
-            imagen: "images/ruta66.jpg"
+        desierto: {
+            nombre: "AVENTURA EN EL DESIERTO",
+            precio: "520€",
+            detalle: "Adéntrate en las dunas doradas a lomos de camellos. Una travesía exótica donde descubrirás la inmensidad del desierto, sus oasis ocultos y unos atardeceres mágicos que teñirán de rojo la arena.",
+            imagen: "images/desierto.jpg",
+            incluye: [
+                "Excursión en camello",
+                "Cena bajo las estrellas",
+                "Turbante bereber"
+            ]
         },
-        asiatico: {
-            nombre: "SUDESTE ASIÁTICO",
-            precio: "1200€",
-            detalle: "El Sudeste Asiático combina playas paradisíacas, templos milenarios y una gastronomía única. Descubre culturas fascinantes y paisajes exóticos en un solo viaje que te cambiará la vida.",
-            imagen: "images/sudeste_asiatico.webp"
+        islandia: {
+            nombre: "AURORAS EN ISLANDIA",
+            precio: "380€",
+            detalle: "Viaja a la tierra del hielo y el fuego. Descubre cascadas impresionantes, glaciares milenarios y, con suerte, el espectáculo de luces más bonito del mundo: las auroras boreales bailando en el cielo.",
+            imagen: "images/islandia.jpg",
+            incluye: [
+                "Tour de auroras boreales",
+                "Visita a aguas termales",
+                "Crampones para hielo"
+            ]
+        },
+        patagonia: {
+            nombre: "TREKKING EN PATAGONIA",
+            precio: "290€",
+            detalle: "El destino definitivo para los amantes del senderismo. Recorre los senderos más australes del mundo, rodeado de lagos turquesas, picos afilados y una naturaleza salvaje que te dejará sin aliento.",
+            imagen: "images/patagonia.jpg",
+            incluye: [
+                "Guía de montaña experto",
+                "Bastones de trekking",
+                "Mapa de rutas"
+            ]
+        },
+        pirineos: {
+            nombre: "CUMBRES DE LOS PIRINEOS",
+            precio: "610€",
+            detalle: "Explora la majestuosidad de las montañas nevadas. Un viaje ideal para disfrutar de los deportes de invierno, paisajes blancos infinitos y la calidez de los pueblos de montaña tras una jornada de actividad.",
+            imagen: "images/pirineos.jpg",
+            incluye: [
+                "Forfait para 2 días",
+                "Alquiler de equipo esquí",
+                "Seguro de accidentes"
+            ]
+        },
+        santiago: {
+            nombre: "CAMINO DE SANTIAGO",
+            precio: "450€",
+            detalle: "Más que un viaje, una experiencia vital. Peregrina hasta la Plaza del Obradoiro, comparte historias con otros caminantes y descubre la riqueza cultural y gastronómica de Galicia paso a paso.",
+            imagen: "images/santiago2.jpg",
+            incluye: [
+                "Credencial del peregrino",
+                "Mochila ergonómica",
+                "Alojamiento en albergues"
+            ]
         }
     };
 
@@ -37,21 +84,34 @@ $(document).ready(function() {
         // Precio
         $(".precio-numero").text(pack.precio);
 
-        // Descripción (En el nuevo diseño usamos el párrafo dentro de texto-descripcion)
+        // Descripción
         $(".texto-descripcion p").text(pack.detalle);
 
-        // Imagen (Ahora es una etiqueta <img>, no un fondo CSS)
+        // Imagen
         $(".marco-foto img").attr("src", pack.imagen);
         $(".marco-foto img").attr("alt", pack.nombre);
 
+        // --- LÓGICA NUEVA PARA LA LISTA 'INCLUYE' ---
+        
+        // 1. Seleccionamos la lista
+        const $lista = $(".lista-incluye");
+        
+        // 2. Borramos el contenido actual (los li de ejemplo del HTML)
+        $lista.empty();
+
+        // 3. Recorremos los 3 elementos del pack y los añadimos
+        pack.incluye.forEach(function(item) {
+            $lista.append(`<li>${item}</li>`);
+        });
+
     } else {
-        // Si no hay pack seleccionado o no existe, ponemos uno por defecto o un mensaje
-        // Opcional: podrías dejar el HTML estático (Monte Fuji) si no hay param URL
         console.log("No se ha seleccionado ningún pack o el pack no existe.");
+        // Opcional: Ocultar la caja de precio si no hay pack
+        // $(".caja-precio").hide();
     }
 });
 
-// --- A PARTIR DE AQUÍ LA VALIDACIÓN SIGUE IGUAL ---
+// --- VALIDACIÓN DEL FORMULARIO (Se mantiene igual) ---
 
 function handleCompra(event){
     event.preventDefault();
@@ -127,12 +187,10 @@ function handleCompra(event){
     }
 }
 
-// Asignar eventos (asegúrate de que el DOM esté cargado o usa document ready)
+// Asignar eventos
 $(document).ready(function() {
-    // Si usas jQuery para el submit:
     $('#formularioCompra').on('submit', handleCompra);
 
-    // Botón borrar
     $('#btnBorrar').on('click', function(){
         document.forms['compra'].reset();
         $('.error-texto').text('');
