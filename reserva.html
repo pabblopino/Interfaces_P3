@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mochileros sin fronteras</title>
         <link rel="stylesheet" href="style/styles.css">
-        <script src=""></script>
-        <script src="" type="module" defer></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="script/reserva.js" defer></script>
         <script type="module" src="script/sesion.js" defer></script>
     </head>
     <body>
@@ -45,12 +45,16 @@
         </header>
 
         <main class="reserva">
-            <div class="contenedor-reserva-page">
-                
-                <div class="titulo-reserva-main">
-                    <h1>RESERVA DE VIAJE</h1>
-                    <hr>
+            <div class="cabecera-seccion">
+                <h1>RESERVA DE VIAJES</h1>
+                <div class="selector-idioma">
+                    <select>
+                        <option value="es">ESP</option>
+                        <option value="en">ENG</option>
+                    </select>
                 </div>
+            </div>
+            <div class="contenedor-reserva-page">
 
                 <div class="reserva-grid">
                     

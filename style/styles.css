@@ -522,7 +522,7 @@ a:hover {
 /* CONTENEDOR PRINCIPAL */
 .contenedor-review {
     width: 100%;
-    max-width: 680px;
+    max-width: 860px;
     margin: auto;
     padding: 40px 20px;
     text-align: center;
@@ -564,10 +564,11 @@ a:hover {
 .form-review input[type="text"],
 .form-review input[type="file"],
 .form-review textarea {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 14px;
+    width: 100%;          /* siempre ocupen todo el ancho disponible */
+    min-width: 250px;     /* ancho mínimo para que no se encoja demasiado */
+    box-sizing: border-box;
+    resize: none;
+    padding: 10px;
 }
 
 /* FOTO PERFIL */
@@ -614,7 +615,7 @@ a:hover {
 .lista-reseñas {
     margin: 40px auto 0 auto;   /* <<< centra el bloque */
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     gap: 25px;
 }
 
@@ -629,6 +630,7 @@ a:hover {
     align-items: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     margin: auto;   /* <<< esta línea centra cada tarjeta */
+    
 
 }
 
@@ -643,6 +645,8 @@ a:hover {
 /* TEXTO */
 .lista-reseñas p {
     margin: 5px 0;
+    word-break: break-word;      /* rompe palabras muy largas */
+    white-space: normal;         /* permite que el texto haga saltos de línea */
 }
 
 .lista-reseñas span {
