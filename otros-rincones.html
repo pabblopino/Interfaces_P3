@@ -6,22 +6,23 @@
         <title>Mochileros sin fronteras</title>
         <link rel="stylesheet" href="style/styles.css">
         <script src="/script/rincones.js" defer></script>
+        <script type="module" src="script/sesion.js" defer></script>
     </head>
     <body>
         <!-- HEADER -->
         <header>
             <!-- Izquierda -->
             <div class="" id="foto-perfil">
-                <img src="images/foto_perfil.png" alt="foto_perfil">
+                <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
             </div>
             <!-- Centro -->
             <div class="enlaces-iniciales">
-                <a href="">Inicio</a>
+                <a href="" class="activo">Inicio</a>
                 <a href="destinos.html">Destinos</a>
                 <a href="foro.html">Foro/Comunidad</a>
                 <a href="sobre-nosotros.html">Sobre Nosotros</a>
                 <a href="">Recientes</a>
-                <a href="otros-rincones.html" class="activo">Otros Rincones</a>
+                <a href="otros-rincones.html">Otros Rincones</a>
             </div>
 
             <!-- Derecha -->
@@ -41,6 +42,11 @@
                         <button type="button" class="btnRegistro">Registro</button>
                     </div>
                 </div> 
+            </div>
+            <div class="usuario-activo" style="display:none;">
+                <span id="nombreUsuario"></span>
+                <img id="imagenUsuario" src="" alt="">
+                <button class="boton-cerrar">Cerrar sesión</button>
             </div>
         </header>
 
