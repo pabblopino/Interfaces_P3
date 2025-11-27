@@ -196,3 +196,41 @@ $(document).ready(function() {
         $('.error-texto').text('');
     });
 });
+// --- LÓGICA DE OPCIONES ADICIONALES (NUEVO) ---
+
+// 1. Desplegar/Ocultar el bloque principal
+$("#btnOpcionesAdicionales").click(function() {
+    $("#contenidoOpciones").slideToggle();
+    // Cambiar la flechita (opcional)
+    let texto = $(this).find("span").text();
+    $(this).find("span").text(texto === "▼" ? "▲" : "▼");
+});
+
+// 2. Mostrar/Ocultar campos de Acompañantes
+$("#checkAcompanantes").change(function() {
+    if(this.checked) {
+        $("#infoAcompanantes").slideDown();
+    } else {
+        $("#infoAcompanantes").slideUp();
+    }
+});
+
+// 3. Añadir más filas de acompañantes dinámicamente
+$("#btnMasAcompanante").click(function() {
+    const nuevaFila = `
+        <div class="fila-acompanante" style="margin-top:5px;">
+            <input type="text" name="nombreAcompanante[]" placeholder="Nombre completo">
+            <input type="email" name="emailAcompanante[]" placeholder="Email">
+        </div>
+    `;
+    $("#listaAcompanantes").append(nuevaFila);
+});
+
+// 4. Mostrar/Ocultar campos de Mascota
+$("#checkMascota").change(function() {
+    if(this.checked) {
+        $("#infoMascota").slideDown();
+    } else {
+        $("#infoMascota").slideUp();
+    }
+});

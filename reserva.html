@@ -59,15 +59,15 @@
                 <div class="reserva-grid">
                     
                     <div class="info-viaje">
-                        <h2 class="titulo-destino">EL MONTE FUJI</h2>
+                        <h2 class="titulo-destino"></h2>
                         
                         <div class="marco-foto">
-                            <img src="images/fiordos.jpg" alt="Monte Fuji">
+                            <img src="" alt="">
                         </div>
 
                         <h2 class="titulo-descripcion">Descripción</h2>
                         <div class="texto-descripcion">
-                            <p>El Monte Fuji es un majestuoso volcán situado en la isla de Honshu, Japón, y el pico más alto del país. Su forma simétrica y nevada lo convierte en un símbolo nacional y en una de las montañas más admiradas del mundo. Rodeado de lagos, bosques y templos, ofrece paisajes espectaculares y una experiencia espiritual para quienes lo visitan o se atreven a ascender a su cima.</p>
+                            <p></p>
                         </div>
                     </div>
 
@@ -75,11 +75,11 @@
                         
                         <div class="caja-precio">
                             <h3>Precio</h3>
-                            <div class="precio-numero">€600</div>
+                            <div class="precio-numero"></div>
                             <ul class="lista-incluye">
-                                <li>Incluye ruta por el monte</li>
-                                <li>Billete de ida</li>
-                                <li>Comida para 2 días</li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
                             </ul>
                         </div>
 
@@ -93,7 +93,49 @@
                                 <input type="email" id="correo" name="correo" placeholder="Correo electrónico*" required>
                                 <p class="error-texto" id="errorCorreo"></p>
 
-                                <label class="label-form">Opciones adicionales ⌄</label>
+                                <div class="bloque-opciones">
+                                    <button type="button" id="btnOpcionesAdicionales" class="btn-toggle-opciones">
+                                        Opciones adicionales del viaje <span>&#9660;</span>
+                                    </button>
+                                    
+                                    <div id="contenidoOpciones" class="contenido-desplegable">
+                                        
+                                        <div class="item-opcion">
+                                            <label class="check-label">
+                                                <input type="checkbox" id="checkAcompanantes"> Viajo con acompañantes
+                                            </label>
+                                            <div id="infoAcompanantes" class="bloque-oculto">
+                                                <div id="listaAcompanantes">
+                                                    <div class="fila-acompanante">
+                                                        <input type="text" name="nombreAcompanante[]" placeholder="Nombre completo">
+                                                        <input type="email" name="emailAcompanante[]" placeholder="Email">
+                                                    </div>
+                                                </div>
+                                                <button type="button" id="btnMasAcompanante" class="btn-anadir-small">+ Añadir otro</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-opcion">
+                                            <label class="check-label">
+                                                <input type="checkbox" id="checkMascota"> Viajo con mascota
+                                            </label>
+                                            <div id="infoMascota" class="bloque-oculto">
+                                                <input type="text" name="tipoMascota" placeholder="Tipo (ej. Perro, Gato)">
+                                                <select name="tamanoMascota" class="select-normal">
+                                                    <option value="">Selecciona tamaño</option>
+                                                    <option value="pequeno">Pequeño (< 10kg)</option>
+                                                    <option value="mediano">Mediano (10-25kg)</option>
+                                                    <option value="grande">Grande (> 25kg)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-opcion">
+                                            <label class="label-alergias">Intolerancias o Alergias:</label>
+                                            <textarea name="alergias" rows="3" placeholder="Indica aquí si algún viajero tiene alergias..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                                 <select id="tipoTarjeta" name="tipoTarjeta" required>
                                     <option value="">Tipo de tarjeta*</option>
                                     <option value="Visa">Visa</option>

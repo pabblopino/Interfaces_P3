@@ -1378,4 +1378,122 @@ input[type="month"] {
     .marco-foto img {
         height: auto;
     }
+
+
+}
+
+/*ESTILOS PARA OPCIONES ADICIONALES (DESPLEGABLE) */
+
+.bloque-opciones {
+    margin-bottom: 20px;
+}
+
+.btn-toggle-opciones {
+    width: 100%;
+    padding: 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.btn-toggle-opciones:hover {
+    background-color: #e0e0e0;
+}
+
+.contenido-desplegable {
+    display: none; 
+    padding: 15px;
+    border: 1px solid #eee;
+    border-top: none;
+    background-color: #fafafa;
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 15px;
+}
+
+.bloque-oculto {
+    display: none; 
+    margin-top: 10px; 
+}
+
+.item-opcion {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+.item-opcion:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.check-label {
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.fila-acompanante {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 500px) {
+    .fila-acompanante {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+.btn-anadir-small {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.btn-anadir-small:hover {
+    background-color: #555;
+}
+
+.select-normal {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    background: white;
+}
+
+.label-alergias {
+    font-weight: bold; 
+    display: block; 
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    font-family: inherit;
 }
