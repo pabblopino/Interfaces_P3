@@ -233,6 +233,12 @@ a:hover {
     right: 0;
 }
 
+.selector-idioma-mis-viajes {
+    position: absolute;
+    right: 17%;
+    top: 27%;
+}
+
 .selector-idioma select {
     padding: 5px 5px;
     border-radius: 5px;
@@ -362,7 +368,23 @@ a:hover {
     max-width: 1260px; /* opcional para no crecer demasiado */
 }
 
+.galeria-carrusel {
+    display: flex;           
+    align-items: center;     /* Centra verticalmente las flechas */
+    justify-content: center;
+    gap: 15px;
+    overflow-x: auto;        /* Permite scroll si no caben */
+}
 
+.galeria-carrusel .card {
+    flex: 1;                 /* Ocupan el espacio disponible*/
+    min-width: 200px;        
+}
+
+
+.galeria-carrusel .flecha {
+    flex-shrink: 0;          
+}
 
 /* tarjetas, botones y demás quedan igual que antes */
 .card {
@@ -372,7 +394,6 @@ a:hover {
     box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     transition: transform 0.2s;
 }
-
 
 .card img {
     width: 100%;
