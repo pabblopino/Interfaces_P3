@@ -196,9 +196,8 @@ $(document).ready(function() {
         $('.error-texto').text('');
     });
 });
-// --- LÓGICA DE OPCIONES ADICIONALES (NUEVO) ---
 
-// 1. Desplegar/Ocultar el bloque principal
+// Desplegar/Ocultar el bloque principal
 $("#btnOpcionesAdicionales").click(function() {
     $("#contenidoOpciones").slideToggle();
     // Cambiar la flechita (opcional)
@@ -206,7 +205,7 @@ $("#btnOpcionesAdicionales").click(function() {
     $(this).find("span").text(texto === "▼" ? "▲" : "▼");
 });
 
-// 2. Mostrar/Ocultar campos de Acompañantes
+// Mostrar/Ocultar campos de Acompañantes
 $("#checkAcompanantes").change(function() {
     if(this.checked) {
         $("#infoAcompanantes").slideDown();
@@ -215,7 +214,7 @@ $("#checkAcompanantes").change(function() {
     }
 });
 
-// 3. Añadir más filas de acompañantes dinámicamente
+// Añadir más filas de acompañantes dinámicamente
 $("#btnMasAcompanante").click(function() {
     const nuevaFila = `
         <div class="fila-acompanante" style="margin-top:5px;">
@@ -226,7 +225,7 @@ $("#btnMasAcompanante").click(function() {
     $("#listaAcompanantes").append(nuevaFila);
 });
 
-// 4. Mostrar/Ocultar campos de Mascota
+// Mostrar/Ocultar campos de Mascota
 $("#checkMascota").change(function() {
     if(this.checked) {
         $("#infoMascota").slideDown();
@@ -234,3 +233,19 @@ $("#checkMascota").change(function() {
         $("#infoMascota").slideUp();
     }
 });
+
+// Añadir más filas de mascotas dinámicamente
+    $("#btnMasMascota").click(function() {
+        const nuevaFilaMascota = `
+            <div class="fila-mascota">
+                <input type="text" name="tipoMascota[]" placeholder="Tipo (ej. Perro)">
+                <select name="tamanoMascota[]" class="select-mascota">
+                    <option value="">Tamaño</option>
+                    <option value="pequeno">Pequeño (< 10kg)</option>
+                    <option value="mediano">Mediano (10-25kg)</option>
+                    <option value="grande">Grande (> 25kg)</option>
+                </select>
+            </div>
+        `;
+        $("#listaMascotas").append(nuevaFilaMascota);
+    });

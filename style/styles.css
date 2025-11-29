@@ -1497,3 +1497,30 @@ textarea {
     resize: vertical;
     font-family: inherit;
 }
+
+/* Estilos para filas dinámicas de mascotas */
+.fila-mascota {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* El input y el select se reparten el espacio al 50% */
+.fila-mascota input,
+.select-mascota {
+    flex: 1; 
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+    width: 100%; /* Asegura que llenen su hueco flex */
+    box-sizing: border-box;
+}
+
+/* Ajuste para móviles: que se pongan uno debajo de otro si no caben */
+@media (max-width: 500px) {
+    .fila-mascota {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

@@ -120,13 +120,18 @@
                                                 <input type="checkbox" id="checkMascota"> Viajo con mascota
                                             </label>
                                             <div id="infoMascota" class="bloque-oculto">
-                                                <input type="text" name="tipoMascota" placeholder="Tipo (ej. Perro, Gato)">
-                                                <select name="tamanoMascota" class="select-normal">
-                                                    <option value="">Selecciona tamaño</option>
-                                                    <option value="pequeno">Pequeño (< 10kg)</option>
-                                                    <option value="mediano">Mediano (10-25kg)</option>
-                                                    <option value="grande">Grande (> 25kg)</option>
-                                                </select>
+                                                <div id="listaMascotas">
+                                                    <div class="fila-mascota">
+                                                        <input type="text" name="tipoMascota[]" placeholder="Tipo (ej. Perro)">
+                                                        <select name="tamanoMascota[]" class="select-mascota">
+                                                            <option value="">Tamaño</option>
+                                                            <option value="pequeno">Pequeño (< 10kg)</option>
+                                                            <option value="mediano">Mediano (10-25kg)</option>
+                                                            <option value="grande">Grande (> 25kg)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <button type="button" id="btnMasMascota" class="btn-anadir-small">+ Añadir otra mascota</button>
                                             </div>
                                         </div>
 
