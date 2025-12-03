@@ -162,7 +162,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert(isEn ? 'Please enter a valid email address.' : 'Por favor, introduce un correo electrónico válido.');
                 return;
             }
+            // 3. COMPROBAR SI YA ESTÁ EN LOCALSTORAGE
+            
+            // Recuperamos la lista guardada (o creamos una vacía si es la primera vez)
+            let suscriptores = JSON.parse(localStorage.getItem('newsletter_emails')) || [];
 
+            // Si el correo ya está en la lista
+            if (suscriptores.includes(email)) {
+                alert(isEn 
+                    ? 'This email is already subscribed.' 
+                    : 'Este correo ya está suscrito a nuestro boletín.');
+                return; // No enviamos el correo de nuevo.
+            }
+
+            // Si es nuevo, lo añadimos a la lista y guardamos
+            suscriptores.push(email);
+            localStorage.setItem('newsletter_emails', JSON.stringify(suscriptores));
             // 3. Bloquear botón para evitar doble click
             btnSubmit.disabled = true;
             btnSubmit.textContent = isEn ? 'Sending...' : 'Enviando...';
@@ -170,11 +185,11 @@ document.addEventListener("DOMContentLoaded", () => {
             // 4. PREPARAR LOS DATOS PARA LA API
             // Aquí es donde ocurre la magia sin librerías
             const datosParaEnviar = {
-                service_id: 'service_pinut9h',      // SERVICE ID de mi usuario en la aplicación
-                template_id: 'template_ylkyecr',    // PON TU TEMPLATE ID de mi usuario en la aplicación
-                user_id: 'ZArOLJ4L9PqBSfzNq',       // PON TU PUBLIC KEY AQUÍ de mi usuario en la aplicación
+                service_id: 'service_pinut9h',      // SERVICE ID de nuestro usuario en la aplicación
+                template_id: 'template_ylkyecr',    // PON TU TEMPLATE ID de nuestro usuario en la aplicación
+                user_id: 'ZArOLJ4L9PqBSfzNq',       // PON TU PUBLIC KEY AQUÍ de nuestro usuario en la aplicación
                 template_params: {
-                    destinatario: email,          // Esto coincide con {{destinatario}} en tu plantilla
+                    destinatario: email,          // Esto coincide con {{destinatario}} en nuestra plantilla
                     mensaje: "Nuevo suscriptor desde la web"
                 }
             };
@@ -201,6 +216,9 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch((err) => {
                 console.error('ERROR:', err);
+                // Si falla por red, también lo quitamos de la lista para que pueda reintentar
+                suscriptores = suscriptores.filter(e => e !== email);
+                localStorage.setItem('newsletter_emails', JSON.stringify(suscriptores));
                 alert(isEn 
                     ? 'Error sending email. Please try again later.' 
                     : 'Error al enviar el correo. Revisa la consola o inténtalo más tarde.');

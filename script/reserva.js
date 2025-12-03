@@ -8,93 +8,92 @@ $(document).ready(function() {
         camping: {
             nombre: "CAMPING AL ATARDECER",
             precio: "450€",
-            detalle: "Conecta con la naturaleza durmiendo bajo las estrellas...",
-            imagen: isEn ? "../images/camping.jpg" : "images/camping.jpg", // Ajuste de ruta imagen
-            incluye: ["Tienda de campaña pro", "Saco de dormir térmico", "Linterna frontal"]
+            detalle: "Desconecta del ruido de la ciudad y sumérgete en la serenidad de la alta montaña. Dormirás en una ubicación privilegiada bajo un manto de estrellas, rodeado por el susurro del viento en los árboles y amaneceres que tiñen los picos de dorado. Una experiencia perfecta para reconectar contigo mismo y con la naturaleza en su estado más puro.",
+            imagen: isEn ? "../images/camping.jpg" : "images/camping.jpg",
+            incluye: ["Tienda de campaña técnica 4 estaciones", "Saco de dormir térmico de alta gama", "Linterna frontal y kit de cocina"]
         },
         desierto: {
-            nombre: "AVENTURA EN EL DESIERTO",
+            nombre: "AVENTURA EN EL SAHARA",
             precio: "520€",
-            detalle: "Adéntrate en las dunas doradas...",
+            detalle: "Siente la magia del desierto infinito. Atravesarás dunas doradas a lomos de camellos hasta llegar a un campamento bereber de lujo. Disfruta del silencio absoluto, una cena tradicional junto al fuego y un cielo nocturno tan claro que sentirás que puedes tocar la Vía Láctea. Una aventura exótica que despertará todos tus sentidos.",
             imagen: isEn ? "../images/desierto.jpg" : "images/desierto.jpg",
-            incluye: ["Excursión en camello", "Cena bajo las estrellas", "Turbante bereber"]
+            incluye: ["Ruta guiada en dromedario", "Cena típica bereber y espectáculo", "Alojamiento en jaima de lujo"]
         },
         islandia: {
-            nombre: "AURORAS EN ISLANDIA",
+            nombre: "CAZADORES DE AURORAS",
             precio: "380€",
-            detalle: "Viaja a la tierra del hielo y el fuego...",
+            detalle: "Viaja a la tierra donde el hielo y el fuego conviven. Explorarás glaciares milenarios, cascadas estruendosas y playas de arena negra. Por la noche, nos alejaremos de la contaminación lumínica para presenciar el espectáculo natural más impresionante del planeta: las auroras boreales danzando en el cielo ártico.",
             imagen: isEn ? "../images/islandia.jpg" : "images/islandia.jpg",
-            incluye: ["Tour de auroras boreales", "Visita a aguas termales", "Crampones para hielo"]
+            incluye: ["Tour nocturno de auroras boreales", "Entrada a la Laguna Secreta", "Equipamiento de seguridad para hielo"]
         },
         patagonia: {
-            nombre: "TREKKING EN PATAGONIA",
+            nombre: "EXPEDICIÓN PATAGONIA",
             precio: "290€",
-            detalle: "El destino definitivo para los amantes del senderismo...",
+            detalle: "El desafío definitivo para los amantes del trekking. Caminarás a los pies de gigantes de granito como el Fitz Roy y las Torres del Paine. Descubre lagos de color turquesa intenso, bosques magallánicos y una fauna salvaje única. Una ruta exigente pero con las vistas más gratificantes del hemisferio sur.",
             imagen: isEn ? "../images/patagonia.jpg" : "images/patagonia.jpg",
-            incluye: ["Guía de montaña experto", "Bastones de trekking", "Mapa de rutas"]
+            incluye: ["Guía de montaña certificado", "Bastones de trekking profesionales", "Mapas topográficos y GPS"]
         },
         pirineos: {
-            nombre: "CUMBRES DE LOS PIRINEOS",
+            nombre: "NIEVE EN LOS PIRINEOS",
             precio: "610€",
-            detalle: "Explora la majestuosidad de las montañas nevadas...",
+            detalle: "Vive la majestuosidad de los Pirineos cubiertos de blanco. Disfruta de kilómetros de pistas esquiables con nieve de calidad, o relájate con una ruta de raquetas por bosques de abetos. Al caer la tarde, el calor de la chimenea y la gastronomía de montaña en un refugio acogedor serán el broche de oro perfecto.",
             imagen: isEn ? "../images/pirineos.jpg" : "images/pirineos.jpg",
-            incluye: ["Forfait para 2 días", "Alquiler de equipo esquí", "Seguro de accidentes"]
+            incluye: ["Forfait completo para 2 días", "Alquiler de esquís/snowboard de gama alta", "Seguro de accidentes y rescate"]
         },
         santiago: {
-            nombre: "CAMINO DE SANTIAGO",
+            nombre: "EL CAMINO DE SANTIAGO",
             precio: "450€",
-            detalle: "Más que un viaje, una experiencia vital...",
+            detalle: "Más que un viaje, una transformación personal. Recorre los últimos 100 km del Camino Francés a través de bosques gallegos, aldeas de piedra y puentes medievales. Comparte historias con peregrinos de todo el mundo y siente la emoción indescriptible al llegar a la Plaza del Obradoiro tras días de esfuerzo y superación.",
             imagen: isEn ? "../images/santiago2.jpg" : "images/santiago2.jpg",
-            incluye: ["Credencial del peregrino", "Mochila ergonómica", "Alojamiento en albergues"]
+            incluye: ["Credencial oficial del peregrino", "Mochila ergonómica y kit de pies", "Gestión de alojamiento en albergues"]
         }
     };
 
-    // DATOS EN INGLÉS (¡Traducidos!)
+    // DATOS EN INGLÉS (Traducidos y elaborados)
     const packs_en = {
         camping: {
-            nombre: "SUNSET CAMPING",
+            nombre: "SUNSET ALPINE CAMPING",
             precio: "450€",
-            detalle: "Connect with nature sleeping under the stars...",
+            detalle: "Disconnect from the city noise and immerse yourself in high mountain serenity. Sleep in a privileged location under a blanket of stars, surrounded by the whisper of wind in the trees and sunrises that turn the peaks gold. The perfect experience to reconnect with yourself and nature in its purest state.",
             imagen: "../images/camping.jpg",
-            incluye: ["Pro Tent", "Thermal Sleeping Bag", "Headlamp"]
+            incluye: ["4-season technical tent", "High-end thermal sleeping bag", "Headlamp and cooking kit"]
         },
         desierto: {
-            nombre: "DESERT ADVENTURE",
+            nombre: "SAHARA DESERT ADVENTURE",
             precio: "520€",
-            detalle: "Venture into golden dunes on camels...",
+            detalle: "Feel the magic of the endless desert. You will cross golden dunes on camelback to reach a luxury Berber camp. Enjoy absolute silence, a traditional dinner by the fire, and a night sky so clear you'll feel you can touch the Milky Way. An exotic adventure that will awaken all your senses.",
             imagen: "../images/desierto.jpg",
-            incluye: ["Camel Trek", "Dinner under stars", "Berber Turban"]
+            incluye: ["Guided camel trek", "Typical Berber dinner & show", "Accommodation in luxury tent"]
         },
         islandia: {
-            nombre: "ICELAND AURORAS",
+            nombre: "ICELAND AURORA HUNT",
             precio: "380€",
-            detalle: "Travel to the land of ice and fire...",
+            detalle: "Travel to the land where ice and fire coexist. Explore ancient glaciers, thundering waterfalls, and black sand beaches. At night, we'll venture away from light pollution to witness the planet's most impressive natural show: the Northern Lights dancing across the Arctic sky.",
             imagen: "../images/islandia.jpg",
-            incluye: ["Northern Lights Tour", "Hot Springs Visit", "Ice Crampons"]
+            incluye: ["Northern Lights night tour", "Secret Lagoon entrance", "Ice safety equipment"]
         },
         patagonia: {
-            nombre: "PATAGONIA TREKKING",
+            nombre: "PATAGONIA EXPEDITION",
             precio: "290€",
-            detalle: "The ultimate destination for hiking lovers...",
+            detalle: "The ultimate challenge for hiking lovers. Walk at the foot of granite giants like Fitz Roy and Torres del Paine. Discover intense turquoise lakes, Magellanic forests, and unique wildlife. A demanding route offering the most rewarding views in the Southern Hemisphere.",
             imagen: "../images/patagonia.jpg",
-            incluye: ["Expert Mountain Guide", "Trekking Poles", "Route Map"]
+            incluye: ["Certified mountain guide", "Professional trekking poles", "Topographic maps & GPS"]
         },
         pirineos: {
-            nombre: "PYRENEES PEAKS",
+            nombre: "PYRENEES SNOW ESCAPE",
             precio: "610€",
-            detalle: "Explore the majesty of snowy mountains...",
+            detalle: "Experience the majesty of the snow-covered Pyrenees. Enjoy kilometers of skiable slopes with quality snow, or relax with a snowshoe route through fir forests. At sunset, the warmth of a fireplace and hearty mountain cuisine in a cozy refuge will be the perfect finishing touch.",
             imagen: "../images/pirineos.jpg",
-            incluye: ["2-day Ski Pass", "Ski Equipment Rental", "Accident Insurance"]
+            incluye: ["2-day full Ski Pass", "High-end ski/snowboard rental", "Accident & rescue insurance"]
         },
         santiago: {
-            nombre: "CAMINO DE SANTIAGO",
+            nombre: "THE WAY OF ST. JAMES",
             precio: "450€",
-            detalle: "More than a trip, a life experience...",
+            detalle: "More than a trip, a personal transformation. Walk the last 100 km of the French Way through Galician forests, stone villages, and medieval bridges. Share stories with pilgrims from around the world and feel the indescribable emotion upon reaching Obradoiro Square after days of effort.",
             imagen: "../images/santiago2.jpg",
-            incluye: ["Pilgrim Credential", "Ergonomic Backpack", "Hostel Accommodation"]
+            incluye: ["Official Pilgrim Credential", "Ergonomic backpack & foot kit", "Hostel accommodation management"]
         }
     };
-
     // Elegir el objeto de datos correcto
     const packs = isEn ? packs_en : packs_es;
     const pack = packs[packId];
@@ -181,9 +180,11 @@ function handleCompra(event){
     if (form_valido){
         // Si está todo OK, redirigimos a confirmación
         if (isEn) {
-            window.location.href = "confirmacion_en.html";
+            // Si estamos en la carpeta ingles, busca confirmacion_en.html (que está al lado)
+            window.location.href = "confirmacion-reserva_en.html";
         } else {
-            window.location.href = "confirmacion.html";
+            // Si estamos en español, busca confirmacion.html
+            window.location.href = "confirmacion-reserva.html";
         }
     }
 }
