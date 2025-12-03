@@ -392,7 +392,7 @@ a:hover {
     border-radius: 12px;
     padding: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-    transition: transform 0.2s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
 }
 
 .card img {
@@ -405,6 +405,10 @@ a:hover {
 .card h3 {
     margin: 10px 0 5px;
     font-size: 16px;
+}
+.card:hover {
+    transform: translateY(-5px); /* Sube un poquito */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* La sombra crece */
 }
 
 .precio {
@@ -794,6 +798,8 @@ a:hover {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+
 }
 
 /* Imagen dentro de info */
@@ -820,7 +826,10 @@ a:hover {
 .info .descripcion {
     margin-top: 5px;
 }
-
+.info:hover {
+    transform: translateY(-5px); /* Sube un poquito */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* La sombra crece */
+}
 
 
 
