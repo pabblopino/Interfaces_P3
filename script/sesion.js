@@ -73,7 +73,35 @@ document.addEventListener("DOMContentLoaded", () => {
         // Añadir al div del usuario activo
         if (divUsuario) divUsuario.appendChild(btnMiPerfil);
     }
+    // --- BUSCADOR DEL INDEX ---
+    const btnBusquedaIndex = document.querySelector('#btnBusquedaIndex');
+    const inputBusquedaIndex = document.querySelector('#inputBusquedaIndex');
 
+    // Esta función se encarga de redirigir
+    const realizarBusqueda = () => {
+        const texto = inputBusquedaIndex.value.trim();
+        if (texto) {
+            // Redirige a destinos.html pasando el texto en la URL
+            // encodeURIComponent sirve para manejar espacios y tildes correctamente
+            window.location.href = `destinos.html?q=${encodeURIComponent(texto)}`;
+        }
+    };
+
+    if (btnBusquedaIndex && inputBusquedaIndex) {
+        // Al hacer clic en el botón
+        btnBusquedaIndex.addEventListener('click', realizarBusqueda);
+
+        // Al pulsar "Enter" en el teclado
+        inputBusquedaIndex.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                realizarBusqueda();
+            }
+        });
+    }
+
+// Cierre del DOMContentLoaded que ya tenías al final del archivo
 });
+
+
 
 

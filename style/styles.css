@@ -1524,3 +1524,127 @@ textarea {
         gap: 5px;
     }
 }
+
+/*BUSCADOR*/
+/* =========================================
+   ESTILOS ESPECÍFICOS: PÁGINA DESTINOS
+   ========================================= */
+
+/* 1. Contenedor de la cabecera (Título y Buscador) */
+.cabecera-destinos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+/* 2. Layout Principal: Grid Sidebar + Resultados */
+.layout-grid-destinos {
+    display: grid;
+    /* Columna 1 (Filtros): 250px fijos | Columna 2 (Resultados): resto del espacio */
+    grid-template-columns: 250px 1fr; 
+    gap: 40px;
+    max-width: 1260px;
+    margin: 0 auto 60px auto; /* Centrado horizontal */
+    padding: 0 20px;
+    align-items: start; /* Para que la barra lateral no se estire hacia abajo */
+}
+
+/* --- ESTILOS DE LA BARRA LATERAL (FILTROS) --- */
+.sidebar-filtros {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}
+
+.bloque-filtro {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bloque-filtro h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* Botones de filtro lateral (estilo pill/botón) */
+.btn-filtro-lateral {
+    text-align: left;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.btn-filtro-lateral:hover {
+    background-color: #eaeaea;
+    border-color: #999;
+}
+
+/* Estado activo del filtro */
+.btn-filtro-lateral.activo {
+    background-color: black;
+    color: white;
+    border-color: black;
+}
+
+/* Slider de precio simple */
+.slider-precio {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* --- ESTILOS DE LA GALERÍA DE RESULTADOS --- */
+.galeria-resultados {
+    display: grid;
+    /* Grid responsive: crea tantas columnas como quepan (mínimo 280px) */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Reutilizamos .card existente, pero nos aseguramos que la imagen llene bien */
+.galeria-resultados .card {
+    height: 100%; /* Para que todas las tarjetas tengan altura uniforme */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* --- RESPONSIVE PARA DESTINOS --- */
+@media (max-width: 850px) {
+    /* En tablets/móviles, ponemos los filtros arriba */
+    .layout-grid-destinos {
+        grid-template-columns: 1fr; /* Una sola columna */
+        gap: 20px;
+    }
+
+    /* Ocultamos o cambiamos el diseño de los filtros si quieres */
+    .sidebar-filtros {
+        display: flex;
+        flex-wrap: wrap; /* Para que los botones se pongan uno al lado del otro */
+        gap: 10px;
+    }
+    
+    .bloque-filtro {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    /* Hacemos que los botones no ocupen todo el ancho en móvil */
+    .btn-filtro-lateral {
+        flex: 1 1 auto; /* Crecen y se ajustan */
+        text-align: center;
+    }
+}

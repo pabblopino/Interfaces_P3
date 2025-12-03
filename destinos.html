@@ -3,21 +3,16 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mochileros sin fronteras</title>
+        <title>Destinos - Mochileros sin fronteras</title>
         <link rel="stylesheet" href="style/styles.css">
-        <script src=""></script>
-        <script src="" type="module" defer></script>
         <script type="module" src="script/sesion.js" defer></script>
-
+        <script type="module" src="script/destinos.js" defer></script>
     </head>
     <body>
-        <!-- HEADER -->
         <header>
-            <!-- Izquierda -->
             <div class="" id="foto-perfil">
                 <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
             </div>
-            <!-- Centro -->
             <div class="enlaces-iniciales">
                 <a href="index.html">Inicio</a>
                 <a href="" class="activo">Destinos</a>
@@ -26,19 +21,14 @@
                 <a href="">Recientes</a>
                 <a href="otros-rincones.html">Otros Rincones</a>
             </div>
-
-            <!-- Derecha -->
             <div class="inicio-sesion">
-                <!--Apartado de registro-->
                 <div class="registro">
                     <div class="input-usuario">
                         <input type="text" id="usuario" placeholder="Usuario">
                     </div>
                     <div class="input-usuario">
                         <input type="password" id="password" placeholder="Contraseña">
-                
                     </div>
-
                     <div class="botones">
                         <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
                         <button type="button" id="btnRegistro">Registro</button>
@@ -52,34 +42,124 @@
             </div>
         </header>
 
-        <!-- MAIN -->
-        <main class="destinos">
-            <div class="contenedor-flex">
+        <main class="pagina-destinos">
+            
+            <section class="cabecera-destinos">
                 <div class="titulo-destinos-main">
-                    <h1>DESTINO</h1>
+                    <h1>DESTINOS</h1>
                     <hr>
                 </div>
                 <div class="contenedor-buscador">
-                    <input type="text" placeholder="Buscar destino...">
+                    <input type="text" placeholder="¿A dónde quieres ir? (Ej: Playa, Montaña...)">
                     <button>🔍 Buscar</button>
                 </div>
-            </div>
+            </section>
+
+            <section class="layout-grid-destinos">
+                
+                <aside class="sidebar-filtros">
+                    <div class="bloque-filtro">
+                        <h3>Categorías</h3>
+                        <button class="btn-filtro-lateral activo">Todos</button>
+                        <button class="btn-filtro-lateral">Montaña</button>
+                        <button class="btn-filtro-lateral">Playa</button>
+                        <button class="btn-filtro-lateral">Nieve</button>
+                        <button class="btn-filtro-lateral">Ciudad</button>
+                        <button class="btn-filtro-lateral">Rural</button>
+                    </div>
+
+                    <div class="bloque-filtro">
+                        <h3>Precio Máximo</h3>
+                        <input type="range" min="100" max="1000" value="1000" class="slider-precio">
+                        <p>Hasta: 1000€</p>
+                    </div>
+                </aside>
+
+                <div class="galeria-resultados" id="contenedorTarjetas">
+    
+                    <div class="card" data-categoria="rural" data-precio="450">
+                        <img src="images/camping.jpg" alt="Camping">
+                        <h3>Camping</h3>
+                        <p class="precio">450 €</p>
+                        <div class="acciones">
+                            <button class="btn-like">❤</button>
+                            <div class="boton-comprar">
+                                <a href="reserva.html?id_pack=camping"><button class="btn-reservar">Reservar ahora</button></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" data-categoria="montana" data-precio="520">
+                        <img src="images/desierto.jpg" alt="Desierto">
+                        <h3>Desierto</h3>
+                        <p class="precio">520€</p>
+                        <div class="acciones">
+                            <button class="btn-like">❤</button>
+                            <div class="boton-comprar">
+                                <a href="reserva.html?id_pack=desierto"><button class="btn-reservar">Reservar ahora</button></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" data-categoria="nieve" data-precio="380">
+                        <img src="images/islandia.jpg" alt="Islandia">
+                        <h3>Islandia</h3>
+                        <p class="precio">380€</p>
+                        <div class="acciones">
+                            <button class="btn-like">❤</button>
+                            <div class="boton-comprar">
+                                <a href="reserva.html?id_pack=islandia"><button class="btn-reservar">Reservar ahora</button></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" data-categoria="montana" data-precio="290">
+                        <img src="images/patagonia.jpg" alt="Patagonia">
+                        <h3>Patagonia</h3>
+                        <p class="precio">290€</p>
+                        <div class="acciones">
+                            <button class="btn-like">❤</button>
+                            <div class="boton-comprar">
+                                <a href="reserva.html?id_pack=patagonia"><button class="btn-reservar">Reservar ahora</button></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" data-categoria="nieve" data-precio="610">
+                        <img src="images/pirineos.jpg" alt="Pirineos">
+                        <h3>Pirineos</h3>
+                        <p class="precio">610€</p>
+                        <div class="acciones">
+                            <button class="btn-like">❤</button>
+                            <div class="boton-comprar">
+                                <a href="reserva.html?id_pack=pirineos"><button class="btn-reservar">Reservar ahora</button></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" data-categoria="ciudad" data-precio="450">
+                        <img src="images/santiago2.jpg" alt="Santiago">
+                        <h3>Santiago</h3>
+                        <p class="precio">450€</p>
+                        <div class="acciones">
+                            <button class="btn-like">❤</button>
+                            <div class="boton-comprar">
+                                <a href="reserva.html?id_pack=santiago"><button class="btn-reservar">Reservar ahora</button></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
 
         </main>
 
-        <!-- FOOTER -->
         <footer>
             <div class="footer-grid" id="redes-sociales">
                 <div id="enlaces-redes">
-                    <a href="https://www.instagram.com" target="_blank">
-                        <img src="images/logo_instagram.png" alt="Instagram">
-                    </a>
-                    <a href="https://www.tiktok.com/" target="_blank">
-                        <img src="images/logo_tiktok.png" alt="TikTok">
-                    </a>
-                    <a href="https://www.youtube.com/" target="_blank">
-                        <img src="images/logo_youtube.png" alt="YouTube">
-                    </a>
+                    <a href="https://www.instagram.com" target="_blank"><img src="images/logo_instagram.png" alt="Instagram"></a>
+                    <a href="https://www.tiktok.com/" target="_blank"><img src="images/logo_tiktok.png" alt="TikTok"></a>
+                    <a href="https://www.youtube.com/" target="_blank"><img src="images/logo_youtube.png" alt="YouTube"></a>
                 </div>
                 <p>&copy; 2025 Mochileros sin fronteras</p>
             </div>
@@ -109,3 +189,4 @@
             </div>
         </footer>
     </body>
+</html>
