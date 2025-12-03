@@ -1,8 +1,13 @@
+// Función auxiliar para saber si estamos en inglés
+const esIngles = () => window.location.pathname.includes('/ingles/');
+
 export function registrarUsuario(datos) {
+    const isEn = esIngles(); // Detectamos idioma
+
     // --- VALIDACIÓN NOMBRE ---
     const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/;
     if (!datos.nombre || datos.nombre.length < 3 || !regexNombre.test(datos.nombre)) {
-        alert('El nombre debe tener al menos 3 caracteres y solo letras.');
+        alert(isEn ? 'Name must contain at least 3 letters.' : 'El nombre debe tener al menos 3 caracteres y solo letras.');
         return;
     }
 
@@ -60,19 +65,24 @@ export function registrarUsuario(datos) {
     // --- INICIAR SESIÓN ---
     localStorage.setItem('usuarioActivo', JSON.stringify(datos));
 
-    alert('Usuario registrado correctamente');
-    window.location.href = 'index.html';
+    alert(isEn ? 'User registered successfully' : 'Usuario registrado correctamente');
+    
+    // REDIRECCIÓN INTELIGENTE
+    window.location.href = isEn ? 'index_en.html' : 'index.html';
 }
 
 export function iniciarSesion(usuario, password) {
+    const isEn = esIngles(); // Detectamos idioma
     const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
     const encontrado = usuarios.find(u => u.login === usuario && u.password === password);
 
     if (!encontrado) {
-        alert('Usuario o contraseña incorrectos.');
+        alert(isEn ? 'Incorrect username or password.' : 'Usuario o contraseña incorrectos.');
         return;
     }
 
     localStorage.setItem('usuarioActivo', JSON.stringify(encontrado));
-    window.location.href = 'index.html';
+    
+    // REDIRECCIÓN INTELIGENTE
+    window.location.href = isEn ? 'index_en.html' : 'index.html';
 }

@@ -1,11 +1,51 @@
 import { iniciarSesion } from './usuario.mjs';
 
 document.addEventListener("DOMContentLoaded", () => {
+    
+    // Variable global para saber si estamos en inglés
+    const isEn = window.location.pathname.includes('/ingles/');
+
+    // ------------------------------------------------
+    // 1. LOGICA DEL SELECTOR DE IDIOMA (FUNDAMENTAL)
+    // ------------------------------------------------
+    const selectores = document.querySelectorAll('.selector-idioma select, .selector-idioma-mis-viajes select');
+    
+    selectores.forEach(select => {
+        select.addEventListener('change', (e) => {
+            const val = e.target.value; // 'es' o 'en'
+            const path = window.location.pathname;
+            const file = path.substring(path.lastIndexOf('/') + 1); // ej: destinos.html
+
+            if (val === 'en') {
+                // Ir a inglés
+                if (file.includes('_en.html')) return; // Ya estamos
+                // Convertir 'destinos.html' -> 'ingles/destinos_en.html'
+                const newFile = file.replace('.html', '_en.html');
+                // Si estamos en la raiz (index.html), vamos a ingles/index_en.html
+                window.location.href = `ingles/${newFile}`; 
+                // NOTA: Si ya estás dentro de /ingles/ por error y quieres recargar, ajusta la ruta, 
+                // pero normalmente desde español vas a `ingles/archivo_en.html`.
+            } 
+            else if (val === 'es') {
+                // Ir a español
+                if (!file.includes('_en.html')) return; // Ya estamos
+                // Convertir 'destinos_en.html' -> 'destinos.html'
+                const newFile = file.replace('_en.html', '.html');
+                // Salimos de la carpeta ingles con "../"
+                window.location.href = `../${newFile}`;
+            }
+        });
+    });
+
+    // ------------------------------------------------
+    // 2. HEADER Y NAVEGACIÓN
+    // ------------------------------------------------
+
     // --- BOTÓN DE REGISTRO ---
     const btnRegistro = document.querySelector(".btnRegistro");
     if (btnRegistro) {
         btnRegistro.addEventListener("click", () => {
-            window.location.href = "registro.html";
+            window.location.href = isEn ? "registro_en.html" : "registro.html";
         });
     }
 
@@ -20,17 +60,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const password = inputPassword.value;
 
             if (!usuario || !password) {
-                alert('Debes introducir usuario y contraseña');
+                alert(isEn ? 'Please enter username and password' : 'Debes introducir usuario y contraseña');
                 return;
             }
-
             iniciarSesion(usuario, password);
         });
     }
 
     // --- USUARIO ACTIVO ---
     const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
-
     const divLogin = document.querySelector('.inicio-sesion');
     const divUsuario = document.querySelector('.usuario-activo');
     const nombreUsuario = document.querySelector('#nombreUsuario');
@@ -40,10 +78,28 @@ document.addEventListener("DOMContentLoaded", () => {
         if (divLogin) divLogin.style.display = 'none';
         if (divUsuario) divUsuario.style.display = 'flex';
         if (nombreUsuario) nombreUsuario.textContent = `${usuarioActivo.nombre} ${usuarioActivo.apellidos}`;
+        
         if (imagenUsuario) {
-            imagenUsuario.src = usuarioActivo.imagen;
-            imagenUsuario.alt = `Foto de ${usuarioActivo.nombre}`;
+            // Ajuste de ruta de imagen si estamos en subcarpeta
+            let rutaImg = usuarioActivo.imagen;
+            // Si es una ruta relativa local (images/...) y estamos en inglés, añadir ../
+            if (isEn && !rutaImg.startsWith('data:') && !rutaImg.startsWith('../') && !rutaImg.startsWith('http')) {
+                rutaImg = '../' + rutaImg;
+            }
+            imagenUsuario.src = rutaImg;
         }
+        
+        // --- BOTÓN "MI PERFIL" ---
+        const btnMiPerfil = document.createElement('button');
+        btnMiPerfil.textContent = isEn ? 'My Profile' : 'Mi perfil';
+        btnMiPerfil.classList.add('btnMiPerfil');
+        btnMiPerfil.style.marginLeft = '10px';
+
+        btnMiPerfil.addEventListener('click', () => {
+            window.location.href = isEn ? 'perfil_en.html' : 'perfil.html';
+        });
+        divUsuario.appendChild(btnMiPerfil);
+
     } else {
         if (divLogin) divLogin.style.display = 'flex';
         if (divUsuario) divUsuario.style.display = 'none';
@@ -53,55 +109,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnCerrar = document.querySelector('.boton-cerrar');
     if (btnCerrar) {
         btnCerrar.addEventListener('click', () => {
-            if (confirm('¿Desea cerrar sesión?')) {
+            const msg = isEn ? 'Do you want to log out?' : '¿Desea cerrar sesión?';
+            if (confirm(msg)) {
                 localStorage.removeItem('usuarioActivo');
-                location.reload(); // recarga para actualizar el header
+                location.reload(); 
             }
         });
     }
-    // --- BOTÓN "MI PERFIL" ---
-    if (usuarioActivo) {
-        const btnMiPerfil = document.createElement('button');
-        btnMiPerfil.textContent = 'Mi perfil';
-        btnMiPerfil.classList.add('btnMiPerfil');
-        btnMiPerfil.style.marginLeft = '10px';
 
-        btnMiPerfil.addEventListener('click', () => {
-            window.location.href = 'perfil.html';
-        });
-
-        // Añadir al div del usuario activo
-        if (divUsuario) divUsuario.appendChild(btnMiPerfil);
-    }
-    // --- BUSCADOR DEL INDEX ---
+    // ------------------------------------------------
+    // 3. BUSCADOR INTELIGENTE
+    // ------------------------------------------------
     const btnBusquedaIndex = document.querySelector('#btnBusquedaIndex');
     const inputBusquedaIndex = document.querySelector('#inputBusquedaIndex');
 
-    // Esta función se encarga de redirigir
     const realizarBusqueda = () => {
         const texto = inputBusquedaIndex.value.trim();
         if (texto) {
-            // Redirige a destinos.html pasando el texto en la URL
-            // encodeURIComponent sirve para manejar espacios y tildes correctamente
-            window.location.href = `destinos.html?q=${encodeURIComponent(texto)}`;
+            // Si estamos en inglés, mandamos a destinos_en.html
+            const paginaDestino = isEn ? 'destinos_en.html' : 'destinos.html';
+            window.location.href = `${paginaDestino}?q=${encodeURIComponent(texto)}`;
         }
     };
 
     if (btnBusquedaIndex && inputBusquedaIndex) {
-        // Al hacer clic en el botón
         btnBusquedaIndex.addEventListener('click', realizarBusqueda);
-
-        // Al pulsar "Enter" en el teclado
         inputBusquedaIndex.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                realizarBusqueda();
-            }
+            if (e.key === 'Enter') realizarBusqueda();
         });
     }
-
-// Cierre del DOMContentLoaded que ya tenías al final del archivo
 });
-
-
-
-

@@ -1,18 +1,17 @@
 import { cargarReseñas, agregarReseña } from "./reviews.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
+    const isEn = window.location.pathname.includes('/ingles/');
     const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo')) || {};
 
-    // Poner nombre automáticamente
     const nombreInput = document.querySelector('#nombreReseña');
     if (nombreInput && usuarioActivo.nombre && usuarioActivo.apellidos) {
         nombreInput.value = usuarioActivo.nombre + " " + usuarioActivo.apellidos;
     }
 
-    // Cargar reseñas existentes
     cargarReseñas("#lista-reseñas");
 
-    // --- ESTRELLAS ---
+    // Estrellas
     let estrellasSeleccionadas = 0;
     const estrellas = document.querySelectorAll(".rating span");
     if (estrellas.length > 0) {
@@ -26,36 +25,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- FORMULARIO ---
+    // Formulario
     const form = document.querySelector(".form-review");
     if (form) {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
-
-            const titulo = form.querySelector('input[placeholder^="Ej:"]').value.trim();
+            const titulo = form.querySelector('input[type="text"]:not([disabled])').value.trim();
             const descripcion = form.querySelector("textarea").value.trim();
 
             try {
                 agregarReseña({
-                    foto: usuarioActivo.imagen || 'images/foto_perfil.png', // Foto automáticamente
-                    nombre: usuarioActivo.nombre + " " + usuarioActivo.apellidos,
+                    foto: usuarioActivo.imagen || 'images/foto_perfil.png',
+                    nombre: (usuarioActivo.nombre ? usuarioActivo.nombre + " " + usuarioActivo.apellidos : (isEn ? "Anonymous" : "Anónimo")),
                     titulo,
                     descripcion,
                     estrellas: estrellasSeleccionadas
                 });
 
-                alert("¡Reseña enviada!");
+                alert(isEn ? "Review submitted!" : "¡Reseña enviada!");
                 form.reset();
-
-                // Resetear estrellas
                 estrellas.forEach(s => s.style.color = "#ccc");
                 estrellasSeleccionadas = 0;
-
-                // Recargar reseñas
                 cargarReseñas("#lista-reseñas");
-
-                // Volver a poner nombre
-                if (nombreInput) nombreInput.value = usuarioActivo.nombre + " " + usuarioActivo.apellidos;
+                
+                if (nombreInput && usuarioActivo.nombre) nombreInput.value = usuarioActivo.nombre + " " + usuarioActivo.apellidos;
 
             } catch (err) {
                 alert(err.message);

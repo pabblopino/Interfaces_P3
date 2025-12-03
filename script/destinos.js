@@ -1,120 +1,104 @@
-/* script/destinos.js */
-
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Selección de elementos del DOM
     const inputBuscador = document.querySelector('.contenedor-buscador input');
     const botonBuscar = document.querySelector('.contenedor-buscador button');
-    
-    // Filtros laterales
     const botonesFiltro = document.querySelectorAll('.btn-filtro-lateral');
     const sliderPrecio = document.querySelector('.slider-precio');
-    const textoPrecio = document.querySelector('.bloque-filtro p'); // El texto "Hasta: 1000€"
-
-    // Tarjetas
+    const textoPrecio = document.querySelector('.bloque-filtro p'); 
     const tarjetas = document.querySelectorAll('.card');
 
-    // 2. Estado inicial de los filtros
     let filtros = {
-        categoria: 'todos',
+        categoria: 'todos', // Si es inglés, usaremos "All" en la lógica interna
         precioMaximo: 1000,
         busqueda: ''
     };
 
-    
-    // Comprobamos si venimos del Index con una búsqueda
+    // --- 1. LEER PARAMETROS URL (Del buscador del index) ---
     const params = new URLSearchParams(window.location.search);
     const busquedaURL = params.get('q');
 
     if (busquedaURL) {
-        // 1. Guardamos el valor en el filtro
         filtros.busqueda = busquedaURL;
-        // 2. Ponemos el texto en el input visualmente para que el usuario lo vea
-        inputBuscador.value = busquedaURL;
-        // 3. Aplicamos el filtro inmediatamente (importante hacerlo antes de los event listeners)
-        // NOTA: Mueve la función 'aplicarFiltros' ARRIBA de este bloque o asegúrate de que
-        // la función aplicarFiltros esté definida antes de llamarla aquí.
+        if(inputBuscador) inputBuscador.value = busquedaURL;
     }
-    
-    
-    // 3. Función Principal: Aplicar todos los filtros
+
+    // --- 2. FUNCIÓN FILTRAR ---
     const aplicarFiltros = () => {
-        // Normalizamos el texto de búsqueda (minusculas y sin espacios extra)
         const textoBusqueda = filtros.busqueda.toLowerCase().trim();
 
         tarjetas.forEach(card => {
-            // Obtenemos los datos de la tarjeta actual
-            const categoriaCard = card.dataset.categoria; // Lee data-categoria
-            const precioCard = parseInt(card.dataset.precio); // Lee data-precio
+            // Leemos los data-attributes (que son iguales en ES y EN)
+            const categoriaCard = card.dataset.categoria; 
+            const precioCard = parseInt(card.dataset.precio);
             const tituloCard = card.querySelector('h3').textContent.toLowerCase();
 
-            // Verificamos las 3 condiciones:
-            
-            // A) ¿Coincide la categoría? (Si es 'todos', siempre es true)
-            const coincideCategoria = (filtros.categoria === 'todos') || (filtros.categoria === categoriaCard);
+            // A) Categoría
+            // "Todos" en español o "All" en inglés -> mostramos todo
+            const esTodo = filtros.categoria === 'todos' || filtros.categoria === 'all';
+            const coincideCategoria = esTodo || (filtros.categoria === categoriaCard);
 
-            // B) ¿El precio es menor o igual al marcado?
+            // B) Precio
             const coincidePrecio = precioCard <= filtros.precioMaximo;
 
-            // C) ¿El título contiene el texto del buscador?
+            // C) Buscador
             const coincideBusqueda = tituloCard.includes(textoBusqueda);
 
-            // Si cumple TODO, mostramos. Si falla algo, ocultamos.
             if (coincideCategoria && coincidePrecio && coincideBusqueda) {
-                card.style.display = 'flex'; // O 'block', según tu diseño flex
+                card.style.display = 'flex';
             } else {
                 card.style.display = 'none';
             }
         });
     };
 
-    // 4. Event Listeners (Escuchadores de eventos)
+    // Aplicar filtros iniciales (por si venimos con búsqueda)
+    aplicarFiltros();
 
-    // A) Botones de Categoría
+    // --- 3. LISTENERS ---
+
     botonesFiltro.forEach(boton => {
         boton.addEventListener('click', (e) => {
-            // 1. Quitar clase activo a todos
             botonesFiltro.forEach(b => b.classList.remove('activo'));
-            // 2. Poner clase activo al clickeado
             e.target.classList.add('activo');
             
-            // 3. Actualizar el estado del filtro
-            // Obtenemos el texto del botón, lo pasamos a minúsculas y quitamos tildes si es necesario
-            // Truco: Mapeamos el texto del botón a la data-categoria
             const textoBoton = e.target.textContent.toLowerCase();
             
-            // Mapeo simple para quitar tildes o caracteres especiales
-            let categoriaSeleccionada = textoBoton;
-            if (textoBoton === 'montaña') categoriaSeleccionada = 'montana';
-            
-            filtros.categoria = categoriaSeleccionada;
-            
-            // 4. Ejecutar filtros
+            // MAPEO: Convertir texto visible a data-categoria
+            // Si el botón dice "Mountain" (EN), la data es "montana"
+            let cat = textoBoton;
+            if (textoBoton === 'montaña' || textoBoton === 'mountain') cat = 'montana';
+            if (textoBoton === 'playa' || textoBoton === 'beach') cat = 'playa';
+            if (textoBoton === 'nieve' || textoBoton === 'snow') cat = 'nieve';
+            if (textoBoton === 'ciudad' || textoBoton === 'city') cat = 'ciudad';
+            if (textoBoton === 'rural' || textoBoton === 'rural') cat = 'rural';
+            if (textoBoton === 'todos' || textoBoton === 'all') cat = 'todos';
+
+            filtros.categoria = cat;
             aplicarFiltros();
         });
     });
 
-    // B) Slider de Precio
-    sliderPrecio.addEventListener('input', (e) => {
-        const valor = e.target.value;
-        filtros.precioMaximo = parseInt(valor);
-        
-        // Actualizamos el texto visualmente
-        textoPrecio.textContent = `Hasta: ${valor}€`;
-        
-        aplicarFiltros();
-    });
+    if(sliderPrecio){
+        sliderPrecio.addEventListener('input', (e) => {
+            const valor = e.target.value;
+            filtros.precioMaximo = parseInt(valor);
+            const isEn = window.location.pathname.includes('/ingles/');
+            textoPrecio.textContent = isEn ? `Up to: ${valor}€` : `Hasta: ${valor}€`;
+            aplicarFiltros();
+        });
+    }
 
-    // C) Buscador (Al escribir)
-    inputBuscador.addEventListener('input', (e) => {
-        filtros.busqueda = e.target.value;
-        aplicarFiltros();
-    });
+    if(inputBuscador){
+        inputBuscador.addEventListener('input', (e) => {
+            filtros.busqueda = e.target.value;
+            aplicarFiltros();
+        });
+    }
 
-    // D) Botón buscar (Opcional, ya que el 'input' lo hace en tiempo real)
-    botonBuscar.addEventListener('click', (e) => {
-        e.preventDefault(); // Evita que recargue si estuviera en un form
-        aplicarFiltros();
-    });
-
+    if(botonBuscar){
+        botonBuscar.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            aplicarFiltros();
+        });
+    }
 });

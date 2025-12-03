@@ -1,56 +1,56 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mochileros sin fronteras</title>
-        <link rel="stylesheet" href="style/styles.css">
+        <title>Backpackers Without Borders</title>
+        <link rel="stylesheet" href="../style/styles.css">
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script src="script/reserva.js" defer></script>
-        <script type="module" src="script/sesion.js" defer></script>
+        <script src="../script/reserva.js" defer></script>
+        <script type="module" src="../script/sesion.js" defer></script>
     </head>
     <body>
         <header>
             <div class="" id="foto-perfil">
-                <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
+                <img id="imagenUsuario" src="../images/foto_perfil.png" alt="profile_pic">
             </div>
             <div class="enlaces-iniciales">
-                <a href="index.html">Inicio</a>
-                <a href="destinos.html">Destinos</a>
-                <a href="foro.html">Foro/Comunidad</a>
-                <a href="sobre-nosotros.html">Sobre Nosotros</a>
-                <a href="">Recientes</a>
-                <a href="otros-rincones.html">Otros Rincones</a>
+                <a href="index_en.html">Home</a>
+                <a href="destinos_en.html">Destinations</a>
+                <a href="foro_en.html">Forum/Community</a>
+                <a href="sobre-nosotros_en.html">About Us</a>
+                <a href="">Recent</a>
+                <a href="otros-rincones_en.html">Other Spots</a>
             </div>
 
             <div class="inicio-sesion">
                 <div class="registro">
                     <div class="input-usuario">
-                        <input type="text" id="usuario" placeholder="Usuario">
+                        <input type="text" id="usuario" placeholder="Username">
                     </div>
                     <div class="input-usuario">
-                        <input type="password" id="password" placeholder="Contraseña">
+                        <input type="password" id="password" placeholder="Password">
                     </div>
                     <div class="botones">
-                        <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
-                        <button type="button" class="btnRegistro">Registro</button>
+                        <button type="button" id="btnIniciarSesion">Log In</button>
+                        <button type="button" id="btnRegistro" class="btnRegistro">Sign Up</button>
                     </div>
                 </div> 
             </div>
             <div class="usuario-activo" style="display:none;">
                 <span id="nombreUsuario"></span>
                 <img id="imagenUsuario" src="" alt="">
-                <button class="boton-cerrar">Cerrar sesión</button>
+                <button class="boton-cerrar">Log Out</button>
             </div>
         </header>
 
         <main class="reserva">
             <div class="cabecera-seccion">
-                <h1>RESERVA DE VIAJES</h1>
+                <h1>TRIP BOOKING</h1>
                 <div class="selector-idioma">
                     <select>
-                        <option value="es" selected>ESP</option>
-                        <option value="en">ENG</option>
+                        <option value="es">ESP</option>
+                        <option value="en" selected>ENG</option>
                     </select>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                             <img src="" alt="">
                         </div>
 
-                        <h2 class="titulo-descripcion">Descripción</h2>
+                        <h2 class="titulo-descripcion">Description</h2>
                         <div class="texto-descripcion">
                             <p></p>
                         </div>
@@ -74,7 +74,7 @@
                     <div class="sidebar-compra">
                         
                         <div class="caja-precio">
-                            <h3>Precio</h3>
+                            <h3>Price</h3>
                             <div class="precio-numero"></div>
                             <ul class="lista-incluye">
                                 <li></li>
@@ -84,75 +84,75 @@
                         </div>
 
                         <div class="formulario-registro">
-                            <h2>Formulario de compra</h2>
+                            <h2>Purchase Form</h2>
 
                             <form id="formularioCompra" name="compra" novalidate>
-                                <input type="text" id="nombreCompleto" name="nombreCompleto" placeholder="Nombre Completo*" required>
+                                <input type="text" id="nombreCompleto" name="nombreCompleto" placeholder="Full Name*" required>
                                 <p class="error-texto" id="errorNombreCompleto"></p>
 
-                                <input type="email" id="correo" name="correo" placeholder="Correo electrónico*" required>
+                                <input type="email" id="correo" name="correo" placeholder="Email*" required>
                                 <p class="error-texto" id="errorCorreo"></p>
 
                                 <div class="bloque-opciones">
                                     <button type="button" id="btnOpcionesAdicionales" class="btn-toggle-opciones">
-                                        Opciones adicionales del viaje <span>&#9660;</span>
+                                        Additional Trip Options <span>&#9660;</span>
                                     </button>
                                     
                                     <div id="contenidoOpciones" class="contenido-desplegable">
                                         
                                         <div class="item-opcion">
                                             <label class="check-label">
-                                                <input type="checkbox" id="checkAcompanantes"> Viajo con acompañantes
+                                                <input type="checkbox" id="checkAcompanantes"> I travel with companions
                                             </label>
                                             <div id="infoAcompanantes" class="bloque-oculto">
                                                 <div id="listaAcompanantes">
                                                     <div class="fila-acompanante">
-                                                        <input type="text" name="nombreAcompanante[]" placeholder="Nombre completo">
+                                                        <input type="text" name="nombreAcompanante[]" placeholder="Full Name">
                                                         <input type="email" name="emailAcompanante[]" placeholder="Email">
                                                     </div>
                                                 </div>
-                                                <button type="button" id="btnMasAcompanante" class="btn-anadir-small">+ Añadir otro</button>
+                                                <button type="button" id="btnMasAcompanante" class="btn-anadir-small">+ Add another</button>
                                             </div>
                                         </div>
 
                                         <div class="item-opcion">
                                             <label class="check-label">
-                                                <input type="checkbox" id="checkMascota"> Viajo con mascota
+                                                <input type="checkbox" id="checkMascota"> I travel with a pet
                                             </label>
                                             <div id="infoMascota" class="bloque-oculto">
                                                 <div id="listaMascotas">
                                                     <div class="fila-mascota">
-                                                        <input type="text" name="tipoMascota[]" placeholder="Tipo (ej. Perro)">
+                                                        <input type="text" name="tipoMascota[]" placeholder="Type (e.g. Dog)">
                                                         <select name="tamanoMascota[]" class="select-mascota">
-                                                            <option value="">Tamaño</option>
-                                                            <option value="pequeno">Pequeño (< 10kg)</option>
-                                                            <option value="mediano">Mediano (10-25kg)</option>
-                                                            <option value="grande">Grande (> 25kg)</option>
+                                                            <option value="">Size</option>
+                                                            <option value="pequeno">Small (< 10kg)</option>
+                                                            <option value="mediano">Medium (10-25kg)</option>
+                                                            <option value="grande">Large (> 25kg)</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <button type="button" id="btnMasMascota" class="btn-anadir-small">+ Añadir otra mascota</button>
+                                                <button type="button" id="btnMasMascota" class="btn-anadir-small">+ Add another pet</button>
                                             </div>
                                         </div>
 
                                         <div class="item-opcion">
-                                            <label class="label-alergias">Intolerancias o Alergias:</label>
-                                            <textarea name="alergias" rows="3" placeholder="Indica aquí si algún viajero tiene alergias..."></textarea>
+                                            <label class="label-alergias">Allergies or Intolerances:</label>
+                                            <textarea name="alergias" rows="3" placeholder="Indicate here if any traveler has allergies..."></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <select id="tipoTarjeta" name="tipoTarjeta" required>
-                                    <option value="">Tipo de tarjeta*</option>
+                                    <option value="">Card Type*</option>
                                     <option value="Visa">Visa</option>
                                     <option value="Mastercard">MasterCard</option>
                                     <option value="AMEX">American Express</option>
                                 </select>
                                 <p class="error-texto" id="errorTipoTarjeta"></p>
 
-                                <input type="text" id="numeroTarjeta" name="numeroTarjeta" placeholder="Número de tarjeta*" required>
+                                <input type="text" id="numeroTarjeta" name="numeroTarjeta" placeholder="Card Number*" required>
                                 <p class="error-texto" id="errorNumeroTarjeta"></p>
 
-                                <input type="text" id="titularTarjeta" name="titularTarjeta" placeholder="Titular de la tarjeta*" required>
+                                <input type="text" id="titularTarjeta" name="titularTarjeta" placeholder="Card Holder*" required>
                                 <p class="error-texto" id="errorTitularTarjeta"></p>
 
                                 <div class="pago-tarjeta">
@@ -165,50 +165,46 @@
                                 </div>
                                 
                                 <div class="botones-form">
-                                    <button type="submit" id="btnComprar">Comprar</button>
-                                    <button type="button" id="btnBorrar">Borrar</button>
+                                    <button type="submit" id="btnComprar">Buy</button>
+                                    <button type="button" id="btnBorrar">Clear</button>
                                 </div>
                             </form>
                         </div> 
-                    </div> </div> </div> 
+                    </div> 
+                </div> 
+            </div> 
         </main>
 
         <footer>
             <div class="footer-grid" id="redes-sociales">
                 <div id="enlaces-redes">
-                    <a href="https://www.instagram.com" target="_blank">
-                        <img src="images/logo_instagram.png" alt="Instagram">
-                    </a>
-                    <a href="https://www.tiktok.com/" target="_blank">
-                        <img src="images/logo_tiktok.png" alt="TikTok">
-                    </a>
-                    <a href="https://www.youtube.com/" target="_blank">
-                        <img src="images/logo_youtube.png" alt="YouTube">
-                    </a>
+                    <a href="https://www.instagram.com" target="_blank"><img src="../images/logo_instagram.png" alt="Instagram"></a>
+                    <a href="https://www.tiktok.com/" target="_blank"><img src="../images/logo_tiktok.png" alt="TikTok"></a>
+                    <a href="https://www.youtube.com/" target="_blank"><img src="../images/logo_youtube.png" alt="YouTube"></a>
                 </div>
-                <p>&copy; 2025 Mochileros sin fronteras</p>
+                <p>&copy; 2025 Backpackers Without Borders</p>
             </div>
             <div class="footer-grid" id="compania">
-                <h4>Compañía</h4>
-                <a href="sobre-nosotros.html">Sobre Nosotros</a>
-                <a href="">Contacto</a>
-                <a href="">Trabaja con Nosotros</a>
+                <h4>Company</h4>
+                <a href="sobre-nosotros_en.html">About Us</a>
+                <a href="">Contact</a>
+                <a href="">Work with Us</a>
                 <a href="">Blog</a>
             </div>
             <div class="footer-grid" id="legal">
                 <h4>Legal</h4>
-                <a href="">Términos</a>
-                <a href="">Privacidad</a>
+                <a href="">Terms</a>
+                <a href="">Privacy</a>
                 <a href="">Cookies</a>
-                <a href="">Política de Reembolso</a>
+                <a href="">Refund Policy</a>
             </div>
             <div class="footer-grid" id="newsletter">
                 <h4>Newsletter</h4>
                 <div id="campos-newsletter">
-                    <a href="">Recibe ofertas y consejos de viaje</a>
+                    <a href="">Receive offers and travel tips</a>
                     <form action="" method="get">
                         <input id="input-email" type="text" name="Tu Email" placeholder="Email">
-                        <button class="btnRegistro" type="submit">Registro</button>
+                        <button class="btnRegistro" type="submit">Sign Up</button>
                     </form>
                 </div>
             </div>

@@ -1,11 +1,11 @@
 import { registrarUsuario } from './usuario.mjs';
 
 document.addEventListener('DOMContentLoaded', () => {
+    const isEn = window.location.pathname.includes('/ingles/');
     const formulario = document.querySelector('#form-registro');
     const politica = document.querySelector('#check-politica');
     const boton = document.querySelector('#btn-submit');
 
-    // Habilitar/deshabilitar botón según checkbox
     boton.disabled = true;
     politica.addEventListener('change', () => {
         boton.disabled = !politica.checked;
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const archivoImagen = document.querySelector('#imagen').files[0];
         if (!archivoImagen) {
-            alert('Debes subir una imagen de perfil.');
+            alert(isEn ? 'You must upload a profile picture.' : 'Debes subir una imagen de perfil.');
             return;
         }
 

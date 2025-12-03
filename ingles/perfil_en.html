@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Backpackers Without Borders</title>
+        <link rel="stylesheet" href="../style/styles.css">
+        <script type="module" src="../script/sesion.js" defer></script>
+        <script type="module" src="../script/perfil.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <div class="" id="foto-perfil">
+                <img id="imagenUsuario" src="../images/foto_perfil.png" alt="profile_pic">
+            </div>
+            <div class="enlaces-iniciales">
+                <a href="index_en.html">Home</a>
+                <a href="destinos_en.html">Destinations</a>
+                <a href="foro_en.html">Forum/Community</a>
+                <a href="sobre-nosotros_en.html">About Us</a>
+                <a href="">Recent</a>
+                <a href="otros-rincones_en.html">Other Spots</a>
+            </div>
+            <div class="inicio-sesion">
+                <div class="registro">
+                    <div class="input-usuario">
+                        <input type="text" id="usuario" placeholder="Username">
+                    </div>
+                    <div class="input-usuario">
+                        <input type="password" id="password" placeholder="Password">
+                    </div>
+                    <div class="botones">
+                        <button type="button" id="btnIniciarSesion">Log In</button>
+                        <button type="button" id="btnRegistro">Sign Up</button>
+                    </div>
+                </div> 
+            </div>
+            <div class="usuario-activo" style="display:none;">
+                <span id="nombreUsuario"></span>
+                <img id="imagenUsuario" src="" alt="">
+                <button class="boton-cerrar">Log Out</button>
+            </disv>
+        </header>
+
+        <main>
+            <div class="cabecera-seccion">
+                    <h1>MY PROFILE</h1>
+                    <div class="selector-idioma">
+                        <select>
+                            <option value="es">ESP</option>
+                            <option value="en" selected>ENG</option>
+                        </select>
+                    </div>
+            </div>
+            <div id="mi-perfil" class="perfil-container">
+                <div class="perfil-card">
+                    <img id="perfil-foto" src="../images/foto_perfil.png" alt="User Photo">
+                    <h2 id="perfil-nombre">Username</h2>
+                    <p id="perfil-correo">email@example.com</p>
+
+                    <button id="btnCambiarPassword">Change Password</button>
+                    <button id="btnMisViajes">My Trips</button>
+                    <button id="btnCerrarSesion">Log Out</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-grid" id="redes-sociales">
+                <div id="enlaces-redes">
+                    <a href="https://www.instagram.com" target="_blank"><img src="../images/logo_instagram.png" alt="Instagram"></a>
+                    <a href="https://www.tiktok.com/" target="_blank"><img src="../images/logo_tiktok.png" alt="TikTok"></a>
+                    <a href="https://www.youtube.com/" target="_blank"><img src="../images/logo_youtube.png" alt="YouTube"></a>
+                </div>
+                <p>&copy; 2025 Backpackers Without Borders</p>
+            </div>
+            <div class="footer-grid" id="compania">
+                <h4>Company</h4>
+                <a href="sobre-nosotros_en.html">About Us</a>
+                <a href="">Contact</a>
+                <a href="">Work with Us</a>
+                <a href="">Blog</a>
+            </div>
+            <div class="footer-grid" id="legal">
+                <h4>Legal</h4>
+                <a href="">Terms</a>
+                <a href="">Privacy</a>
+                <a href="">Cookies</a>
+                <a href="">Refund Policy</a>
+            </div>
+            <div class="footer-grid" id="newsletter">
+                <h4>Newsletter</h4>
+                <div id="campos-newsletter">
+                    <a href="">Receive offers and travel tips</a>
+                    <form action="" method="get">
+                        <input id="input-email" type="text" name="Tu Email" placeholder="Email">
+                        <button class="btnRegistro" type="submit">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

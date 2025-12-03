@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Backpackers Without Borders</title>
+        <link rel="stylesheet" href="../style/styles.css">
+        <script src="../script/registro.js" type="module" defer></script>
+    </head>
+    <body>
+        <header>
+            <div class="" id="foto-perfil">
+                <img src="../images/foto_perfil.png" alt="profile_pic">
+            </div>
+            <div class="enlaces-iniciales">
+                <a href="index_en.html">Home</a>
+                <a href="destinos_en.html">Destinations</a>
+                <a href="foro_en.html">Forum/Community</a>
+                <a href="sobre-nosotros_en.html">About Us</a>
+                <a href="">Recent</a>
+                <a href="otros-rincones_en.html">Other Spots</a>
+            </div>
+        </header>
+
+    <main>
+        <div class="registro-banner">
+            <h1>Join our travel community</h1>
+            <p>Share experiences, learn from other backpackers, and start your next adventure.</p>
+        </div>
+
+        <div class="contenedor-registro">
+            <h2>Registration</h2>
+
+            <form id="form-registro">
+                <div class="grid-2x2">
+                    <div class="campo">
+                        <label for="nombre">Name *</label>
+                        <input type="text" id="nombre" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="apellidos">Last Name *</label>
+                        <input type="text" id="apellidos" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="correo">Email *</label>
+                        <input type="email" id="correo" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="cfcorreo">Confirm Email *</label>
+                        <input type="email" id="cfcorreo" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="nacimiento">Date of Birth (optional)</label>
+                    <input type="date" id="nacimiento">
+                </div>
+
+                <div class="grid-2x1">
+                    <div class="campo">
+                        <label for="login">Username *</label>
+                        <input type="text" id="login" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="password">Password *</label>
+                        <input type="password" id="password-registro" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="imagen">Profile Picture *</label>
+                    <input type="file" id="imagen" accept=".jpg,.jpeg,.png,.webp" required>
+                </div>
+
+                <div class="campo politica">
+                    <input type="checkbox" id="check-politica">
+                    <label for="check-politica">
+                        I accept the <a href="#">privacy policy</a>
+                    </label>
+                </div>
+
+                <button type="submit" id="btn-submit" disabled>Save Data and Access</button>
+            </form>
+        </div>
+    </main>
+
+        <footer>
+            <div class="footer-grid" id="redes-sociales">
+                <div id="enlaces-redes">
+                    <a href="https://www.instagram.com" target="_blank"><img src="../images/logo_instagram.png" alt="Instagram"></a>
+                    <a href="https://www.tiktok.com/" target="_blank"><img src="../images/logo_tiktok.png" alt="TikTok"></a>
+                    <a href="https://www.youtube.com/" target="_blank"><img src="../images/logo_youtube.png" alt="YouTube"></a>
+                </div>
+                <p>&copy; 2025 Backpackers Without Borders</p>
+            </div>
+            <div class="footer-grid" id="compania">
+                <h4>Company</h4>
+                <a href="sobre-nosotros_en.html">About Us</a>
+                <a href="">Contact</a>
+                <a href="">Work with Us</a>
+                <a href="">Blog</a>
+            </div>
+            <div class="footer-grid" id="legal">
+                <h4>Legal</h4>
+                <a href="">Terms</a>
+                <a href="">Privacy</a>
+                <a href="">Cookies</a>
+                <a href="">Refund Policy</a>
+            </div>
+            <div class="footer-grid" id="newsletter">
+                <h4>Newsletter</h4>
+                <div id="campos-newsletter">
+                    <a href="">Receive offers and travel tips</a>
+                    <form action="" method="get">
+                        <input id="input-email" type="text" name="Tu Email" placeholder="Email">
+                        <button class="btnRegistro" type="submit">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
