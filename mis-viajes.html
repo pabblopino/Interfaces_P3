@@ -8,6 +8,7 @@
         <script src=""></script>
         <script src="" type="module" defer></script>
         <script type="module" src="script/sesion.js" defer></script>
+        <script type="module" src="script/mis-viajes.js" defer></script>
 
     </head>
     <body>
@@ -54,115 +55,34 @@
 
         <!-- MAIN -->
         <main>
-            <div class="contenedor-flex">
-                <div class="selector-idioma-mis-viajes">
+            <div class="cabecera-seccion">
+                <h1>REGISTRO DE VIAJES</h1>
+                <div class="selector-idioma">
                     <select>
-                        <option value="es">ESP</option>
+                        <option value="es" selected>ESP</option>
                         <option value="en">ENG</option>
                     </select>
                 </div>
-                <div class="titulo-seccion">
-                    <h2>REGISTRO DE VIAJES</h2>
-                    <hr>
-                </div>
+            </div>
+            <div class="contenedor-flex">
                 <div class="titulo-seccion">
                     <h3>Viajes realizados</h3>
                     <hr>
                 </div>
-                <div class="galeria galeria-carrusel">
-                    <button class="flecha">⟨</button>
-                    <div class="card">
-                        <img src="images/camping.jpg" alt="Viaje 1">
-                        <h3>Camping</h3>
-                        <p class="precio">450 €</p>
-                        <div class="acciones">
-                            <button class="btn-like">❤</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="images/desierto.jpg" alt="Viaje 2">
-                        <h3>Desierto</h3>
-                        <p class="precio">520€</p>
-                        <div class="acciones">
-                            <button class="btn-like">❤</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="images/islandia.jpg" alt="Viaje 3">
-                        <h3>Islandia</h3>
-                        <p class="precio">380€</p>
-                        <div class="acciones">
-                            <button class="btn-like">❤</button>
-                        </div>
-                    </div>
-                    <button class="flecha">⟩</button>
-                </div>
+                <div class="galeria-carrusel" id="contenedor-realizados"></div>
+
                 <div class="titulo-seccion">
                     <h3>Viajes en favoritos</h3>
                     <hr>
                 </div>
-                <div class="galeria galeria-carrusel">
-                    <button class="flecha">⟨</button>
-                    <div class="card">
-                        <img src="images/camping.jpg" alt="Viaje 1">
-                        <h3>Camping</h3>
-                        <p class="precio">450 €</p>
-                        <div class="acciones">
-                            <button class="btn-like">❤</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="images/desierto.jpg" alt="Viaje 2">
-                        <h3>Desierto</h3>
-                        <p class="precio">520€</p>
-                        <div class="acciones">
-                            <button class="btn-like">❤</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="images/islandia.jpg" alt="Viaje 3">
-                        <h3>Islandia</h3>
-                        <p class="precio">380€</p>
-                        <div class="acciones">
-                            <button class="btn-like">❤</button>
-                        </div>
-                    </div>
-                    <button class="flecha">⟩</button>
-                </div>
+                <div class="galeria-carrusel" id="contenedor-favoritos"></div>
+
                 <div class="titulo-seccion">
                     <h3>Viajes reservados</h3>
                     <hr>
                 </div>
-                <div class="galeria galeria-carrusel">
-                    <button class="flecha">⟨</button>
-                    <div class="card">
-                        <img src="images/camping.jpg" alt="Viaje 1">
-                        <h3>Camping</h3>
-                        <p class="precio">450 €</p>
-                        <div class="acciones">
-                            <button class="btn-like">❤</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="images/desierto.jpg" alt="Viaje 2">
-                        <h3>Desierto</h3>
-                        <p class="precio">520€</p>
-                        <div class="acciones">
-                            <button class="btn-like">❤</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="images/islandia.jpg" alt="Viaje 3">
-                        <h3>Islandia</h3>
-                        <p class="precio">380€</p>
-                        <div class="acciones">
-                            <button class="btn-like">❤</button>
-                        </div>
-                    </div>
-                    <button class="flecha">⟩</button>
-                </div>
+                <div class="galeria-carrusel" id="contenedor-reservados"></div>
             </div>
-
         </main>
 
         <!-- FOOTER -->

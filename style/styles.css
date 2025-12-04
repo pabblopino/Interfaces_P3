@@ -323,7 +323,7 @@ a:hover {
     flex-direction: column; /* apila verticalmente */
     justify-content: center;
     align-items: center; /* centra horizontalmente */
-    gap: 50px; /* espacio entre galería y opiniones */
+    gap: 10px; /* espacio entre galería y opiniones */
     padding: 40px 0px;
     width: 100%;
 }
@@ -374,6 +374,9 @@ a:hover {
     justify-content: center;
     gap: 15px;
     overflow-x: auto;        /* Permite scroll si no caben */
+    max-width: 1200px;
+    margin: 0 auto 40px auto; /* Centrado horizontal (auto a los lados) */
+
 }
 
 .galeria-carrusel .card {
@@ -1656,4 +1659,89 @@ textarea {
         flex: 1 1 auto; /* Crecen y se ajustan */
         text-align: center;
     }
+}
+
+.ventana-carrusel {
+    box-sizing: border-box; /* Vital: para que el padding no deforme el ancho */
+    width: 100%;            /* Ocupa el 100% exacto del hueco entre flechas */
+    flex: 1;                /* Se adapta si la pantalla cambia */
+    
+    /* 2. LIMPIEZA */
+    overflow: hidden;       /* Corta lo que sobra */
+    margin: 0;              /* Aseguramos que no haya márgenes raros */
+    
+    /* 3. ESPACIO PARA SOMBRAS */
+    padding: 20px 0;        /* Espacio vertical */
+    
+    /* 4. POSICIONAMIENTO (Por si acaso) */
+    position: relative;
+    z-index: 1;
+}
+
+.track-carrusel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+
+    gap: 0; 
+    margin: 0; 
+    padding: 0;
+}
+
+/* --- LA TARJETA (TODO EN UNO) --- */
+.track-carrusel .card {
+    /* 1. MATEMÁTICAS: 
+       El ancho es 33.33% MENOS el espacio que queremos de hueco (20px).
+       Así, Ancho + Margen Izq (10) + Margen Der (10) = 33.33% exacto. */
+    flex: 0 0 calc(33.3333% - 20px);
+    width: calc(33.3333% - 20px);
+    
+    /* 2. SEPARACIÓN: */
+    margin: 0 10px; /* 10px a cada lado */
+    
+    /* 3. ESTILO VISUAL: */
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    
+    /* 4. ESTRUCTURA INTERNA: */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    height: 100%;
+}
+
+/* Imágenes */
+.track-carrusel .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Textos y botones internos */
+.track-carrusel .card h3 {
+    margin: 15px 15px 5px 15px;
+    font-size: 16px;
+}
+
+.track-carrusel .card .precio {
+    margin: 0 15px 10px 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.track-carrusel .card .acciones {
+    padding: 0 15px 15px 15px;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#titulo-opiniones {
+    margin-top: 40px;
 }

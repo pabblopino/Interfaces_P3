@@ -1,0 +1,96 @@
+[
+  {
+    "login": "admin",
+    "viajes": {
+      "favoritos": [
+        {
+          "titulo": "Paraíso Tropical en Bali",
+          "precio": 1299,
+          "imagen": "images/islandia.jpg"
+        },
+        {
+          "titulo": "Aventura Urbana en Tokio",
+          "precio": 1599,
+          "imagen": "images/desierto.jpg"
+        },
+        {
+          "titulo": "Templos de Camboya",
+          "precio": 749,
+          "imagen": "images/santiago2.jpg"
+        },
+        {
+          "titulo": "Ruta por los Alpes",
+          "precio": 890,
+          "imagen": "images/pirineos.jpg"
+        },
+        {
+          "titulo": "Escapada a Marruecos",
+          "precio": 450,
+          "imagen": "images/desierto.jpg"
+        },
+        {
+          "titulo": "Fiordos Noruegos",
+          "precio": 1100,
+          "imagen": "images/patagonia.jpg"
+        }
+      ],
+      "realizados": [
+        {
+          "titulo": "Trekking en los Andes",
+          "precio": 450,
+          "imagen": "images/camping.jpg"
+        },
+        {
+          "titulo": "Camino de Santiago",
+          "precio": 300,
+          "imagen": "images/santiago2.jpg"
+        },
+        {
+          "titulo": "Templos de Camboya",
+          "precio": 850,
+          "imagen": "images/pirineos.jpg"
+        },
+        {
+          "titulo": "Auroras en Islandia",
+          "precio": 1200,
+          "imagen": "images/islandia.jpg"
+        },
+        {
+          "titulo": "Safari en Kenia",
+          "precio": 2100,
+          "imagen": "images/desierto.jpg"
+        }
+      ],
+      "reservados": [
+        {
+          "titulo": "Mochilero por Patagonia",
+          "precio": 290,
+          "imagen": "images/patagonia.jpg"
+        },
+        {
+          "titulo": "Cumbres de los Pirineos",
+          "precio": 610,
+          "imagen": "images/pirineos.jpg"
+        },
+        {
+          "titulo": "Ruta 66 en Moto",
+          "precio": 3500,
+          "imagen": "images/desierto.jpg"
+        },
+        {
+          "titulo": "Gran Cañón del Colorado",
+          "precio": 1800,
+          "imagen": "images/camping.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "login": "usuario1",
+    "viajes": {
+      "favoritos": [],
+      "realizados": [],
+      "reservados": []
+    }
+  }
+]
