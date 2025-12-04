@@ -105,6 +105,27 @@ document.addEventListener("DOMContentLoaded", () => {
         if (divUsuario) divUsuario.style.display = 'none';
     }
 
+    // ------------------------------------------------
+    // 2. BOTÓN "RECIENTES" (NUEVA LÓGICA SOLICITADA)
+    // ------------------------------------------------
+    const linkRecientes = document.getElementById('linkRecientes');
+
+    if (linkRecientes) {
+        linkRecientes.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita recargar la página
+
+            const usuarioActivo = localStorage.getItem('usuarioActivo');
+
+            if (usuarioActivo) {
+                // CASO 1: LOGUEADO -> Ir directo a Mis Viajes
+                window.location.href = isEn ? 'mis_viajes_en.html' : 'mis_viajes.html';
+            } else {
+                // CASO 2: NO LOGUEADO -> Ir a Registro
+                window.location.href = isEn ? 'registro_en.html' : 'registro.html';
+            }
+        });
+    }
+
     // --- CERRAR SESIÓN ---
     const btnCerrar = document.querySelector('.boton-cerrar');
     if (btnCerrar) {
