@@ -110,14 +110,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if(sliderPrecio){
-        sliderPrecio.addEventListener('input', (e) => {
-            const valor = e.target.value;
-            filtros.precioMaximo = parseInt(valor);
-            const isEn = window.location.pathname.includes('/ingles/');
-            textoPrecio.textContent = isEn ? `Up to: ${valor}€` : `Hasta: ${valor}€`;
-            aplicarFiltros();
-        });
-    }
+    sliderPrecio.addEventListener('input', (e) => {
+        const valor = parseInt(e.target.value);
+        filtros.precioMaximo = valor;
+
+        const monedaSeleccionada = selectorMoneda ? selectorMoneda.value : 'EUR';
+        const { factor, simbolo } = tasasCambio[monedaSeleccionada] || tasasCambio['EUR'];
+
+        const precioSliderConvertido = Math.round(valor * factor);
+        const isEn = window.location.pathname.includes('/ingles/');
+
+        textoPrecio.textContent = isEn 
+            ? `Up to: ${precioSliderConvertido}${simbolo}`
+            : `Hasta: ${precioSliderConvertido}${simbolo}`;
+
+        aplicarFiltros();
+    });
+}
+
 
     if(inputBuscador){
         inputBuscador.addEventListener('input', (e) => {
