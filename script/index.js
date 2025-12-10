@@ -2,6 +2,31 @@ import { activarCarrusel } from './carousel.mjs'
 
 document.addEventListener('DOMContentLoaded', () =>{
 
+    // Constantes para usar en el cambio de moneda
+    const selectorMoneda = document.querySelector('.selector-moneda select');
+    const tarjetasPrecios = document.querySelectorAll('.card');
+    const tasasCambio = {'EUR': { factor: 1, simbolo: '€' },'DOL': { factor: 1.17, simbolo: '$' }, 'LIB': { factor: 0.87, simbolo: '£' } }
+    
+    const actualizarPreciosVisuales = () => {
+        const monedaSeleccionada = selectorMoneda ? selectorMoneda.value : 'EUR';
+        const { factor, simbolo } = tasasCambio[monedaSeleccionada] || tasasCambio['EUR'];
+        tarjetasPrecios.forEach(card => {
+            if (card.dataset.precio) {
+                const precioBase = parseFloat(card.dataset.precio);
+                const precioConvertido = Math.round(precioBase * factor);
+                const etiquetaPrecio = card.querySelector('.precio');
+                if (etiquetaPrecio) {
+                    etiquetaPrecio.textContent = `${precioConvertido}${simbolo}`;
+                }
+            }
+        });
+    };
+
+    if (selectorMoneda) {
+        selectorMoneda.addEventListener('change', actualizarPreciosVisuales);
+    }
+
+    actualizarPreciosVisuales();
     // 1. Definimos las 4 reseñas estáticas (Siempre aparecerán)
     const resenas_fijas = [
         { 

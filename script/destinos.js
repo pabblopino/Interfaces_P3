@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sliderPrecio = document.querySelector('.slider-precio');
     const textoPrecio = document.querySelector('.bloque-filtro p'); 
     const tarjetas = document.querySelectorAll('.card');
+    const selectorMoneda = document.querySelector('.selector-moneda select');
+    const tasasCambio = {'EUR': { factor: 1, simbolo: '€' },'DOL': { factor: 1.17, simbolo: '$' },'LIB': { factor: 0.87, simbolo: '£' }}
+
 
     let filtros = {
         categoria: 'todos', // Si es inglés, usaremos "All" en la lógica interna
@@ -21,6 +24,27 @@ document.addEventListener('DOMContentLoaded', () => {
         filtros.busqueda = busquedaURL;
         if(inputBuscador) inputBuscador.value = busquedaURL;
     }
+
+    const actualizarPreciosVisuales = () => {
+        const monedaSeleccionada = selectorMoneda ? selectorMoneda.value : 'EUR';
+        const { factor, simbolo } = tasasCambio[monedaSeleccionada] || tasasCambio['EUR'];
+        tarjetas.forEach(card => {
+            const precioBase = parseFloat(card.dataset.precio);
+            const precioConvertido = Math.round(precioBase * factor);
+            const etiquetaPrecio = card.querySelector('.precio');
+            if(etiquetaPrecio) {
+                etiquetaPrecio.textContent = `${precioConvertido}${simbolo}`;
+            }
+        });
+        if(sliderPrecio && textoPrecio) {
+            const valorSlider = parseInt(sliderPrecio.value);
+            const precioSliderConvertido = Math.round(valorSlider * factor); 
+            const isEn = window.location.pathname.includes('/ingles/');
+            textoPrecio.textContent = isEn 
+                ? `Up to: ${precioSliderConvertido}${simbolo}` 
+                : `Hasta: ${precioSliderConvertido}${simbolo}`;
+        }
+    };
 
     // --- 2. FUNCIÓN FILTRAR ---
     const aplicarFiltros = () => {
@@ -53,8 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Aplicar filtros iniciales (por si venimos con búsqueda)
     aplicarFiltros();
+    actualizarPreciosVisuales();
 
     // --- 3. LISTENERS ---
+
+    if(selectorMoneda){
+        selectorMoneda.addEventListener('change', () => {
+            actualizarPreciosVisuales();
+        });
+    }
 
     botonesFiltro.forEach(boton => {
         boton.addEventListener('click', (e) => {

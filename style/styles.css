@@ -245,6 +245,18 @@ a:hover {
     border: 1px solid #ccc;
 }
 
+.selector-moneda {
+    position: absolute;
+    right: 0;
+    top: 75%;
+}
+
+.selector-moneda select {
+    padding: 5px 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;  
+}
+
 .barra-filtros {
     background-color: #f0f0f0;
     border-radius: 50px;
