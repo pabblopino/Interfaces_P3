@@ -6,6 +6,7 @@
         <title>Backpackers Without Borders</title>
         <link rel="stylesheet" href="../style/styles.css">
         <script type="module" src="../script/sesion.js" defer></script>
+        <script type="module" src="../script/index.js" defer></script>
     </head>
     <body>
         <header>
@@ -50,6 +51,13 @@
                         <option value="en" selected>ENG</option>
                     </select>
                 </div>
+                <div class="selector-moneda">
+                        <select>
+                            <option value="EUR" selected>€</option>
+                            <option value="DOL">$</option>
+                            <option value="LIB">£</option>
+                        </select>
+                    </div>
             </div>
             <div class="contenedor-flex">
                 <div class="contenedor-buscador">
@@ -164,39 +172,8 @@
                     <h2>Traveler Reviews</h2>
                     <hr>
                 </div>
-                <div class="carrusel">
-
-                    <button class="flecha">⟨</button>
-
-                    <div class="opiniones">
-                        <div class="slide">
-                            <img src="../images/foto_perfil.png" alt="Juan Pérez">
-                            <div class="estrellas">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
-                            </div>
-                            <p>"The best service! Everything was perfectly organized..."</p>
-                            <span>- Juan Pérez</span>
-                        </div>
-
-                        <div class="slide">
-                            <img src="../images/foto_perfil.png" alt="Laura Gómez">
-                            <div class="estrellas">
-                                <span>★</span><span>★</span><span>★</span><span>☆</span><span>☆</span>
-                            </div>
-                            <p>"Everything perfect! Customer service was excellent..."</p>
-                            <span>- Laura Gómez</span>
-                        </div>
-
-                        <div class="slide">
-                            <img src="../images/foto_perfil.png" alt="Pedro Martínez">
-                            <div class="estrellas">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                            <p>"Incredible trip. The planning was impeccable..."</p>
-                            <span>- Pedro Martínez</span>
-                        </div>
-                    </div>
-                    <button class="flecha">⟩</button>
+                <div class="galeria-carrusel" id="contenedor-opiniones">
+                
                 </div>
             </div>
         </main>
