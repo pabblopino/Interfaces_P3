@@ -1,7 +1,7 @@
 import { agregarReseña } from "./reviews-destino.mjs";
+import { activarCarrusel } from "./carousel.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
-
     // Detectar si estamos en versión inglés
     const isEn = window.location.pathname.includes('/ingles/');
 
@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Guía de orientación estelar"
             ]
         },
-
         desierto: { 
             nombre: "Aventura en el Sahara", 
             precio: "520€", 
@@ -42,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Sandboarding en las dunas"
             ]
         },
-
         islandia: { 
             nombre: "Cazadores de Auroras", 
             precio: "380€", 
@@ -55,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Transporte en 4x4"
             ]
         },
-
         patagonia: { 
             nombre: "Expedición Patagonia", 
             precio: "290€", 
@@ -68,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Seguro de rescate"
             ]
         },
-
         pirineos: { 
             nombre: "Nieve en los Pirineos", 
             precio: "610€", 
@@ -81,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Clase de iniciación (opcional)"
             ]
         },
-
         santiago: { 
             nombre: "El Camino de Santiago", 
             precio: "450€", 
@@ -112,7 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Star-orientation guide"
             ]
         },
-
         desierto: { 
             nombre: "Sahara Desert Adventure",
             precio: "520€",
@@ -125,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Sandboarding"
             ]
         },
-
         islandia: { 
             nombre: "Northern Lights Hunters",
             precio: "380€",
@@ -138,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 "4x4 transport"
             ]
         },
-
         patagonia: { 
             nombre: "Patagonia Expedition",
             precio: "290€",
@@ -151,7 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Rescue insurance"
             ]
         },
-
         pirineos: { 
             nombre: "Snow in the Pyrenees",
             precio: "610€",
@@ -164,7 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Optional beginner class"
             ]
         },
-
         santiago: { 
             nombre: "The Way of St. James",
             precio: "450€",
@@ -179,13 +169,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Seleccionar packs según idioma
+    // -------------------------------
+    // Selección de pack según idioma
+    // -------------------------------
     const packs = isEn ? packs_en : packs_es;
     const pack = packs[packId];
 
-    // -------------------------------------
-    // CARGAR INFORMACIÓN DEL PACK
-    // -------------------------------------
     if (pack) {
         document.getElementById("titulo-destino").textContent = pack.nombre;
         document.getElementById("precio-destino").textContent = pack.precio;
@@ -215,9 +204,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // -------------------------------------
-    // TRADUCCIÓN DE TEXTOS FIJOS
-    // -------------------------------------
+    // -------------------------------
+    // Traducción de textos fijos
+    // -------------------------------
     if (isEn) {
         document.querySelector("h3:nth-of-type(1)").textContent = "Description";
         document.querySelector("h3:nth-of-type(2)").textContent = "What’s included?";
@@ -228,10 +217,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("descExperiencia").placeholder = "Tell us about your trip...";
     }
 
-    // -------------------------------------
+    // -------------------------------
     // FORMULARIO DE RESEÑAS
-    // -------------------------------------
-
+    // -------------------------------
     const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo')) || {};
     const nombreInput = document.querySelector('#nombreReseña');
 
@@ -281,9 +269,67 @@ document.addEventListener("DOMContentLoaded", () => {
                     ? `${usuarioActivo.nombre} ${usuarioActivo.apellidos}`
                     : (isEn ? "Anonymous" : "Anónimo");
 
+                // Volver a pintar el carrusel actualizado
+                pintarReseñasCarrusel(packId);
+
             } catch (err) {
                 alert(err.message);
             }
         });
     }
+
+    // -------------------------------
+    // CARRUSEL DE RESEÑAS
+    // -------------------------------
+    function pintarReseñasCarrusel(packId) {
+        const contenedor = document.getElementById('contenedor-reseñas');
+        if (!contenedor) return;
+
+        const reseñas = JSON.parse(localStorage.getItem(`reseñas_${packId}`)) || [];
+        contenedor.innerHTML = '';
+
+        if (reseñas.length === 0) {
+            contenedor.innerHTML = '<p>No hay opiniones aún.</p>';
+            return;
+        }
+
+        const btnPrev = document.createElement('button');
+        btnPrev.className = 'prev flecha';
+        btnPrev.innerText = '⟨';
+
+        const btnNext = document.createElement('button');
+        btnNext.className = 'next flecha';
+        btnNext.innerText = '⟩';
+
+        const ventana = document.createElement('div');
+        ventana.className = 'ventana-carrusel';
+
+        const track = document.createElement('div');
+        track.className = 'track-carrusel';
+
+        reseñas.forEach(r => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="reseña-foto">
+                    <img src="${r.foto}" alt="${r.nombre}">
+                </div>
+                <h4>${r.titulo}</h4>
+                <p class="autor">${r.nombre}</p>
+                <p class="descripcion">${r.descripcion}</p>
+                <p class="estrellas">${'★'.repeat(r.estrellas)}${'☆'.repeat(5 - r.estrellas)}</p>
+            `;
+            track.appendChild(card);
+        });
+
+        ventana.appendChild(track);
+        contenedor.appendChild(btnPrev);
+        contenedor.appendChild(ventana);
+        contenedor.appendChild(btnNext);
+
+        activarCarrusel('contenedor-reseñas');
+    }
+
+    // Pintar carrusel al cargar
+    pintarReseñasCarrusel(packId);
 });

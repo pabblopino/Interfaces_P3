@@ -214,7 +214,7 @@ a:hover {
 }
 
 /* Esto es un truco para poder acortar el borde que hay debajo del h1*/
-.cabecera-seccion h1::after, h2::after {
+.cabecera-seccion h1::after, .cabecera-seccion h2::after {
     content: '';        /* Crea un elemento vacío */
     display: block;
     width: 750px;       /* Largo de la línea */
@@ -1792,7 +1792,7 @@ textarea {
     display: grid;
     /* Columna imagen 60%, Columna info 40% */
     grid-template-columns: 1.5fr 1fr; 
-    gap: 50px;
+    gap: 100px;
     align-items: center;
 }
 
