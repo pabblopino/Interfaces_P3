@@ -63,7 +63,7 @@ function pintarSeccion(listaViajes, idContenedor) {
 
     // Generamos las tarjetas (Items)
     listaViajes.forEach(viaje => {
-        // Envolvemos la card en un div 'card-item' que es el que mide 33.33%
+        // Envolvemos la card en un div 'card' que es el que mide 33.33%
         const card = document.createElement('div');
         card.className = 'card';
         

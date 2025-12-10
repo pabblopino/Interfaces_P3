@@ -245,6 +245,30 @@ a:hover {
     border: 1px solid #ccc;
 }
 
+.selector-moneda {
+    position: absolute;
+    right: 0;
+    top: 75%;
+}
+
+.selector-moneda select {
+    padding: 5px 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;  
+}
+
+.selector-moneda {
+    position: absolute;
+    right: 0;
+    top: 75%;
+}
+
+.selector-moneda select {
+    padding: 5px 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;  
+}
+
 .barra-filtros {
     background-color: #f0f0f0;
     border-radius: 50px;
@@ -1747,7 +1771,7 @@ textarea {
 }
 
 /* =========================================
-   ESTILOS FICHA DE DESTINO (MEJORADO)
+    ESTILOS FICHA DE DESTINO (MEJORADO)
    ========================================= */
 
 .ficha-viaje {
@@ -1869,4 +1893,60 @@ textarea {
     .hero-imagen {
         height: 300px; /* Un poco más bajita en móvil */
     }
+
+/* ========================================= */
+/* ESTILOS ESPECÍFICOS PARA OPINIONES        */
+/* ========================================= */
+
+.track-carrusel .card.card-opinion {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    background-color: #f9f9f9;
+    padding: 25px 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.track-carrusel .card.card-opinion img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.track-carrusel .card.card-opinion .estrellas {
+    color: gold;
+    font-size: 20px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+/* Estilo para el texto (Cita) */
+.track-carrusel .card.card-opinion p {
+    height: 50px;
+    flex-grow: 1;              /* <--- LA CLAVE: Ocupa todo el espacio sobrante */
+    display: flex;             /* Para centrar el texto verticalmente */
+    align-items: center;       /* Centrado vertical del texto */
+    justify-content: center;   /* Centrado horizontal */
+    
+    font-style: italic;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 15px 0;            /* Margen arriba y abajo */
+}
+
+/* Estilo para el nombre */
+.track-carrusel .card.card-opinion span {
+    font-weight: bold;
+    color: #333;
+    font-size: 15px;
+    margin-top: 10px;          /* Asegura que se quede al fondo */
 }
