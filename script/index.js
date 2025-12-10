@@ -1,4 +1,5 @@
-import { activarCarrusel } from './carousel.mjs';
+import { activarCarrusel } from './carousel.mjs'
+import { toggleFavorito } from './gestion-viajes.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // -----------------------------------------
     // RESEÑAS FIJAS
     // -----------------------------------------
-    const resenas_fijas = [
+    const resenasFijas = [
         { 
             nombre: "Juan Pérez", 
             descripcion: "El mejor servicio! Todo estuvo perfectamente organizado, los guías fueron amables y el alojamiento espectacular.",
@@ -76,10 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // -----------------------------------------
     // RESEÑAS DE USUARIO (FORO)
     // -----------------------------------------
-    let resenas_usuarios = JSON.parse(localStorage.getItem('reseñas')) || [];
+    let resenasUsuarios = JSON.parse(localStorage.getItem('reseñas')) || [];
 
     // Ajustamos rutas también en reseñas del foro
-    resenas_usuarios = resenas_usuarios.map(r => ({
+    resenasUsuarios = resenasUsuarios.map(r => ({
         ...r,
         foto: r.foto || (isEnglish ? '../images/foto_perfil.png' : 'images/foto_perfil.png')
     }));
@@ -88,22 +89,93 @@ document.addEventListener('DOMContentLoaded', () => {
     // -----------------------------------------
     // LISTA TOTAL
     // -----------------------------------------
-    const total_resenas = resenas_fijas.concat(resenas_usuarios);
+    const totalResenas = resenasFijas.concat(resenasUsuarios);
 
     // Pintar y activar carrusel
-    pintarOpiniones(total_resenas, 'contenedor-opiniones');
+    pintarOpiniones(totalResenas, 'contenedor-opiniones');
     activarCarrusel('contenedor-opiniones');
+
+    // ---------------------------------------------
+    // 2. LÓGICA DEL BOTÓN DE FAVORITOS (CORAZONES)
+    // ---------------------------------------------
+    const botonesLike = document.querySelectorAll('.btn-like');
+
+    // Obtenemos el usuario activo
+    const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
+
+    // Traemos la base de datos de viajes
+    let historial = JSON.parse(localStorage.getItem('historialViajes')) || [];
+
+
+    // A) PINTAR CORAZONES ROJOS AL CARGAR LA PÁGINA
+    // Si el usuario está logueado, revisamos qué viajes son favoritos y los pintamos
+    if (usuarioActivo) {
+        const datosUsuario = historial.find(u => u.login === usuarioActivo.login);
+        if (datosUsuario) {
+            botonesLike.forEach(btn => {
+                // Buscamos el título de la tarjeta actual
+                const card = btn.closest('.card');
+                const tituloCard = card.querySelector('h3').textContent.trim();
+                
+                // Miramos si ese título está en su lista de favoritos
+                const esFavorito = datosUsuario.viajes.favoritos.some(v => v.titulo === tituloCard);
+                
+                if (esFavorito) {
+                    btn.classList.add('favorito-activo'); // Lo marcamos como favorito (en rojo)
+                }
+            });
+        }
+    }
+
+    botonesLike.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // 1. Si no hay usuario logeado, avisamos y paramos
+            const botonClicado = e.target.closest('.btn-like');
+            const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo')); // Leemos usuario
+
+            if (!usuarioActivo){
+                // Detectamos idioma para el mensaje
+                const isEn = window.location.pathname.includes('/ingles/');
+                alert(isEn ? "You must log in to save favorites." : "Debes iniciar sesión para guardar favoritos.");
+                return;
+            }
+            
+            // 2. Captura de datos (Leemos la tarjeta donde se hizo clic)
+            const tarjeta = botonClicado.closest('.card');
+
+            // Sacamos la info visualmente del HTML
+            const titulo = tarjeta.querySelector('h3').textContent.trim();
+            const precio = tarjeta.querySelector('.precio').textContent.replace('€', '').replace('Desde ', '').trim();
+            const imagenSrc = tarjeta.querySelector('img').getAttribute('src');
+            // Buscamos el enlace <a> y cogemos lo que hay después del "="
+            const enlace = tarjeta.querySelector('a').getAttribute('href'); // "reserva.html?id_pack=camping"
+            const idPack = enlace.split('=')[1];
+
+            // Creamos el objeto limpio
+            const nuevoFavorito = {
+                id: idPack,
+                titulo: titulo,
+                precio: precio,
+                imagen: imagenSrc
+            };
+
+            const ahoraEsFavorito = toggleFavorito(usuarioActivo, nuevoFavorito)
+
+            // Actualizamos visualmente el viaje
+            if (ahoraEsFavorito) {
+                botonClicado.classList.add('favorito-activo');
+            } else {
+                botonClicado.classList.remove('favorito-activo');
+            }
+        });
+    });
+
+
+
 });
 
-
-
-
-// -----------------------------------------
-// FUNCIÓN pintarOpiniones()
-// -----------------------------------------
-function pintarOpiniones(lista_resenas, id_contenedor) {
-
-    const contenedor = document.getElementById(id_contenedor);
+function pintarOpiniones(listaResenas, idContenedor){
+    const contenedor = document.getElementById(idContenedor);
     if (!contenedor) return;
 
     contenedor.innerHTML = '';
@@ -123,7 +195,7 @@ function pintarOpiniones(lista_resenas, id_contenedor) {
     track.className = 'track-carrusel';
 
     // Crear tarjetas
-    lista_resenas.forEach(r => {
+    listaResenas.forEach(r => {
 
         const estrellasHTML = "★".repeat(r.estrellas) + "☆".repeat(5 - r.estrellas);
 

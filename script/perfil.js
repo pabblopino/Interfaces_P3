@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnMisViajes = document.querySelector('#btnMisViajes');
     if (btnMisViajes) {
         btnMisViajes.addEventListener('click', () => {
-            window.location.href = isEn ? 'mis_viajes_en.html' : 'mis_viajes.html';
+            window.location.href = isEn ? 'mis_viajes_en.html' : 'mis-viajes.html';
         });
     }
 });

@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ------------------------------------------------
-    // 2. BOTÓN "RECIENTES" (NUEVA LÓGICA SOLICITADA)
+    // 3. BOTÓN "RECIENTES" (NUEVA LÓGICA SOLICITADA)
     // ------------------------------------------------
     const linkRecientes = document.getElementById('linkRecientes');
 
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ------------------------------------------------
-    // 3. BUSCADOR INTELIGENTE
+    // 4. BUSCADOR INTELIGENTE
     // ------------------------------------------------
     const btnBusquedaIndex = document.querySelector('#btnBusquedaIndex');
     const inputBusquedaIndex = document.querySelector('#inputBusquedaIndex');
@@ -251,5 +251,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 btnSubmit.textContent = isEn ? 'Sign Up' : 'Registro';
             });
         });
+    }
+
+    // ------------------------------------------------
+    // 6. INICIALIZACIÓN DE LA BASE DE DATOS DE VIAJES
+    // ------------------------------------------------
+    // Si no existen los datos en LocalStorage, los cargamos del JSON para mostrarlos por defecto
+    if (!localStorage.getItem('historialViajes')) {
+        fetch('recursos_adicionales/datos-viajes.json')
+            .then(response => response.json())
+            .then(data => {
+                localStorage.setItem('historialViajes', JSON.stringify(data));
+                console.log("Base de datos de viajes inicializada.");
+            })
+            .catch(error => console.error("Error inicializando viajes:", error));
     }
 });

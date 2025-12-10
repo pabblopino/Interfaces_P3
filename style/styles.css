@@ -450,17 +450,37 @@ a:hover {
 }
 
 .btn-like {
-    background: #ff4d4d;
+    background: transparent;
     border: none;
     padding: 8px 12px;
-    color: #fff;
-    font-size: 18px;
+    color: #ccc;
+    font-size: 24px;
     border-radius: 6px;
     cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btn-like svg {
+    width: 28px;      /* Tamaño fijo para que no dependa de la fuente */
+    height: 28px;
+    stroke: currentColor; /* El borde toma el color del texto del botón */
+    stroke-width: 1.5;
+    fill: transparent;    /* Por defecto, transparente por dentro */
+    transition: all 0.3s ease; /* Animación suave al cambiar de color */
 }
 
 .btn-like:hover {
-    background: #ff3333;
+    transform: scale(1.2);
+    color: #ff4d4d;
+}
+
+/* ESTADO ACTIVO (Cuando el viaje es favorito) */
+.btn-like.favorito-activo {
+    color: #ff4d4d; /* Borde rojo */
+}
+
+.btn-like.favorito-activo svg {
+    fill: #ff4d4d; /* Relleno rojo sólido */
 }
 
 .btn-reservar {
