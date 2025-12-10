@@ -1,163 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mochileros sin fronteras</title>
-        <link rel="stylesheet" href="style/styles.css">
-        <script src=""></script>
-        <script src="" type="module" defer></script>
-        <script type="module" src="script/sesion.js" defer></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Destino</title>
+    <link rel="stylesheet" href="style/styles.css">
+    
+    <script type="module" src="script/sesion.js" defer></script>
+    <script type="module" src="script/detalles.js" defer></script>
+</head>
+<body>
+    <header>
+        <div id="foto-perfil">
+            <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
+        </div>
+        <div class="enlaces-iniciales">
+            <a href="index.html">Inicio</a>
+            <a href="destinos.html" class="activo">Destinos</a>
+            <a href="foro.html">Foro/Comunidad</a>
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="" id="linkRecientes">Recientes</a>
+            <a href="otros-rincones.html">Otros Rincones</a>
+        </div>
+        <div class="inicio-sesion">
+            <div class="registro">
+                <div class="input-usuario">
+                    <input type="text" id="usuario" placeholder="Usuario">
+                </div>
+                <div class="input-usuario">
+                    <input type="password" id="password" placeholder="Contraseña">
+                </div>
+                <div class="botones">
+                    <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
+                    <button type="button" class="btnRegistro">Registro</button>
+                </div>
+            </div> 
+        </div>
+        <div class="usuario-activo" style="display:none;">
+            <span id="nombreUsuario"></span>
+            <img id="imagenUsuarioActivo" src="" alt="">
+            <button class="boton-cerrar">Cerrar sesión</button>
+        </div>
+    </header>
 
-    </head>
-    <body>
-        <!-- HEADER -->
-        <header>
-            <!-- Izquierda -->
-            <div class="" id="foto-perfil">
-                <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
-            </div>
-            <!-- Centro -->
-            <div class="enlaces-iniciales">
-                <a href="index.html">Inicio</a>
-                <a href="destinos.html" class="activo">Destinos</a>
-                <a href="foro.html">Foro/Comunidad</a>
-                <a href="sobre-nosotros.html">Sobre Nosotros</a>
-                <a href="" id="linkRecientes">Recientes</a>
-                <a href="otros-rincones.html">Otros Rincones</a>
-            </div>
-
-            <!-- Derecha -->
-            <div class="inicio-sesion">
-                <!--Apartado de registro-->
-                <div class="registro">
-                    <div class="input-usuario">
-                        <input type="text" id="usuario" placeholder="Usuario">
-                    </div>
-                    <div class="input-usuario">
-                        <input type="password" id="password" placeholder="Contraseña">
-                
-                    </div>
-
-                    <div class="botones">
-                        <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
-                        <button type="button" class="btnRegistro">Registro</button>
-                    </div>
-                </div> 
-            </div>
-            <div class="usuario-activo" style="display:none;">
-                <span id="nombreUsuario"></span>
-                <img id="imagenUsuario" src="" alt="">
-                <button class="boton-cerrar">Cerrar sesión</button>
-            </div>
-        </header>
-
-        <!-- MAIN -->
-        <main>
+    <main>
+        <div class="ficha-viaje">
             <div class="cabecera-seccion">
-                    <h1>DETALLES DEL DESTINO</h1>
-                    <div class="selector-idioma">
-                        <select>
-                            <option value="es" selected>ESP</option>
-                            <option value="en">ENG</option>
-                        </select>
-                    </div>
-            </div>
-            <div class="contenedor-flex">
-                <div class="titulo-seccion">
-                    <h2>Opiniones de nuestros viajeros</h2>
-                    <hr>
-                </div>
+                <h1 id="titulo-destino"></h1> 
                 
-                <div class="carrusel">
+            </div>
 
-                    <button class="flecha">⟨</button>
 
-                    <div class="opiniones">
-                        <div class="slide">
-                            <img src="images/foto_perfil.png" alt="Juan Pérez">
-                            <div class="estrellas">
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>☆</span>
-                            </div>
-                            <p>"El mejor servicio! Todo estuvo perfectamente organizado, los guías fueron amables y el alojamiento espectacular. Una experiencia inolvidable."</p>
-                            <span>- Juan Pérez</span>
-                        </div>
+            <div class="contenido-ficha">
+                
+                <div class="hero-imagen">
+                    <img id="img-destino" src="" alt="Imagen del destino">
+                </div>
 
-                        <div class="slide">
-                            <img src="images/foto_perfil.png" alt="Laura Gómez">
-                            <div class="estrellas">
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>☆</span>
-                                <span>☆</span>
-                            </div>
-                            <p>"Todo perfecto! La atención al cliente fue excelente y los lugares visitados superaron mis expectativas. Definitivamente volveré."</p>
-                            <span>- Laura Gómez</span>
-                        </div>
+                <div class="panel-info">
+                    <div class="precio-etiqueta" id="precio-destino"></div>
+                    
+                    <h3>Descripción</h3>
+                    <p id="desc-destino" class="texto-descripcion"></p>
+                    
+                    <h3>¿Qué incluye?</h3>
+                    <ul id="lista-incluye" class="lista-check"></ul>
 
-                        <div class="slide">
-                            <img src="images/foto_perfil.png" alt="Pedro Martínez">
-                            <div class="estrellas">
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                            </div>
-                            <p>"Increíble viaje. La planificación fue impecable, los destinos maravillosos y la experiencia general fue fantástica."</p>
-                            <span>- Pedro Martínez</span>
+                    <div class="acciones-ficha">
+                        <a id="btn-reservar-link" href="#">
+                            <button class="btn-reservar-grande">Reservar Plaza</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion-opiniones">
+            <div class="cabecera-seccion">
+                    <h2>DEJA TU OPINIÓN</h2>
+                                </div>
+
+            <div id="contenedor-reseñas" style="display: none;"></div>
+
+            <div class="contenedor-review">
+                <form class="form-review">
+                    <div class="campo-foro">
+                        <label>Tu nombre:</label>
+                        <input type="text" id="nombreReseña" placeholder="Nombre" disabled>
+                    </div>
+
+                    <div class="campo-foro">
+                        <label>Valoración:</label>
+                        <div class="rating">
+                            <span data-star="5">★</span>
+                            <span data-star="4">★</span>
+                            <span data-star="3">★</span>
+                            <span data-star="2">★</span>
+                            <span data-star="1">★</span>
                         </div>
                     </div>
-                    <button class="flecha">⟩</button>
 
-                </div>
-            </div>
-        </main>
+                    <div class="campo-foro">
+                        <label>Título:</label>
+                        <input type="text" id="tituloExperiencia" placeholder="Resumen de tu experiencia" required>
+                    </div>
+                    
+                    <div class="campo-foro">
+                        <label>Experiencia:</label>
+                        <textarea id="descExperiencia" placeholder="Cuéntanos qué tal fue el viaje..." rows="4" required></textarea>
+                    </div>
 
-        <!-- FOOTER -->
-        <footer>
-            <div class="footer-grid" id="redes-sociales">
-                <div id="enlaces-redes">
-                    <a href="https://www.instagram.com" target="_blank">
-                        <img src="images/logo_instagram.png" alt="Instagram">
-                    </a>
-                    <a href="https://www.tiktok.com/" target="_blank">
-                        <img src="images/logo_tiktok.png" alt="TikTok">
-                    </a>
-                    <a href="https://www.youtube.com/" target="_blank">
-                        <img src="images/logo_youtube.png" alt="YouTube">
-                    </a>
-                </div>
-                <p>&copy; 2025 Mochileros sin fronteras</p>
+                    <button type="submit" class="btn-enviar">Enviar reseña</button>
+                </form>
             </div>
-            <div class="footer-grid" id="compania">
-                <h4>Compañía</h4>
-                <a href="sobre-nosotros.html">Sobre Nosotros</a>
-                <a href="">Contacto</a>
-                <a href="">Trabaja con Nosotros</a>
-                <a href="">Blog</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid" id="redes-sociales">
+            <div id="enlaces-redes">
+                <a href="https://www.instagram.com" target="_blank"><img src="images/logo_instagram.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/" target="_blank"><img src="images/logo_tiktok.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/" target="_blank"><img src="images/logo_youtube.png" alt="YouTube"></a>
             </div>
-            <div class="footer-grid" id="legal">
-                <h4>Legal</h4>
-                <a href="">Términos</a>
-                <a href="">Privacidad</a>
-                <a href="">Cookies</a>
-                <a href="">Política de Reembolso</a>
+            <p>&copy; 2025 Mochileros sin fronteras</p>
+        </div>
+        <div class="footer-grid" id="compania">
+            <h4>Compañía</h4>
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="">Contacto</a>
+            <a href="">Trabaja con Nosotros</a>
+            <a href="">Blog</a>
+        </div>
+        <div class="footer-grid" id="legal">
+            <h4>Legal</h4>
+            <a href="">Términos</a>
+            <a href="">Privacidad</a>
+            <a href="">Cookies</a>
+            <a href="">Política de Reembolso</a>
+        </div>
+        <div class="footer-grid" id="newsletter">
+            <h4>Newsletter</h4>
+            <div id="campos-newsletter">
+                <a href="">Recibe ofertas y consejos de viaje</a>
+                <form action="" method="get">
+                    <input id="input-email" type="text" name="Tu Email" placeholder="Email">
+                    <button class="btnRegistro" type="submit">Registro</button>
+                </form>
             </div>
-            <div class="footer-grid" id="newsletter">
-                <h4>Newsletter</h4>
-                <div id="campos-newsletter">
-                    <a href="">Recibe ofertas y consejos de viaje</a>
-                    <form action="" method="get">
-                        <input id="input-email" type="text" name="Tu Email" placeholder="Email">
-                        <button class="btnRegistro" type="submit">Registro</button>
-                    </form>
-                </div>
-            </div>
-        </footer>
-    </body>
+        </div>
+    </footer>
+</body>
+</html>

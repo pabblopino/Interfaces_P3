@@ -206,7 +206,7 @@ a:hover {
     margin-bottom: 50px;
 }
 
-.cabecera-seccion h1 {
+.cabecera-seccion h1,h2 {
     font-weight: 400;
     font-size: 28px;
     letter-spacing: 1px;
@@ -214,7 +214,7 @@ a:hover {
 }
 
 /* Esto es un truco para poder acortar el borde que hay debajo del h1*/
-.cabecera-seccion h1::after {
+.cabecera-seccion h1::after, h2::after {
     content: '';        /* Crea un elemento vacío */
     display: block;
     width: 750px;       /* Largo de la línea */
@@ -1744,4 +1744,129 @@ textarea {
 
 #titulo-opiniones {
     margin-top: 40px;
+}
+
+/* =========================================
+   ESTILOS FICHA DE DESTINO (MEJORADO)
+   ========================================= */
+
+.ficha-viaje {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.ficha-viaje h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.contenido-ficha {
+    display: grid;
+    /* Columna imagen 60%, Columna info 40% */
+    grid-template-columns: 1.5fr 1fr; 
+    gap: 50px;
+    align-items: center;
+}
+
+/* IMAGEN GRANDE Y BONITA */
+.hero-imagen {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    height: 500px; /* Altura fija para que imponga */
+}
+
+.hero-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen para llenar el hueco sin deformar */
+    transition: transform 0.5s;
+}
+
+.hero-imagen:hover img {
+    transform: scale(1.05); /* Zoom suave al pasar el ratón */
+}
+
+/* PANEL DERECHO */
+.panel-info {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.precio-etiqueta {
+    font-size: 48px;
+    font-weight: 800;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.panel-info h3 {
+    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+.texto-descripcion {
+    font-size: 16px;
+    line-height: 1.8; /* Más espacio entre líneas para leer mejor */
+    color: #555;
+    text-align: justify;
+}
+
+/* LISTA CON TICKS */
+.lista-check {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-check li {
+    padding: 8px 0;
+    font-size: 15px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lista-check li::before {
+    content: "✔";
+    color: green;
+    font-weight: bold;
+}
+
+/* BOTÓN GRANDE */
+.btn-reservar-grande {
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background 0.3s;
+}
+
+.btn-reservar-grande:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVE (Móvil) */
+@media (max-width: 900px) {
+    .contenido-ficha {
+        grid-template-columns: 1fr; /* Una columna */
+        gap: 30px;
+    }
+    .hero-imagen {
+        height: 300px; /* Un poco más bajita en móvil */
+    }
 }

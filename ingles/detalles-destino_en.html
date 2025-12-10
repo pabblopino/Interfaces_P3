@@ -1,130 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Backpackers Without Borders</title>
-        <link rel="stylesheet" href="../style/styles.css">
-        <script type="module" src="../script/sesion.js" defer></script>
-    </head>
-    <body>
-        <header>
-            <div class="" id="foto-perfil">
-                <img id="imagenUsuario" src="../images/foto_perfil.png" alt="profile_pic">
-            </div>
-            <div class="enlaces-iniciales">
-                <a href="index_en.html">Home</a>
-                <a href="destinos_en.html" class="activo">Destinations</a>
-                <a href="foro_en.html">Forum/Community</a>
-                <a href="sobre-nosotros_en.html">About Us</a>
-                <a href="" id="linkRecientes">Recent</a>
-                <a href="otros-rincones_en.html">Other Spots</a>
-            </div>
-            <div class="inicio-sesion">
-                <div class="registro">
-                    <div class="input-usuario">
-                        <input type="text" id="usuario" placeholder="Username">
-                    </div>
-                    <div class="input-usuario">
-                        <input type="password" id="password" placeholder="Password">
-                    </div>
-                    <div class="botones">
-                        <button type="button" id="btnIniciarSesion">Log In</button>
-                        <button type="button" class="btnRegistro">Sign Up</button>
-                    </div>
-                </div> 
-            </div>
-            <div class="usuario-activo" style="display:none;">
-                <span id="nombreUsuario"></span>
-                <img id="imagenUsuario" src="" alt="">
-                <button class="boton-cerrar">Log Out</button>
-            </div>
-        </header>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination Details</title>
+    <link rel="stylesheet" href="../style/styles.css">
+    
+    <script type="module" src="../script/sesion.js" defer></script>
+    <script type="module" src="../script/detalles.js" defer></script>
+</head>
+<body>
+    <header>
+        <div id="foto-perfil">
+            <img id="imagenUsuario" src="../images/foto_perfil.png" alt="profile_photo">
+        </div>
+        <div class="enlaces-iniciales">
+            <a href="../index.html">Home</a>
+            <a href="../destinos.html" class="activo">Destinations</a>
+            <a href="../foro.html">Forum/Community</a>
+            <a href="../sobre-nosotros.html">About Us</a>
+            <a href="" id="linkRecientes">Recent</a>
+            <a href="../otros-rincones.html">Other Spots</a>
+        </div>
+        <div class="inicio-sesion">
+            <div class="registro">
+                <div class="input-usuario">
+                    <input type="text" id="usuario" placeholder="Username">
+                </div>
+                <div class="input-usuario">
+                    <input type="password" id="password" placeholder="Password">
+                </div>
+                <div class="botones">
+                    <button type="button" id="btnIniciarSesion">Log in</button>
+                    <button type="button" class="btnRegistro">Sign up</button>
+                </div>
+            </div> 
+        </div>
+        <div class="usuario-activo" style="display:none;">
+            <span id="nombreUsuario"></span>
+            <img id="imagenUsuarioActivo" src="" alt="">
+            <button class="boton-cerrar">Log out</button>
+        </div>
+    </header>
 
-        <main>
+    <main>
+        <div class="ficha-viaje">
             <div class="cabecera-seccion">
-                    <h1>DESTINATION DETAILS</h1>
-                    <div class="selector-idioma">
-                        <select>
-                            <option value="es">ESP</option>
-                            <option value="en" selected>ENG</option>
-                        </select>
-                    </div>
-            </div>
-            <div class="contenedor-flex">
-                <div class="titulo-seccion">
-                    <h2>Traveler Reviews</h2>
-                    <hr>
-                </div>
+                <h1 id="titulo-destino"></h1> 
                 
-                <div class="carrusel">
-                    <button class="flecha">⟨</button>
-                    <div class="opiniones">
-                        <div class="slide">
-                            <img src="../images/foto_perfil.png" alt="Juan Pérez">
-                            <div class="estrellas">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
-                            </div>
-                            <p>"The best service! Everything was perfectly organized..."</p>
-                            <span>- Juan Pérez</span>
-                        </div>
+            </div>
 
-                        <div class="slide">
-                            <img src="../images/foto_perfil.png" alt="Laura Gómez">
-                            <div class="estrellas">
-                                <span>★</span><span>★</span><span>★</span><span>☆</span><span>☆</span>
-                            </div>
-                            <p>"Everything perfect! Customer service was excellent..."</p>
-                            <span>- Laura Gómez</span>
-                        </div>
+            <div class="contenido-ficha">
+                
+                <div class="hero-imagen">
+                    <img id="img-destino" src="" alt="Destination image">
+                </div>
 
-                        <div class="slide">
-                            <img src="../images/foto_perfil.png" alt="Pedro Martínez">
-                            <div class="estrellas">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                            <p>"Incredible trip. The planning was impeccable..."</p>
-                            <span>- Pedro Martínez</span>
+                <div class="panel-info">
+                    <div class="precio-etiqueta" id="precio-destino"></div>
+                    
+                    <h3>Description</h3>
+                    <p id="desc-destino" class="texto-descripcion"></p>
+                    
+                    <h3>What's included?</h3>
+                    <ul id="lista-incluye" class="lista-check"></ul>
+
+                    <div class="acciones-ficha">
+                        <a id="btn-reservar-link" href="#">
+                            <button class="btn-reservar-grande">Book Now</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion-opiniones">
+            <div class="cabecera-seccion">
+                <h2>LEAVE YOUR REVIEW</h2>
+            </div>
+
+            <div id="contenedor-reseñas" style="display: none;"></div>
+
+            <div class="contenedor-review">
+                <form class="form-review">
+                    <div class="campo-foro">
+                        <label>Your name:</label>
+                        <input type="text" id="nombreReseña" placeholder="Name" disabled>
+                    </div>
+
+                    <div class="campo-foro">
+                        <label>Rating:</label>
+                        <div class="rating">
+                            <span data-star="5">★</span>
+                            <span data-star="4">★</span>
+                            <span data-star="3">★</span>
+                            <span data-star="2">★</span>
+                            <span data-star="1">★</span>
                         </div>
                     </div>
-                    <button class="flecha">⟩</button>
-                </div>
-            </div>
-        </main>
 
-        <footer>
-            <div class="footer-grid" id="redes-sociales">
-                <div id="enlaces-redes">
-                    <a href="https://www.instagram.com" target="_blank"><img src="../images/logo_instagram.png" alt="Instagram"></a>
-                    <a href="https://www.tiktok.com/" target="_blank"><img src="../images/logo_tiktok.png" alt="TikTok"></a>
-                    <a href="https://www.youtube.com/" target="_blank"><img src="../images/logo_youtube.png" alt="YouTube"></a>
-                </div>
-                <p>&copy; 2025 Backpackers Without Borders</p>
+                    <div class="campo-foro">
+                        <label>Title:</label>
+                        <input type="text" id="tituloExperiencia" placeholder="Summary of your experience" required>
+                    </div>
+                    
+                    <div class="campo-foro">
+                        <label>Experience:</label>
+                        <textarea id="descExperiencia" placeholder="Tell us about your trip..." rows="4" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-enviar">Submit Review</button>
+                </form>
             </div>
-            <div class="footer-grid" id="compania">
-                <h4>Company</h4>
-                <a href="sobre-nosotros_en.html">About Us</a>
-                <a href="">Contact</a>
-                <a href="">Work with Us</a>
-                <a href="">Blog</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid" id="redes-sociales">
+            <div id="enlaces-redes">
+                <a href="https://www.instagram.com" target="_blank"><img src="../images/logo_instagram.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/" target="_blank"><img src="../images/logo_tiktok.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/" target="_blank"><img src="../images/logo_youtube.png" alt="YouTube"></a>
             </div>
-            <div class="footer-grid" id="legal">
-                <h4>Legal</h4>
-                <a href="">Terms</a>
-                <a href="">Privacy</a>
-                <a href="">Cookies</a>
-                <a href="">Refund Policy</a>
+            <p>&copy; 2025 Backpackers Without Borders</p>
+        </div>
+        <div class="footer-grid" id="compania">
+            <h4>Company</h4>
+            <a href="../sobre-nosotros.html">About Us</a>
+            <a href="">Contact</a>
+            <a href="">Work With Us</a>
+            <a href="">Blog</a>
+        </div>
+        <div class="footer-grid" id="legal">
+            <h4>Legal</h4>
+            <a href="">Terms</a>
+            <a href="">Privacy</a>
+            <a href="">Cookies</a>
+            <a href="">Refund Policy</a>
+        </div>
+        <div class="footer-grid" id="newsletter">
+            <h4>Newsletter</h4>
+            <div id="campos-newsletter">
+                <a href="">Get travel deals and tips</a>
+                <form action="" method="get">
+                    <input id="input-email" type="text" name="Your Email" placeholder="Email">
+                    <button class="btnRegistro" type="submit">Sign up</button>
+                </form>
             </div>
-            <div class="footer-grid" id="newsletter">
-                <h4>Newsletter</h4>
-                <div id="campos-newsletter">
-                    <a href="">Receive offers and travel tips</a>
-                    <form action="" method="get">
-                        <input id="input-email" type="text" name="Tu Email" placeholder="Email">
-                        <button class="btnRegistro" type="submit">Sign Up</button>
-                    </form>
-                </div>
-            </div>
-        </footer>
-    </body>
+        </div>
+    </footer>
+</body>
 </html>
