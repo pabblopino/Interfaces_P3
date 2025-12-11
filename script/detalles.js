@@ -180,6 +180,21 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("precio-destino").textContent = pack.precio;
         document.getElementById("desc-destino").textContent = pack.detalle;
 
+        const selectorMoneda = document.querySelector('.selector-moneda select');
+        const precioElemento = document.getElementById("precio-destino");
+        const tasasCambio = {'EUR': { factor: 1, simbolo: '€' },'DOL': { factor: 1.17, simbolo: '$' },'LIB': { factor: 0.87, simbolo: '£' }};
+        const precioBase = parseInt(pack.precio);
+
+        const actualizarPrecioVisual = () => {
+            const monedaSeleccionada = selectorMoneda ? selectorMoneda.value : 'EUR';
+            const { factor, simbolo } = tasasCambio[monedaSeleccionada] || tasasCambio['EUR'];
+            const precioConvertido = Math.round(precioBase * factor);
+            precioElemento.textContent = `${precioConvertido}${simbolo}`;
+        };
+        if(selectorMoneda){
+            selectorMoneda.addEventListener('change', actualizarPrecioVisual);
+        }
+        actualizarPrecioVisual();
         const imgEl = document.getElementById("img-destino");
         if (imgEl) {
             imgEl.src = pack.imagen;
