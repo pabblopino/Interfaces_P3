@@ -115,10 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
             botonesLike.forEach(btn => {
                 // Buscamos el título de la tarjeta actual
                 const card = btn.closest('.card');
-                const tituloCard = card.querySelector('h3').textContent.trim();
-                
+                const enlace = card.querySelector('a').getAttribute('href');
+                const idPack = enlace.split('=')[1];
                 // Miramos si ese título está en su lista de favoritos
-                const esFavorito = datosUsuario.viajes.favoritos.some(v => v.titulo === tituloCard);
+                const esFavorito = datosUsuario.viajes.favoritos.some(v => v.id === idPack);
                 
                 if (esFavorito) {
                     btn.classList.add('favorito-activo'); // Lo marcamos como favorito (en rojo)
@@ -218,8 +218,16 @@ function pintarOpiniones(listaResenas, idContenedor){
     btnNext.className = 'flecha next';
     btnNext.innerText = '⟩';
 
-    // Insertar todo
-    contenedor.appendChild(btnPrev);
-    contenedor.appendChild(ventana);
-    contenedor.appendChild(btnNext);
+    // Si hay 3 o menos reseñas
+    if (listaResenas.length <= 3) {
+        contenedor.classList.add('centrado');
+        // Solo añadimos la ventana (sin flechas)
+        contenedor.appendChild(ventana);
+    } else {
+        // Si hay 4 o más, carrusel normal con flechas
+        contenedor.classList.remove('centrado');
+        contenedor.appendChild(btnPrev);
+        contenedor.appendChild(ventana);
+        contenedor.appendChild(btnNext);
+    }
 }

@@ -614,6 +614,7 @@ a:hover {
     border-radius: 6px;
     cursor: pointer;
     transition: transform 0.2s ease;
+    align-items: center;
 }
 
 .btn-like svg {
@@ -1982,9 +1983,6 @@ textarea {
     transform: none !important; /* Anula cualquier movimiento del JS */
 }
 
-.contenedor-centrado .card {
-    flex: 0 0 300px; 
-}
 
 /* =========================================
     ESTILOS FICHA DE DESTINO (MEJORADO)
@@ -2173,10 +2171,11 @@ textarea {
 /* ========================================= */
 
 .track-carrusel .card.card-resena-detalle {
-    flex: 0 0 300px;
-    width: 300px;
-    min-width: 300px;
-    margin: 0 15px;
+    flex: 0 0 calc(33.3333% - 30px);
+    width: calc(33.3333% - 30px);
+    
+    margin: 0 15px; /* Mantenemos tu margen */
+    min-width: 0;   /* Quitamos el ancho fijo antiguo */
 }
 
 .card-resena-detalle {
@@ -2244,6 +2243,17 @@ textarea {
     margin: 0;
 }
 
+#contenedor-opiniones.centrado .flecha,
+#contenedor-reseñas.centrado .flecha {
+    display: none !important;
+}
+
+#contenedor-opiniones.centrado .track-carrusel,
+#contenedor-reseñas.centrado .track-carrusel {
+    justify-content: center; /* Las junta en el medio */
+    transform: none !important; /* Asegura que no se muevan por JS */
+}
+
 /* ========================================= */
 /* MODO DALTÓNICO (DEUTERANOPIA FRIENDLY)    */
 /* ========================================= */
@@ -2255,7 +2265,6 @@ body.modo-daltonico ::selection {
 }
 
 /* 1. CORAZONES (FAVORITOS) */
-/* Antes eran Rojos (#ff4d4d). Ahora serán AZULES (#007bff) para alto contraste */
 
 body.modo-daltonico .btn-like.favorito-activo {
     color: #007bff !important; 
@@ -2272,7 +2281,7 @@ body.modo-daltonico .btn-like:hover {
 /* 2. ERRORES DE FORMULARIO */
 body.modo-daltonico .error-texto {
     color: #d35400 !important;
-    font-weight: bold; /* Añadimos negrita para asegurar legibilidad */
+    font-weight: bold;
 }
 
 /* 3. TICKS DE "QUÉ INCLUYE" (Reserva/Detalles) */
@@ -2287,7 +2296,7 @@ body.modo-daltonico .estrellas span,
 body.modo-daltonico .estrellas-autor,
 body.modo-daltonico .rating span:hover,
 body.modo-daltonico .rating span:hover ~ span {
-    color: #e67e22 !important; /* Naranja zanahoria */
+    color: #e67e22 !important;
 }
 
 /* 5. ESTILO BOTÓN OJO (SVG) */
@@ -2387,3 +2396,35 @@ body.modo-daltonico .confirmacion-reserva .icono-confirmacion svg {
 body.modo-daltonico .confirmacion-texto h3 {
     color: #0056b3 !important;
 }
+
+
+/* CLASE NUEVA PARA AGRUPAR ICONOS */
+.grupo-iconos {
+    display: flex;
+    align-items: center; /* Centrado vertical perfecto */
+    gap: 8px;            /* Espacio entre el corazón y el check */
+}
+
+/* =============== */
+/* BOTÓN COMPLETAR */
+/* =============== */
+
+.btn-completar {
+    width: 45px;
+    height: 45px;
+    padding: 8px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: gray;
+}
+
+.btn-completar:hover {
+    color: rgb(13, 13, 13);
+    transform: scale(1.2);
+}
+

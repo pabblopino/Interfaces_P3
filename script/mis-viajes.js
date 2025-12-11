@@ -1,5 +1,5 @@
 import { activarCarrusel } from './carousel.mjs';
-import { toggleFavorito } from './gestion-viajes.js';
+import { toggleFavorito, moverViajeRealizado } from './gestion-viajes.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -39,12 +39,23 @@ function pintarSeccion(listaViajes, idContenedor) {
     const contenedor = document.getElementById(idContenedor);
     if (!contenedor) return;
 
+    // Detectamos el idioma
+    const isEn = window.location.pathname.includes('/ingles/');
+
     // Limpiamos el contenido previo
     contenedor.innerHTML = '';
 
     // Si la lista está vacía
     if (!listaViajes || listaViajes.length === 0) {
-        contenedor.innerHTML = '<p>No tienes viajes guardados.</p>';
+        let mensaje = isEn ? 'No trips here.' : 'No tienes viajes aquí.';
+        
+        if(idContenedor === 'contenedor-favoritos') 
+            mensaje = isEn ? 'No favorites saved.' : 'No tienes favoritos guardados.';
+        
+        if(idContenedor === 'contenedor-reservados') 
+            mensaje = isEn ? 'No booked trips.' : 'No tienes reservas activas.';
+        
+        contenedor.innerHTML = `<p>${mensaje}</p>`;
         return;
     }
 
@@ -67,6 +78,11 @@ function pintarSeccion(listaViajes, idContenedor) {
     btnPrev.className = 'flecha prev';
     btnPrev.innerText = '⟨';
 
+    // Botón Derecha
+    const btnNext = document.createElement('button');
+    btnNext.className = 'flecha next';
+    btnNext.innerText = '⟩';
+
     // Ventana y Track
     const ventana = document.createElement('div');
     ventana.className = 'ventana-carrusel';
@@ -74,13 +90,25 @@ function pintarSeccion(listaViajes, idContenedor) {
     const track = document.createElement('div');
     track.className = 'track-carrusel';
 
+    // ---------------------------------------------------------
+    // DICCIONARIO DE TRADUCCIÓN (ID -> Nombre en Inglés)
+    // ---------------------------------------------------------
+    const nombresIngles = {
+        'camping': 'Sunset Alpine Camping',
+        'desierto': 'Sahara Desert Adventure',
+        'islandia': 'Iceland Aurora Hunt',
+        'patagonia': 'Patagonia Expedition',
+        'pirineos': 'Pyrenees Snow Escape',
+        'santiago': 'The Way of St. James'
+    };
+
     // Generamos las tarjetas (Items)
     listaViajes.forEach(viaje => {
         // Envolvemos la card en un div 'card' que es el que mide 33.33%
         const card = document.createElement('div');
         card.className = 'card';
 
-        // Lógica de los corazones de favoritos
+        // 1. Lógica de los corazones de favoritos
         let claseFavorito = '';
 
         const esRealmenteFavorito = listaMisFavoritos.some(fav => fav.id === viaje.id);
@@ -89,21 +117,64 @@ function pintarSeccion(listaViajes, idContenedor) {
              claseFavorito = 'favorito-activo';
         }
 
+        // 2. ADAPTACIÓN AL IDIOMA
+        // A) IMAGEN: Si estamos en inglés, la imagen necesita "../"
+        let rutaImagen = viaje.imagen;
+        if (isEn && !rutaImagen.startsWith('../') && !rutaImagen.startsWith('http')) {
+            rutaImagen = '../' + rutaImagen;
+        }
+
+        // B) TEXTOS FIJOS
+        const textoDesde = isEn ? 'From' : 'Desde';
+        const textoVer = isEn ? 'View' : 'Ver';
+        
+        // C) TÍTULO DEL VIAJE (TRADUCCIÓN)
+        let tituloMostrar = viaje.titulo;
+        
+        // Si estamos en inglés Y tenemos traducción para ese ID, la usamos
+        if (isEn && viaje.id && nombresIngles[viaje.id]) {
+            tituloMostrar = nombresIngles[viaje.id];
+        }
+
+        // D) ENLACE
+        // El enlace debe ir a la versión inglesa o española según corresponda
+        const paginaDetalle = isEn ? 'detalles-destino-en.html' : 'detalles-destino.html';
+
+        // LÓGICA DEL BOTÓN DE COMPLETAR
+        // Solo lo mostramos si estamos en la sección de RESERVADOS
+        let botonCompletarHTML = '';
+        if (idContenedor === 'contenedor-reservados') {
+            const titleCompletar = isEn ? "Mark as completed" : "Marcar como realizado";
+            // Usamos un SVG de Check
+            botonCompletarHTML = `
+                <button class="btn-completar" title="${titleCompletar}">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                </button>
+            `;
+        }
+
         card.innerHTML = `
-            <img src="${viaje.imagen}" alt="${viaje.titulo}">
-            <h3>${viaje.titulo}</h3>
-            <p class="precio">Desde ${viaje.precio}€</p>
+            <a href="${paginaDetalle}?id_pack=${viaje.id}" style="text-decoration:none; color:inherit;">
+                <img src="${rutaImagen}" alt="${tituloMostrar}">
+                <h3>${tituloMostrar}</h3>
+            </a>
+            <p class="precio">${textoDesde} ${viaje.precio}€</p>
             <div class="acciones">
                 <button class="btn-like ${claseFavorito}">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                     </svg>
                 </button>
-                <button class="btn-reservar">Ver</button>
+                ${botonCompletarHTML}
+                <a href="${paginaDetalle}?id_pack=${viaje.id}">
+                    <button class="btn-reservar">${textoVer}</button>
+                </a>
             </div>
         `;
 
-        // LÓGICA DEL CLICK 
+        // LÓGICA DEL CLICK LIKE 
         const btnLike = card.querySelector('.btn-like');
 
         btnLike.addEventListener('click', (e) => {
@@ -125,29 +196,38 @@ function pintarSeccion(listaViajes, idContenedor) {
             }
         });
 
+        // LÓGICA DEL CLICK COMPLETAR
+        const btnCompletar = card.querySelector('.btn-completar');
+        if (btnCompletar) {
+            btnCompletar.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                const msg = isEn ? "Mark trip as completed?" : "¿Marcar este viaje como realizado?";
+                if(confirm(msg)) {
+                    const usuarioAlClick = JSON.parse(localStorage.getItem('usuarioActivo'));
+                    const exito = moverViajeRealizado(usuarioAlClick, viaje);
+                    
+                    if(exito) {
+                        // Recargamos la página para ver el cambio instantáneo
+                        window.location.reload();
+                    }
+                }
+            });
+        }
         track.appendChild(card);
     });
 
     // Metemos el track en la ventana
     ventana.appendChild(track);
-    
+
     // --- LÓGICA INTELIGENTE: ¿NECESITAMOS CARRUSEL? ---
-    // Si hay 3 o menos viajes, caben todos en pantalla, centramos y quitamos flechas
     if (listaViajes.length <= 3) {
         contenedor.classList.add('contenedor-centrado');
-        contenedor.appendChild(ventana); // Solo añadimos la ventana, sin flechas
+        contenedor.appendChild(ventana);
     } else {
-        // Si hay más de 3, montamos el carrusel normal con flechas
         contenedor.classList.remove('contenedor-centrado');
+        contenedor.appendChild(btnPrev);
+        contenedor.appendChild(ventana);
+        contenedor.appendChild(btnNext);
     }
-
-    // Botón Derecha
-    const btnNext = document.createElement('button');
-    btnNext.className = 'flecha next';
-    btnNext.innerText = '⟩';
-
-    // Inyectamos todo
-    contenedor.appendChild(btnPrev);
-    contenedor.appendChild(ventana);
-    contenedor.appendChild(btnNext);
 }

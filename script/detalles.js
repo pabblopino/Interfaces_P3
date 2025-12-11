@@ -332,12 +332,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         ventana.appendChild(track);
-        contenedor.appendChild(btnPrev);
-        contenedor.appendChild(ventana);
-        contenedor.appendChild(btnNext);
 
-        activarCarrusel('contenedor-reseñas');
+        // LÓGICA DE CENTRADO (Igual que en mis-viajes.js)
+        if (reseñas.length <= 3) {
+            // Pocos elementos: Centramos y no añadimos las flechas
+            contenedor.classList.add('contenedor-centrado');
+            contenedor.appendChild(ventana);
+        } else {
+            // 4 o más: Carrusel normal
+            contenedor.classList.remove('contenedor-centrado');
+            contenedor.appendChild(btnPrev);
+            contenedor.appendChild(ventana);
+            contenedor.appendChild(btnNext);
+            
+            // Solo activamos la lógica JS del carrusel si hay botones
+            activarCarrusel('contenedor-reseñas');
+        }
     }
 
+    // Inicializar
     pintarReseñasCarrusel(packId);
 });

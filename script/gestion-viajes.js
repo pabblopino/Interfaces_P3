@@ -72,3 +72,32 @@ export function agregarReserva(usuarioActivo, viaje) {
         localStorage.setItem('historialViajes', JSON.stringify(historial));
     }
 }
+
+
+export function moverViajeRealizado(usuarioActivo, viaje) {
+    if (!usuarioActivo) return false;
+
+    let historial = JSON.parse(localStorage.getItem('historialViajes')) || [];
+    let datosUsuario = historial.find(u => u.login === usuarioActivo.login);
+
+    if (datosUsuario) {
+        // 1. Buscamos el viaje en RESERVADOS
+        const indice = datosUsuario.viajes.reservados.findIndex(v => v.id === viaje.id);
+
+        if (indice !== -1) {
+            // 2. Lo sacamos de reservados (splice devuelve un array, cogemos el primero)
+            const viajeMovido = datosUsuario.viajes.reservados.splice(indice, 1)[0];
+
+            // 3. Lo metemos en REALIZADOS
+            const yaExiste = datosUsuario.viajes.realizados.some(v => v.id === viajeMovido.id);
+            if (!yaExiste) {
+                datosUsuario.viajes.realizados.push(viajeMovido);
+            }
+
+            // 4. Guardamos los cambios
+            localStorage.setItem('historialViajes', JSON.stringify(historial));
+            return true;
+        }
+    }
+    return false;
+}
