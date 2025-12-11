@@ -1790,6 +1790,27 @@ textarea {
     margin-top: 40px;
 }
 
+/* ========================================= */
+/* ARREGLO CARRUSEL (POCOS ELEMENTOS)        */
+/* ========================================= */
+
+/* Cuando activamos el modo centrado: */
+
+/* 1. Ocultamos las flechas porque no hacen falta */
+.contenedor-centrado .flecha {
+    display: none !important;
+}
+
+/* 2. Centramos el contenido del track */
+.contenedor-centrado .track-carrusel {
+    justify-content: center; /* Centra las tarjetas en el medio */
+    transform: none !important; /* Anula cualquier movimiento del JS */
+}
+
+.contenedor-centrado .card {
+    flex: 0 0 300px; 
+}
+
 /* =========================================
     ESTILOS FICHA DE DESTINO (MEJORADO)
    ========================================= */
@@ -1969,4 +1990,225 @@ textarea {
     color: #333;
     font-size: 15px;
     margin-top: 10px;          /* Asegura que se quede al fondo */
+}
+
+
+/* ========================================= */
+/* ESTILOS RESEÑAS EN DETALLE DESTINO        */
+/* ========================================= */
+
+.track-carrusel .card.card-resena-detalle {
+    flex: 0 0 300px;
+    width: 300px;
+    min-width: 300px;
+    margin: 0 15px;
+}
+
+.card-resena-detalle {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    height: auto;
+    min-height: 200px;
+}
+
+.reseña-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.card-resena-detalle img.foto-autor {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #eee;
+    margin: 0; 
+    box-shadow: none;
+}
+
+.datos-autor {
+    display: flex;
+    flex-direction: column;
+}
+
+.nombre-autor {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.estrellas-autor {
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.titulo-reseña {
+    margin: 0;
+    font-size: 16px;
+    color: #000;
+    font-weight: 600;
+}
+
+.texto-reseña {
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ========================================= */
+/* MODO DALTÓNICO (DEUTERANOPIA FRIENDLY)    */
+/* ========================================= */
+
+/* Cambiamos el color de selección de texto para confirmar que está activo */
+body.modo-daltonico ::selection {
+    background: #0056b3;
+    color: white;
+}
+
+/* 1. CORAZONES (FAVORITOS) */
+/* Antes eran Rojos (#ff4d4d). Ahora serán AZULES (#007bff) para alto contraste */
+
+body.modo-daltonico .btn-like.favorito-activo {
+    color: #007bff !important; 
+}
+
+body.modo-daltonico .btn-like.favorito-activo svg {
+    fill: #007bff !important;
+}
+
+body.modo-daltonico .btn-like:hover {
+    color: #0056b3 !important;
+}
+
+/* 2. ERRORES DE FORMULARIO */
+body.modo-daltonico .error-texto {
+    color: #d35400 !important;
+    font-weight: bold; /* Añadimos negrita para asegurar legibilidad */
+}
+
+/* 3. TICKS DE "QUÉ INCLUYE" (Reserva/Detalles) */
+body.modo-daltonico .lista-check li::before {
+    content: "✔";
+    color: #0044cc !important;
+}
+
+
+/* 4. ESTRELLAS DE VALORACIÓN */
+body.modo-daltonico .estrellas span, 
+body.modo-daltonico .estrellas-autor,
+body.modo-daltonico .rating span:hover,
+body.modo-daltonico .rating span:hover ~ span {
+    color: #e67e22 !important; /* Naranja zanahoria */
+}
+
+/* 5. ESTILO BOTÓN OJO (SVG) */
+.btn-accesibilidad {
+    background: transparent;
+    border: 1px solid transparent; 
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: #555;
+}
+
+.btn-accesibilidad svg {
+    width: 26px;
+    height: 26px;
+}
+
+.btn-accesibilidad:hover {
+    background-color: #e0e0e0;
+    color: black;
+    transform: scale(1.1);
+}
+
+/* ESTADO ACTIVO (Cuando el modo daltónico está ON) */
+body.modo-daltonico .btn-accesibilidad {
+    background-color: #e3f2fd;
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+/* 6. BOTÓN CERRAR SESIÓN (IMPORTANTE) */
+/* El rojo se ve marrón/amarillento en deuteranopia. Lo cambiamos a un color seguro */
+body.modo-daltonico .boton-cerrar {
+    background-color: #007bff !important;
+    border: 1px solid #555 !important;
+    color: #fff !important;
+}
+
+body.modo-daltonico .boton-cerrar:hover {
+    background-color: #002d5d !important;
+}
+
+.confirmacion-reserva {
+    border-radius: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.confirmacion-reserva .icono-confirmacion {
+    width: 120px;
+    height: 120px;
+    background-color: #28a745;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px auto;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+    background-color: rgba(40, 167, 69, 0.8);
+}
+
+.confirmacion-reserva .icono-confirmacion svg {
+    width: 70px;
+    height: 70px;
+    color: white;
+    margin-bottom: 0;
+}
+
+.confirmacion-texto h3 {
+    color: #28a745;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+/* =============== */
+/* MODO DALTÓNICO */
+/* =============== */
+
+/* 1. Fondo del círculo: Cambia de Verde Transparente a AZUL Transparente */
+body.modo-daltonico .confirmacion-reserva .icono-confirmacion {
+    background-color: rgba(0, 86, 179, 0.15) !important; 
+    box-shadow: 0 4px 10px rgba(0, 86, 179, 0.4) !important;
+}
+
+/* 2. El Tick SVG: Cambia de Verde a AZUL Fuerte */
+body.modo-daltonico .confirmacion-reserva .icono-confirmacion svg {
+    color: #0056b3 !important;
+}
+
+/* 3. El Texto: Cambia de Verde a AZUL Fuerte */
+body.modo-daltonico .confirmacion-texto h3 {
+    color: #0056b3 !important;
 }

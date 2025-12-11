@@ -1,3 +1,5 @@
+import { toggleFavorito } from './gestion-viajes.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     
     const inputBuscador = document.querySelector('.contenedor-buscador input');
@@ -142,4 +144,76 @@ document.addEventListener('DOMContentLoaded', () => {
             aplicarFiltros();
         });
     }
+
+    // ------------------------
+    // 4. LÓGICA DE FAVORITOS
+    // ------------------------
+    const botonesLike = document.querySelectorAll('.btn-like');
+    const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
+    const historial = JSON.parse(localStorage.getItem('historialViajes')) || [];
+
+    // A) PINTAR CORAZONES ROJOS AL CARGAR LA PÁGINA
+    if (usuarioActivo) {
+        const datosUsuario = historial.find(u => u.login === usuarioActivo.login);
+        if (datosUsuario && datosUsuario.viajes.favoritos) {
+            botonesLike.forEach(btn => {
+                const card = btn.closest('.card');
+                
+                // Extraemos el ID del enlace (ej: reserva.html?id_pack=camping)
+                const enlace = card.querySelector('a').getAttribute('href');
+                const idPack = enlace.split('=')[1]; // obtenemos 'camping'
+
+                // Comprobamos si este ID está en favoritos
+                const esFavorito = datosUsuario.viajes.favoritos.some(v => v.id === idPack);
+                
+                if (esFavorito) {
+                    btn.classList.add('favorito-activo'); 
+                }
+            });
+        }
+    }
+
+    // B) EVENTO CLICK EN EL CORAZÓN
+    botonesLike.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Evitamos problemas al clickar en el SVG interno
+            const botonClicado = e.target.closest('.btn-like');
+            const usuarioAlClick = JSON.parse(localStorage.getItem('usuarioActivo')); // Leemos usuario actualizado
+
+            if (!usuarioAlClick){
+                const isEn = window.location.pathname.includes('/ingles/');
+                alert(isEn ? "You must log in to save favorites." : "Debes iniciar sesión para guardar favoritos.");
+                return;
+            }
+            
+            const tarjeta = botonClicado.closest('.card');
+            
+            // Recopilamos datos para guardar
+            const titulo = tarjeta.querySelector('h3').textContent.trim();
+            // Usamos data-precio que es el valor numérico limpio
+            const precio = tarjeta.dataset.precio; 
+            const imagenSrc = tarjeta.querySelector('img').getAttribute('src');
+            
+            // Extraemos ID
+            const enlace = tarjeta.querySelector('a').getAttribute('href');
+            const idPack = enlace.split('=')[1];
+
+            const viajeFav = {
+                id: idPack,
+                titulo: titulo,
+                precio: precio,
+                imagen: imagenSrc
+            };
+
+            // Usamos la función compartida
+            const ahoraEsFavorito = toggleFavorito(usuarioAlClick, viajeFav);
+
+            // Actualizamos visualmente
+            if (ahoraEsFavorito) {
+                botonClicado.classList.add('favorito-activo');
+            } else {
+                botonClicado.classList.remove('favorito-activo');
+            }
+        });
+    });
 });

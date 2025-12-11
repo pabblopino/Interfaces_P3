@@ -197,8 +197,6 @@ function pintarOpiniones(listaResenas, idContenedor){
     // Crear tarjetas
     listaResenas.forEach(r => {
 
-        const estrellasHTML = "★".repeat(r.estrellas) + "☆".repeat(5 - r.estrellas);
-
         const rutaImg = r.foto || (isEnglish ? '../images/foto_perfil.png' : 'images/foto_perfil.png');
 
         const card = document.createElement('div');
@@ -206,7 +204,6 @@ function pintarOpiniones(listaResenas, idContenedor){
 
         card.innerHTML = `
             <img src="${rutaImg}" alt="${r.nombre}">
-            <div class="estrellas">${estrellasHTML}</div>
             <p>"${r.descripcion}"</p>
             <span>- ${r.nombre}</span>
         `;

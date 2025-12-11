@@ -131,6 +131,16 @@ function pintarSeccion(listaViajes, idContenedor) {
     // Metemos el track en la ventana
     ventana.appendChild(track);
     
+    // --- LÓGICA INTELIGENTE: ¿NECESITAMOS CARRUSEL? ---
+    // Si hay 3 o menos viajes, caben todos en pantalla, centramos y quitamos flechas
+    if (listaViajes.length <= 3) {
+        contenedor.classList.add('contenedor-centrado');
+        contenedor.appendChild(ventana); // Solo añadimos la ventana, sin flechas
+    } else {
+        // Si hay más de 3, montamos el carrusel normal con flechas
+        contenedor.classList.remove('contenedor-centrado');
+    }
+
     // Botón Derecha
     const btnNext = document.createElement('button');
     btnNext.className = 'flecha next';

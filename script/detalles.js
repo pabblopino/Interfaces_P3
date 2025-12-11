@@ -324,15 +324,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         reseñas.forEach(r => {
             const card = document.createElement('div');
-            card.className = 'card';
+            card.className = 'card card-resena-detalle';
+
+            const numEstrellas = r.estrellas || 0;
+            const estrellasHTML = '★'.repeat(numEstrellas) + '<span style="color:#ccc;">' + '★'.repeat(5 - numEstrellas) + '</span>';
+            
             card.innerHTML = `
-                <div class="reseña-foto">
-                    <img src="${r.foto}" alt="${r.nombre}">
+                <div class="reseña-header">
+                    <img src="${r.foto}" alt="${r.nombre}" class="foto-autor">
+                    <div class="datos-autor">
+                        <span class="nombre-autor">${r.nombre}</span>
+                        <div class="estrellas-autor" style="color:gold; letter-spacing:2px;">${estrellasHTML}</div>
+                    </div>
                 </div>
-                <h4>${r.titulo}</h4>
-                <p class="autor">${r.nombre}</p>
-                <p class="descripcion">${r.descripcion}</p>
-                <p class="estrellas">${'★'.repeat(r.estrellas)}${'☆'.repeat(5 - r.estrellas)}</p>
+                <h4 class="titulo-reseña">${r.titulo}</h4>
+                <p class="texto-reseña">"${r.descripcion}"</p>
             `;
             track.appendChild(card);
         });

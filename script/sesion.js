@@ -266,4 +266,33 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(error => console.error("Error inicializando viajes:", error));
     }
+
+    // ------------------------------------------------
+    // 7. MODO DALTÓNICO (ACCESIBILIDAD)
+    // ------------------------------------------------
+    const btnDaltonico = document.getElementById('btnDaltonico');
+
+    // 1. Función para activar/desactivar el modo daltónico
+    const aplicarModoDaltonico = (activado) => {
+        if (activado) {
+            document.body.classList.add('modo-daltonico');
+            localStorage.setItem('modoDaltonico', 'true'); // Guardamos preferencia
+        } else {
+            document.body.classList.remove('modo-daltonico');
+            localStorage.setItem('modoDaltonico', 'false');
+        }
+    };
+
+    // 1. Comprobar preferencia al cargar la página
+    if (localStorage.getItem('modoDaltonico') === 'true') {
+        aplicarModoDaltonico(true);
+    }
+
+    // 2. Evento del botón
+    if (btnDaltonico) {
+        btnDaltonico.addEventListener('click', () => {
+            const estaActivado = document.body.classList.contains('modo-daltonico');
+            aplicarModoDaltonico(!estaActivado); // Invertimos el estado
+        });
+    }
 });
