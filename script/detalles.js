@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const btnReserva = document.getElementById("btn-reservar-link");
         if (btnReserva) {
             btnReserva.href = isEn
-                ? `../reserva.html?id_pack=${packId}`
+                ? `reserva-en.html?id_pack=${packId}`
                 : `reserva.html?id_pack=${packId}`;
         }
     }
