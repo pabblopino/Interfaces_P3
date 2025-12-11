@@ -6,8 +6,8 @@
         <title>Mochileros sin fronteras</title>
         <link rel="stylesheet" href="style/styles.css">
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script type="module" src="script/reserva.js" defer></script>
-        <script type="module" src="script/sesion.js" defer></script>
+        <script type="module" src="script/reserva.js"></script>
+        <script type="module" src="script/sesion.js"></script>
     </head>
     <body>
         <header>
@@ -45,7 +45,6 @@
             </div>
             <div class="usuario-activo" style="display:none;">
                 <span id="nombreUsuario"></span>
-                <img id="imagenUsuario" src="" alt="">
                 <button class="boton-cerrar">Cerrar sesión</button>
             </div>
         </header>
@@ -60,10 +59,10 @@
                 <div class="reserva-grid">
                     
                     <div class="info-viaje">
-                        <h2 class="titulo-destino"></h2>
+                        <h2 class="titulo-destino" aria-live="polite"><span style="visibility:hidden">.</span></h2>
                         
                         <div class="marco-foto">
-                            <img src="" alt="">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Imagen del destino">
                         </div>
 
                         <h2 class="titulo-descripcion">Descripción</h2>
@@ -126,9 +125,10 @@
                                                         <input type="text" name="tipoMascota[]" placeholder="Tipo (ej. Perro)">
                                                         <select name="tamanoMascota[]" class="select-mascota">
                                                             <option value="">Tamaño</option>
-                                                            <option value="pequeno">Pequeño (< 10kg)</option>
+                                                            <option value="pequeno">Pequeño (&lt;10kg)</option>
                                                             <option value="mediano">Mediano (10-25kg)</option>
-                                                            <option value="grande">Grande (> 25kg)</option>
+                                                            <option value="grande">Grande (&gt;25kg)</option>
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -207,7 +207,7 @@
                 <h4>Newsletter</h4>
                 <div id="campos-newsletter">
                     <a href="">Recibe ofertas y consejos de viaje</a>
-                    <form action="" method="get">
+                    <form action="#" method="get">
                         <input id="input-email" type="text" name="Tu Email" placeholder="Email">
                         <button class="btnRegistro" type="submit">Registro</button>
                     </form>
