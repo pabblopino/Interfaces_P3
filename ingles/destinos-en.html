@@ -3,10 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Backpackers Without Borders</title>
+        <title>Destinations - Backpackers Without Borders</title>
         <link rel="stylesheet" href="../style/styles.css">
         <script type="module" src="../script/sesion.js" defer></script>
-        <script type="module" src="../script/index.js" defer></script>
+        <script type="module" src="../script/destinos.js" defer></script>
     </head>
     <body>
         <header>
@@ -14,12 +14,12 @@
                 <img id="imagenUsuario" src="../images/foto_perfil.png" alt="profile_pic">
             </div>
             <div class="enlaces-iniciales">
-                <a href="index_en.html" class="activo">Home</a>
-                <a href="destinos_en.html">Destinations</a>
-                <a href="foro_en.html">Forum/Community</a>
-                <a href="sobre-nosotros_en.html">About Us</a>
+                <a href="index-en.html">Home</a>
+                <a href="" class="activo">Destinations</a>
+                <a href="foro-en.html">Forum/Community</a>
+                <a href="sobre-nosotros-en.html">About Us</a>
                 <a href="" id="linkRecientes">Recent</a>
-                <a href="otros-rincones_en.html">Other Spots</a>
+                <a href="otros-rincones-en.html">Other Spots</a>
             </div>
             <div class="inicio-sesion">
                 <div class="registro">
@@ -42,16 +42,17 @@
             </div>
         </header>
 
-        <main>
+        <main class="pagina-destinos">
+            
             <div class="cabecera-seccion">
-                <h1>HOME</h1>
-                <div class="selector-idioma">
-                    <select>
-                        <option value="es">ESP</option>
-                        <option value="en" selected>ENG</option>
-                    </select>
-                </div>
-                <div class="selector-moneda">
+                    <h1>DESTINATIONS</h1>
+                    <div class="selector-idioma">
+                        <select>
+                            <option value="es">ESP</option>
+                            <option value="en" selected>ENG</option>
+                        </select>
+                    </div>
+                    <div class="selector-moneda">
                         <select>
                             <option value="EUR" selected>€</option>
                             <option value="DOL">$</option>
@@ -59,123 +60,110 @@
                         </select>
                     </div>
             </div>
-            <div class="contenedor-flex">
+            <section class="cabecera-destinos">
                 <div class="contenedor-buscador">
-                    <input type="text" id="inputBusquedaIndex" placeholder="Search destination...">
-                    <button id="btnBusquedaIndex">🔍 Search</button>
+                    <input type="text" placeholder="Where do you want to go? (Ex: Beach, Mountain...)">
+                    <button>🔍 Search</button>
                 </div>
-                <div class="titulo-seccion">
-                    <h2>Featured Destinations</h2>
-                    <hr>
-                </div>
+            </section>
 
-                <div class="galeria">
-                    
-                    <div class="card"  data-precio="450">
-                        <a href="detalles-destino_en.html?id_pack=camping">
-                        <img src="../images/camping.jpg" alt="Trip 1">
+            <section class="layout-grid-destinos">
+                
+                <aside class="sidebar-filtros">
+                    <div class="bloque-filtro">
+                        <h3>Categories</h3>
+                        <button class="btn-filtro-lateral activo">All</button>
+                        <button class="btn-filtro-lateral">Montaña</button>
+                        <button class="btn-filtro-lateral">Playa</button>
+                        <button class="btn-filtro-lateral">Nieve</button>
+                        <button class="btn-filtro-lateral">Ciudad</button>
+                        <button class="btn-filtro-lateral">Rural</button>
+                    </div>
+
+                    <div class="bloque-filtro">
+                        <h3>Max Price</h3>
+                        <input type="range" min="100" max="1000" value="1000" class="slider-precio">
+                        <p>Up to: 1000€</p>
+                    </div>
+                </aside>
+
+                <div class="galeria-resultados" id="contenedorTarjetas">
+    
+                    <div class="card" data-categoria="rural" data-precio="450">
+                        <img src="../images/camping.jpg" alt="Camping">
                         <h3>Camping</h3>
-                        </a>
                         <p class="precio">450 €</p>
                         <div class="acciones">
                             <button class="btn-like">❤</button>
                             <div class="boton-comprar">
-                                <a href="reserva_en.html?id_pack=camping">
-                                    <button class="btn-reservar">Book Now</button>
-                                </a>
+                                <a href="reserva-en.html?id_pack=camping"><button class="btn-reservar">Book Now</button></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card"  data-precio="520">
-                        <a href="detalles-destino_en.html?id_pack=desierto">
-                        <img src="../images/desierto.jpg" alt="Trip 2">
+                    <div class="card" data-categoria="montana" data-precio="520">
+                        <img src="../images/desierto.jpg" alt="Desert">
                         <h3>Desert</h3>
-                        </a>
                         <p class="precio">520€</p>
                         <div class="acciones">
                             <button class="btn-like">❤</button>
                             <div class="boton-comprar">
-                                <a href="reserva_en.html?id_pack=desierto">
-                                    <button class="btn-reservar">Book Now</button>
-                                </a>
+                                <a href="reserva-en.html?id_pack=desierto"><button class="btn-reservar">Book Now</button></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card"  data-precio="380">
-                        <a href="detalles-destino_en.html?id_pack=islandia">
-                        <img src="../images/islandia.jpg" alt="Trip 3">
+                    <div class="card" data-categoria="nieve" data-precio="380">
+                        <img src="../images/islandia.jpg" alt="Iceland">
                         <h3>Iceland</h3>
-                        </a>
                         <p class="precio">380€</p>
                         <div class="acciones">
                             <button class="btn-like">❤</button>
                             <div class="boton-comprar">
-                                <a href="reserva_en.html?id_pack=islandia">
-                                    <button class="btn-reservar">Book Now</button>
-                                </a>
+                                <a href="reserva-en.html?id_pack=islandia"><button class="btn-reservar">Book Now</button></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card"  data-precio="290">
-                        <a href="detalles-destino_en.html?id_pack=patagonia">
-                        <img src="../images/patagonia.jpg" alt="Trip 4">
+                    <div class="card" data-categoria="montana" data-precio="290">
+                        <img src="../images/patagonia.jpg" alt="Patagonia">
                         <h3>Patagonia</h3>
-                        </a>
                         <p class="precio">290€</p>
                         <div class="acciones">
                             <button class="btn-like">❤</button>
                             <div class="boton-comprar">
-                                <a href="reserva_en.html?id_pack=patagonia">
-                                    <button class="btn-reservar">Book Now</button>
-                                </a>
+                                <a href="reserva-en.html?id_pack=patagonia"><button class="btn-reservar">Book Now</button></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card"  data-precio="610">
-                        <a href="detalles-destino_en.html?id_pack=pirineos">
-                        <img src="../images/pirineos.jpg" alt="Trip 5">
+                    <div class="card" data-categoria="nieve" data-precio="610">
+                        <img src="../images/pirineos.jpg" alt="Pyrenees">
                         <h3>Pyrenees</h3>
-                        </a>
                         <p class="precio">610€</p>
                         <div class="acciones">
                             <button class="btn-like">❤</button>
                             <div class="boton-comprar">
-                                <a href="reserva_en.html?id_pack=pirineos">
-                                    <button class="btn-reservar">Book Now</button>
-                                </a>
+                                <a href="reserva-en.html?id_pack=pirineos"><button class="btn-reservar">Book Now</button></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card"  data-precio="450">
-                        <a href="detalles-destino_en.html?id_pack=santiago">
-                        <img src="../images/santiago2.jpg" alt="Trip 6">
+                    <div class="card" data-categoria="ciudad" data-precio="450">
+                        <img src="../images/santiago2.jpg" alt="Santiago">
                         <h3>Santiago</h3>
-                        </a>
                         <p class="precio">450€</p>
                         <div class="acciones">
                             <button class="btn-like">❤</button>
                             <div class="boton-comprar">
-                                <a href="reserva_en.html?id_pack=santiago">
-                                    <button class="btn-reservar">Book Now</button>
-                                </a>
+                                <a href="reserva-en.html?id_pack=santiago"><button class="btn-reservar">Book Now</button></a>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="titulo-seccion">
-                    <h2>Traveler Reviews</h2>
-                    <hr>
-                </div>
-                <div class="galeria-carrusel" id="contenedor-opiniones">
-                
-                </div>
-            </div>
+            </section>
+
         </main>
 
         <footer>
@@ -189,7 +177,7 @@
             </div>
             <div class="footer-grid" id="compania">
                 <h4>Company</h4>
-                <a href="sobre-nosotros_en.html">About Us</a>
+                <a href="sobre-nosotros-en.html">About Us</a>
                 <a href="">Contact</a>
                 <a href="">Work with Us</a>
                 <a href="">Blog</a>

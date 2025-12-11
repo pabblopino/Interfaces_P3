@@ -68,7 +68,7 @@ export function registrarUsuario(datos) {
     alert(isEn ? 'User registered successfully' : 'Usuario registrado correctamente');
     
     // REDIRECCIÓN INTELIGENTE
-    window.location.href = isEn ? 'index_en.html' : 'index.html';
+    window.location.href = isEn ? 'index-en.html' : 'index.html';
 }
 
 export function iniciarSesion(usuario, password) {
@@ -84,5 +84,5 @@ export function iniciarSesion(usuario, password) {
     localStorage.setItem('usuarioActivo', JSON.stringify(encontrado));
     
     // REDIRECCIÓN INTELIGENTE
-    window.location.href = isEn ? 'index_en.html' : 'index.html';
+    window.location.href = isEn ? 'index-en.html' : 'index.html';
 }

@@ -213,7 +213,7 @@ $(document).ready(function() {
             // Si está todo OK, redirigimos a confirmación
             if (isEn) {
                 // Si estamos en la carpeta ingles, busca confirmacion_en.html (que está al lado)
-                window.location.href = "confirmacion-reserva_en.html";
+                window.location.href = "confirmacion-reserva-en.html";
             } else {
                 // Si estamos en español, busca confirmacion.html
                 window.location.href = "confirmacion-reserva.html";

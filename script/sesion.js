@@ -18,19 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (val === 'en') {
                 // Ir a inglés
-                if (file.includes('_en.html')) return; // Ya estamos
-                // Convertir 'destinos.html' -> 'ingles/destinos_en.html'
-                const newFile = file.replace('.html', '_en.html');
-                // Si estamos en la raiz (index.html), vamos a ingles/index_en.html
+                if (file.includes('-en.html')) return; // Ya estamos
+                // Convertir 'destinos.html' -> 'ingles/destinos-en.html'
+                const newFile = file.replace('.html', '-en.html');
+                // Si estamos en la raiz (index.html), vamos a ingles/index-en.html
                 window.location.href = `ingles/${newFile}`; 
                 // NOTA: Si ya estás dentro de /ingles/ por error y quieres recargar, ajusta la ruta, 
-                // pero normalmente desde español vas a `ingles/archivo_en.html`.
+                // pero normalmente desde español vas a `ingles/archivo-en.html`.
             } 
             else if (val === 'es') {
                 // Ir a español
-                if (!file.includes('_en.html')) return; // Ya estamos
-                // Convertir 'destinos_en.html' -> 'destinos.html'
-                const newFile = file.replace('_en.html', '.html');
+                if (!file.includes('-en.html')) return; // Ya estamos
+                // Convertir 'destinos-en.html' -> 'destinos.html'
+                const newFile = file.replace('-en.html', '.html');
                 // Salimos de la carpeta ingles con "../"
                 window.location.href = `../${newFile}`;
             }
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnRegistro = document.querySelector(".btnRegistro");
     if (btnRegistro) {
         btnRegistro.addEventListener("click", () => {
-            window.location.href = isEn ? "registro_en.html" : "registro.html";
+            window.location.href = isEn ? "registro-en.html" : "registro.html";
         });
     }
 
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btnMiPerfil.style.marginLeft = '10px';
 
         btnMiPerfil.addEventListener('click', () => {
-            window.location.href = isEn ? 'perfil_en.html' : 'perfil.html';
+            window.location.href = isEn ? 'perfil-en.html' : 'perfil.html';
         });
         divUsuario.appendChild(btnMiPerfil);
 
@@ -118,10 +118,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (usuarioActivo) {
                 // CASO 1: LOGUEADO -> Ir directo a Mis Viajes
-                window.location.href = isEn ? 'mis_viajes_en.html' : 'mis_viajes.html';
+                window.location.href = isEn ? 'mis-viajes-en.html' : 'mis-viajes.html';
             } else {
                 // CASO 2: NO LOGUEADO -> Ir a Registro
-                window.location.href = isEn ? 'registro_en.html' : 'registro.html';
+                window.location.href = isEn ? 'registro-en.html' : 'registro.html';
             }
         });
     }
@@ -147,8 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const realizarBusqueda = () => {
         const texto = inputBusquedaIndex.value.trim();
         if (texto) {
-            // Si estamos en inglés, mandamos a destinos_en.html
-            const paginaDestino = isEn ? 'destinos_en.html' : 'destinos.html';
+            // Si estamos en inglés, mandamos a destinos-en.html
+            const paginaDestino = isEn ? 'destinos-en.html' : 'destinos.html';
             window.location.href = `${paginaDestino}?q=${encodeURIComponent(texto)}`;
         }
     };
