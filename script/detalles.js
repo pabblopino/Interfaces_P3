@@ -2,9 +2,7 @@ import { agregarReseña } from "./reviews-destino.mjs";
 import { activarCarrusel } from "./carousel.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Detectar si estamos en versión inglés
     const isEn = window.location.pathname.includes('/ingles/');
-
     const params = new URLSearchParams(window.location.search);
     const packId = params.get("id_pack");
 
@@ -169,9 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // -------------------------------
-    // Selección de pack según idioma
-    // -------------------------------
     const packs = isEn ? packs_en : packs_es;
     const pack = packs[packId];
 
@@ -195,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
             selectorMoneda.addEventListener('change', actualizarPrecioVisual);
         }
         actualizarPrecioVisual();
+
         const imgEl = document.getElementById("img-destino");
         if (imgEl) {
             imgEl.src = pack.imagen;
@@ -219,22 +215,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // -------------------------------
-    // Traducción de textos fijos
-    // -------------------------------
     if (isEn) {
         document.querySelector("h3:nth-of-type(1)").textContent = "Description";
         document.querySelector("h3:nth-of-type(2)").textContent = "What’s included?";
         document.querySelector(".btn-reservar-grande").textContent = "Book Now";
         document.querySelector(".cabecera-seccion h2").textContent = "LEAVE YOUR REVIEW";
-
         document.getElementById("tituloExperiencia").placeholder = "Summary of your experience";
         document.getElementById("descExperiencia").placeholder = "Tell us about your trip...";
     }
 
-    // -------------------------------
-    // FORMULARIO DE RESEÑAS
-    // -------------------------------
     const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo')) || {};
     const nombreInput = document.querySelector('#nombreReseña');
 
@@ -261,15 +250,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (form) {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
+
+            // Verificar si el usuario ha iniciado sesión
+            if (!usuarioActivo.nombre) {
+                alert(isEn 
+                    ? "You must log in or register to submit a review." 
+                    : "Debes iniciar sesión o registrarte para enviar una reseña.");
+                return; // Detener el envío
+            }
+
             const tituloVal = document.getElementById('tituloExperiencia').value.trim();
             const descVal = document.getElementById('descExperiencia').value.trim();
 
             try {
                 agregarReseña({
                     foto: usuarioActivo.imagen || (isEn ? "../images/foto_perfil.png" : "images/foto_perfil.png"),
-                    nombre: usuarioActivo.nombre
-                        ? `${usuarioActivo.nombre} ${usuarioActivo.apellidos}`
-                        : (isEn ? "Anonymous" : "Anónimo"),
+                    nombre: `${usuarioActivo.nombre} ${usuarioActivo.apellidos}`,
                     titulo: tituloVal,
                     descripcion: descVal,
                     estrellas: estrellasSeleccionadas
@@ -280,11 +276,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 form.reset();
                 estrellasSeleccionadas = 0;
                 estrellas.forEach(s => (s.style.color = "#ccc"));
-                nombreInput.value = usuarioActivo.nombre
-                    ? `${usuarioActivo.nombre} ${usuarioActivo.apellidos}`
-                    : (isEn ? "Anonymous" : "Anónimo");
+                nombreInput.value = `${usuarioActivo.nombre} ${usuarioActivo.apellidos}`;
 
-                // Volver a pintar el carrusel actualizado
                 pintarReseñasCarrusel(packId);
 
             } catch (err) {
@@ -293,9 +286,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // -------------------------------
-    // CARRUSEL DE RESEÑAS
-    // -------------------------------
     function pintarReseñasCarrusel(packId) {
         const contenedor = document.getElementById('contenedor-reseñas');
         if (!contenedor) return;
@@ -318,17 +308,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const ventana = document.createElement('div');
         ventana.className = 'ventana-carrusel';
-
         const track = document.createElement('div');
         track.className = 'track-carrusel';
 
         reseñas.forEach(r => {
             const card = document.createElement('div');
             card.className = 'card card-resena-detalle';
-
             const numEstrellas = r.estrellas || 0;
             const estrellasHTML = '★'.repeat(numEstrellas) + '<span style="color:#ccc;">' + '★'.repeat(5 - numEstrellas) + '</span>';
-            
+
             card.innerHTML = `
                 <div class="reseña-header">
                     <img src="${r.foto}" alt="${r.nombre}" class="foto-autor">
@@ -351,6 +339,5 @@ document.addEventListener("DOMContentLoaded", () => {
         activarCarrusel('contenedor-reseñas');
     }
 
-    // Pintar carrusel al cargar
     pintarReseñasCarrusel(packId);
 });
