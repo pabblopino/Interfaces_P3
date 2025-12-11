@@ -109,10 +109,42 @@ $(document).ready(function() {
 
     if (pack) {
         $(".titulo-destino").text(pack.nombre);
-        $(".precio-numero").text(pack.precio);
         $(".texto-descripcion p").text(pack.detalle);
         $(".marco-foto img").attr("src", pack.imagen).attr("alt", pack.nombre);
         
+        // --- NUEVA LÓGICA DE PRECIO Y MONEDA ---
+        
+        // 1. Definimos las tasas (igual que en los otros archivos)
+        const tasasCambio = {
+            'EUR': { factor: 1, simbolo: '€' },
+            'DOL': { factor: 1.17, simbolo: '$' },
+            'LIB': { factor: 0.87, simbolo: '£' }
+        };
+
+        // 2. Obtenemos el precio base numérico (quitamos el €)
+        const precioBase = parseFloat(pack.precio.replace('€', '').trim());
+
+        // 3. Función para actualizar el precio en pantalla
+        const actualizarPrecio = () => {
+            // Buscamos el valor del select (si no existe, por defecto EUR)
+            const moneda = $('.selector-moneda select').val() || 'EUR';
+            const { factor, simbolo } = tasasCambio[moneda];
+            
+            // Calculamos
+            const precioFinal = Math.round(precioBase * factor);
+            
+            // Pintamos en el HTML
+            $(".precio-numero").text(`${precioFinal}${simbolo}`);
+        };
+
+        // 4. Ejecutar al inicio
+        actualizarPrecio();
+
+        // 5. Escuchar cambios en el select (jQuery)
+        $('.selector-moneda select').on('change', actualizarPrecio);
+
+        // --- FIN NUEVA LÓGICA ---
+
         const $lista = $(".lista-incluye");
         $lista.empty();
         pack.incluye.forEach(function(item) {
