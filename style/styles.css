@@ -1018,9 +1018,7 @@ a:hover {
     .lista-reseñas {
         grid-template-columns: 1fr;
     }
-    .lista-reseñas .slide {
-    min-width: 400px;
-}
+    
 .contenedor-review {
     max-width: 460px;
 }

@@ -6,8 +6,8 @@
     <title>Destination Details</title>
     <link rel="stylesheet" href="../style/styles.css">
     
-    <script type="module" src="../script/sesion.js" defer></script>
-    <script type="module" src="../script/detalles.js" defer></script>
+    <script type="module" src="../script/sesion.js"></script>
+    <script type="module" src="../script/detalles.js"></script>
 </head>
 <body>
     <header>
@@ -37,23 +37,22 @@
                     <input type="password" id="password" placeholder="Password" aria-label="Password">
                 </div>
                 <div class="botones">
-                    <button type="button" id="btnIniciarSesion">Log in</button>
-                    <button type="button" class="btnRegistro">Sign up</button>
+                    <button type="button" id="btnIniciarSesion">Log In</button>
+                    <button type="button" class="btnRegistro">Sign Up</button>
                 </div>
             </div> 
         </div>
         <div class="usuario-activo" style="display:none;">
             <span id="nombreUsuario"></span>
-            <img id="imagenUsuarioActivo" src="" alt="">
-            <button class="boton-cerrar">Log out</button>
+            <button class="boton-cerrar">Log Out</button>
         </div>
     </header>
 
     <main>
         <div class="ficha-viaje">
             <div class="cabecera-seccion">
-                <h1 id="titulo-destino"></h1> 
-
+                <h1 id="titulo-destino">Loading destination…</h1> 
+                
                 <div class="selector-moneda">
                     <select aria-label="Select currency">
                         <option value="EUR" selected>€</option>
@@ -61,13 +60,11 @@
                         <option value="LIB">£</option>
                     </select>
                 </div>
-                
             </div>
 
             <div class="contenido-ficha">
-                
                 <div class="hero-imagen">
-                    <img id="img-destino" src="" alt="Destination image">
+                    <img id="img-destino" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Destination image">
                 </div>
 
                 <div class="panel-info">
@@ -80,8 +77,8 @@
                     <ul id="lista-incluye" class="lista-check"></ul>
 
                     <div class="acciones-ficha">
-                        <a id="btn-reservar-link" href="#">
-                            <button class="btn-reservar-grande">Book Now</button>
+                        <a id="btn-reservar-link" href="#" class="btn-reservar-grande">
+                            Book Now
                         </a>
                     </div>
                 </div>
@@ -89,14 +86,13 @@
         </div>
 
         <div class="seccion-opiniones">
-            <div class="galeria-carrusel" id="contenedor-reseñas">
-                <!-- Se generarán dinámicamente las tarjetas de reseñas -->
-            </div>
             <div class="cabecera-seccion">
                 <h2>LEAVE YOUR REVIEW</h2>
             </div>
 
-            <div id="contenedor-reseñas" style="display: none;"></div>
+            <div class="galeria-carrusel" id="contenedor-reseñas">
+                <!-- Se generarán dinámicamente las tarjetas de reseñas -->
+            </div>
 
             <div class="contenedor-review">
                 <form class="form-review">
@@ -159,9 +155,9 @@
             <h4>Newsletter</h4>
             <div id="campos-newsletter">
                 <a href="">Get travel deals and tips</a>
-                <form action="" method="get">
+                <form action="#" method="get">
                     <input id="input-email" type="text" name="Your Email" placeholder="Email" aria-label="Enter your email address">
-                    <button class="btnRegistro" type="submit">Sign up</button>
+                    <button class="btnRegistro" type="submit">Sign Up</button>
                 </form>
             </div>
         </div>
