@@ -1,125 +1,122 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mochileros sin fronteras</title>
-        <link rel="stylesheet" href="style/styles.css">
-        <script type="module" src="script/sesion.js" ></script>
-        <script type="module" src="script/perfil.js" ></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mochileros sin fronteras - Mi Perfil</title>
+    <link rel="stylesheet" href="style/styles.css">
+    <script type="module" src="script/sesion.js"></script>
+    <script type="module" src="script/perfil.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <!-- Perfil -->
+        <div id="foto-perfil">
+            <img id="imagenUsuario" src="images/foto_perfil.png" alt="Foto de perfil del usuario">
+        </div>
 
+        <!-- Navegación -->
+        <div class="enlaces-iniciales">
+            <a href="index.html">Inicio</a>
+            <a href="destinos.html">Destinos</a>
+            <a href="foro.html">Foro/Comunidad</a>
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="" id="linkRecientes">Recientes</a>
+            <a href="otros-rincones.html">Otros Rincones</a>
+            <button id="btnDaltonico" class="btn-accesibilidad" title="Modo Daltónico" aria-label="Activar modo daltónico">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+            </button>
+        </div>
 
-    </head>
-    <body>
-        <!-- HEADER -->
-        <header>
-            <!-- Izquierda -->
-            <div class="" id="foto-perfil">
-                <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
-            </div>
-            <!-- Centro -->
-            <div class="enlaces-iniciales">
-                <a href="index.html">Inicio</a>
-                <a href="destinos.html">Destinos</a>
-                <a href="foro.html">Foro/Comunidad</a>
-                <a href="sobre-nosotros.html">Sobre Nosotros</a>
-                <a href="" id="linkRecientes">Recientes</a>
-                <a href="otros-rincones.html">Otros Rincones</a>
-                <button id="btnDaltonico" class="btn-accesibilidad" title="Modo Daltónico">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Derecha -->
-            <div class="inicio-sesion">
-                <!--Apartado de registro-->
-                <div class="registro">
-                    <div class="input-usuario">
-                        <input type="text" id="usuario" placeholder="Usuario">
-                    </div>
-                    <div class="input-usuario">
-                        <input type="password" id="password" placeholder="Contraseña">
-                
-                    </div>
-
-                    <div class="botones">
-                        <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
-                        <button type="button" id="btnRegistro">Registro</button>
-                    </div>
-                </div> 
-            </div>
-            <div class="usuario-activo" style="display:none;">
-                <span id="nombreUsuario"></span>
-                <button class="boton-cerrar">Cerrar sesión</button>
-            </div>
-        </header>
-
-        <!-- MAIN -->
-        <main>
-            <div class="cabecera-seccion">
-                    <h1>MI PERFIL</h1>
-                    <div class="selector-idioma">
-                        <select>
-                            <option value="es" selected>ESP</option>
-                            <option value="en">ENG</option>
-                        </select>
-                    </div>
-            </div>
-            <div id="mi-perfil" class="perfil-container">
-                <div class="perfil-card">
-                    <img id="perfil-foto" src="images/foto_perfil.png" alt="Foto de usuario">
-                    <h2 id="perfil-nombre">Nombre Usuario</h2>
-                    <p id="perfil-correo">correo@ejemplo.com</p>
-
-                    <button id="btnCambiarPassword">Cambiar contraseña</button>
-                    <button id="btnMisViajes">Mis viajes</button>
-                    <button id="btnCerrarSesion">Cerrar sesión</button>
+        <!-- Inicio de sesión -->
+        <div class="inicio-sesion">
+            <div class="registro">
+                <div class="input-usuario">
+                    <label for="usuario" class="visually-hidden">Usuario</label>
+                    <input type="text" id="usuario" placeholder="Usuario">
                 </div>
-            </div>
-        </main>
+                <div class="input-usuario">
+                    <label for="password" class="visually-hidden">Contraseña</label>
+                    <input type="password" id="password" placeholder="Contraseña">
+                </div>
+                <div class="botones">
+                    <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
+                    <button type="button" id="btnRegistro">Registro</button>
+                </div>
+            </div> 
+        </div>
 
-        <!-- FOOTER -->
-        <footer>
-            <div class="footer-grid" id="redes-sociales">
-                <div id="enlaces-redes">
-                    <a href="https://www.instagram.com" target="_blank">
-                        <img src="images/logo_instagram.png" alt="Instagram">
-                    </a>
-                    <a href="https://www.tiktok.com/" target="_blank">
-                        <img src="images/logo_tiktok.png" alt="TikTok">
-                    </a>
-                    <a href="https://www.youtube.com/" target="_blank">
-                        <img src="images/logo_youtube.png" alt="YouTube">
-                    </a>
-                </div>
-                <p>&copy; 2025 Mochileros sin fronteras</p>
+        <div class="usuario-activo" style="display:none;">
+            <span id="nombreUsuario"></span>
+            <button class="boton-cerrar">Cerrar sesión</button>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+        <div class="cabecera-seccion">
+            <h1>MI PERFIL</h1>
+            <div class="selector-idioma">
+                <label for="select-idioma" class="visually-hidden">Seleccionar idioma</label>
+                <select id="select-idioma">
+                    <option value="es" selected>ESP</option>
+                    <option value="en">ENG</option>
+                </select>
             </div>
-            <div class="footer-grid" id="compania">
-                <h4>Compañía</h4>
-                <a href="sobre-nosotros.html">Sobre Nosotros</a>
-                <a href="">Contacto</a>
-                <a href="">Trabaja con Nosotros</a>
-                <a href="">Blog</a>
+        </div>
+
+        <div id="mi-perfil" class="perfil-container">
+            <div class="perfil-card">
+                <img id="perfil-foto" src="images/foto_perfil.png" alt="Foto de usuario">
+                <h2 id="perfil-nombre">Nombre Usuario</h2>
+                <p id="perfil-correo">correo@ejemplo.com</p>
+
+                <button id="btnCambiarPassword">Cambiar contraseña</button>
+                <button id="btnMisViajes">Mis viajes</button>
+                <button id="btnCerrarSesion">Cerrar sesión</button>
             </div>
-            <div class="footer-grid" id="legal">
-                <h4>Legal</h4>
-                <a href="">Términos</a>
-                <a href="">Privacidad</a>
-                <a href="">Cookies</a>
-                <a href="">Política de Reembolso</a>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid" id="redes-sociales">
+            <div id="enlaces-redes">
+                <a href="https://www.instagram.com" target="_blank"><img src="images/logo_instagram.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/" target="_blank"><img src="images/logo_tiktok.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/" target="_blank"><img src="images/logo_youtube.png" alt="YouTube"></a>
             </div>
-            <div class="footer-grid" id="newsletter">
-                <h4>Newsletter</h4>
-                <div id="campos-newsletter">
-                    <a href="">Recibe ofertas y consejos de viaje</a>
-                    <form action="#" method="get">
-                        <input id="input-email" type="text" name="Tu Email" placeholder="Email">
-                        <button class="btnRegistro" type="submit">Registro</button>
-                    </form>
-                </div>
+            <p>&copy; 2025 Mochileros sin fronteras</p>
+        </div>
+        <div class="footer-grid" id="compania">
+            <h4>Compañía</h4>
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="">Contacto</a>
+            <a href="">Trabaja con Nosotros</a>
+            <a href="">Blog</a>
+        </div>
+        <div class="footer-grid" id="legal">
+            <h4>Legal</h4>
+            <a href="">Términos</a>
+            <a href="">Privacidad</a>
+            <a href="">Cookies</a>
+            <a href="">Política de Reembolso</a>
+        </div>
+        <div class="footer-grid" id="newsletter">
+            <h4>Newsletter</h4>
+            <div id="campos-newsletter">
+                <a href="">Recibe ofertas y consejos de viaje</a>
+                <form action="#" method="get">
+                    <label for="input-email" class="visually-hidden">Email</label>
+                    <input id="input-email" type="text" name="Tu Email" placeholder="Email">
+                    <button class="btnRegistro" type="submit">Registro</button>
+                </form>
             </div>
-        </footer>
-    </body>
+        </div>
+    </footer>
+</body>
+</html>

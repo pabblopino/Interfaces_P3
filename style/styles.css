@@ -383,6 +383,21 @@ a:hover {
     left: 50%;
     transform: translateX(-50%);
 }
+/* ===== Línea más corta para Tablet ===== */
+@media (max-width: 768px) {
+    .cabecera-seccion h1::after,
+    .cabecera-seccion h2::after {
+        width: 450px; /* cambia si quieres */
+    }
+}
+
+/* ===== Línea más corta para Móvil ===== */
+@media (max-width: 600px) {
+    .cabecera-seccion h1::after,
+    .cabecera-seccion h2::after {
+        width: 250px; /* cambia si quieres */
+    }
+}
 
 .selector-idioma {
     position: absolute;
@@ -493,6 +508,38 @@ a:hover {
     padding: 20px;
     display: flex;
     flex-direction: column;
+}
+/* 📱 Tablets */
+@media (max-width: 768px) {
+    #contenedor-grid-rincones {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .filtro-btn {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+
+    .barra-filtros {
+        padding: 8px;
+        gap: 8px;
+    }
+
+}
+
+/* 📱📱 Móviles */
+@media (max-width: 600px) {
+    #contenedor-grid-rincones {
+        grid-template-columns: 1fr;
+    }
+    .filtro-btn {
+        padding: 7px 12px;
+        font-size: 12px;
+    }
+
+    .barra-filtros {
+        border-radius: 30px;
+        gap: 6px;
+    }
 }
 
 /* ---------------- CONTENEDOR PRINCIPAL ---------------- */
@@ -677,11 +724,7 @@ a:hover {
 
 /* ---------------- OPINIONES / SECCIÓN DERECHA ---------------- */
 
-.carrusel {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
+
 
 /* Flechas */
 .flecha {
@@ -770,7 +813,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px 20px;
+    padding: 50px 0px;
     width: 100%;
 }
 
@@ -830,7 +873,7 @@ a:hover {
     width: 100%;
     max-width: 860px;
     margin: auto;
-    padding: 40px 20px;
+    padding: 40px 0px;
     text-align: center;
 }
 
@@ -839,13 +882,7 @@ a:hover {
     margin-bottom: 10px;
 }
 
-.contenedor-review hr {
-    border: 0;
-    height: 2px;
-    background-color: black;
-    margin: 0 auto;
-    border-radius: 2px;
-}
+
 
 /* FORMULARIO */
 .form-review {
@@ -966,10 +1003,13 @@ a:hover {
 }
 
 /* Tablets: 2 columnas */
-@media (max-width: 768px) {
+@media (max-width: 868px) {
     .lista-reseñas {
         grid-template-columns: repeat(2, 1fr);
     }
+    .contenedor-review {
+    max-width: 660px;
+}
 }
 
 /* Móviles: 1 columna */
@@ -979,6 +1019,9 @@ a:hover {
     }
     .lista-reseñas .slide {
     min-width: 400px;
+}
+.contenedor-review {
+    max-width: 460px;
 }
 }
 
@@ -1110,6 +1153,7 @@ a:hover {
 .registro-banner {
     width: 100%;
     background: gray;
+    font-weight: bold;
     color: white;
     text-align: center;
     padding: 50px 0px;
@@ -1121,6 +1165,9 @@ a:hover {
 .registro-banner h1 {
     font-size: 32px;
     margin-bottom: 10px;
+}
+.registro-banner p {
+    color: black;
 }
 
 /* CONTENEDOR REGISTRO */
@@ -1228,13 +1275,15 @@ input[type="file"] {
 /* Botón Cerrar Sesión */
 .boton-cerrar {
     background-color: red;
-    color: white;
+    color: black;
     border: none;
     padding: 8px 12px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
     transition: background 0.2s;
+    font-weight: bold; /* Texto en negrita */
+
 }
 
 .boton-cerrar:hover {
@@ -1481,7 +1530,10 @@ input[type="month"] {
     color: #555;
     line-height: 1.8;
     position: relative;
-    text-align: justify; /* Queda mejor en anchos grandes */
+    text-align: left !important; /* Queda mejor en anchos grandes */
+}
+.texto-descripcion p{
+    text-align: left !important;
 }
 
 /* --- COLUMNA DERECHA (SIDEBAR) --- */
@@ -1843,7 +1895,7 @@ textarea {
     display: grid;
     /* Grid responsive: crea tantas columnas como quepan (mínimo 280px) */
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 40px;
 }
 
 /* Reutilizamos .card existente, pero nos aseguramos que la imagen llene bien */
@@ -2336,7 +2388,7 @@ body.modo-daltonico .btn-accesibilidad {
 body.modo-daltonico .boton-cerrar {
     background-color: #007bff !important;
     border: 1px solid #555 !important;
-    color: #fff !important;
+    color: black !important;
 }
 
 body.modo-daltonico .boton-cerrar:hover {
@@ -2428,3 +2480,13 @@ body.modo-daltonico .confirmacion-texto h3 {
     transform: scale(1.2);
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+}

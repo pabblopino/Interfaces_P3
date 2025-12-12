@@ -1,155 +1,161 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mochileros sin fronteras</title>
-        <link rel="stylesheet" href="style/styles.css">
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script type="module" src="script/reserva.js"></script>
-        <script type="module" src="script/sesion.js"></script>
-    </head>
-    <body>
-        <header>
-            <div class="" id="foto-perfil">
-                <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
-            </div>
-            <div class="enlaces-iniciales">
-                <a href="index.html">Inicio</a>
-                <a href="destinos.html">Destinos</a>
-                <a href="foro.html">Foro/Comunidad</a>
-                <a href="sobre-nosotros.html">Sobre Nosotros</a>
-                <a href="" id="linkRecientes">Recientes</a>
-                <a href="otros-rincones.html">Otros Rincones</a>
-                <button id="btnDaltonico" class="btn-accesibilidad" title="Modo Daltónico">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    </svg>
-                </button>
-            </div>
-
-            <div class="inicio-sesion">
-                <div class="registro">
-                    <div class="input-usuario">
-                        <input type="text" id="usuario" placeholder="Usuario">
-                    </div>
-                    <div class="input-usuario">
-                        <input type="password" id="password" placeholder="Contraseña">
-                    </div>
-                    <div class="botones">
-                        <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
-                        <button type="button" class="btnRegistro">Registro</button>
-                    </div>
-                </div> 
-            </div>
-            <div class="usuario-activo" style="display:none;">
-                <span id="nombreUsuario"></span>
-                <button class="boton-cerrar">Cerrar sesión</button>
-            </div>
-        </header>
-
-        <main class="reserva">
-            <div class="cabecera-seccion">
-                <h1>RESERVA DE VIAJES</h1>
-
-                <div class="selector-moneda">
-                    <select>
-                        <option value="EUR" selected>€</option>
-                        <option value="DOL">$</option>
-                        <option value="LIB">£</option>
-                    </select>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mochileros sin fronteras</title>
+    <link rel="stylesheet" href="style/styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="module" src="script/reserva.js"></script>
+    <script type="module" src="script/sesion.js"></script>
+</head>
+<body>
+    <header>
+        <div id="foto-perfil">
+            <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
+        </div>
+        <div class="enlaces-iniciales">
+            <a href="index.html">Inicio</a>
+            <a href="destinos.html">Destinos</a>
+            <a href="foro.html">Foro/Comunidad</a>
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="" id="linkRecientes">Recientes</a>
+            <a href="otros-rincones.html">Otros Rincones</a>
+            <button id="btnDaltonico" class="btn-accesibilidad" aria-label="Modo Daltónico">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="inicio-sesion">
+            <div class="registro">
+                <div class="input-usuario">
+                    <label for="usuario" class="visually-hidden">Usuario</label>
+                    <input type="text" id="usuario" placeholder="Usuario">
                 </div>
-                
+                <div class="input-usuario">
+                    <label for="password" class="visually-hidden">Contraseña</label>
+                    <input type="password" id="password" placeholder="Contraseña">
+                </div>
+                <div class="botones">
+                    <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
+                    <button type="button" class="btnRegistro">Registro</button>
+                </div>
             </div>
-            <div class="contenedor-reserva-page">
+        </div>
+        <div class="usuario-activo" style="display:none;">
+            <span id="nombreUsuario"></span>
+            <button class="boton-cerrar">Cerrar sesión</button>
+        </div>
+    </header>
 
-                <div class="reserva-grid">
-                    
-                    <div class="info-viaje">
-                        <h2 class="titulo-destino" aria-live="polite"><span style="visibility:hidden">.</span></h2>
-                        
-                        <div class="marco-foto">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Imagen del destino">
-                        </div>
+    <main class="reserva">
+        <div class="cabecera-seccion">
+            <h1>RESERVA DE VIAJES</h1>
+            <div class="selector-moneda">
+                <label for="moneda" class="visually-hidden">Seleccionar moneda</label>
+                <select id="moneda" name="moneda">
+                    <option value="EUR" selected>€</option>
+                    <option value="DOL">$</option>
+                    <option value="LIB">£</option>
+                </select>
+            </div>
+        </div>
 
-                        <h2 class="titulo-descripcion">Descripción</h2>
-                        <div class="texto-descripcion">
-                            <p></p>
-                        </div>
+        <div class="contenedor-reserva-page">
+            <div class="reserva-grid">
+                <div class="info-viaje">
+                    <h2 class="titulo-destino" aria-live="polite"><span style="visibility:hidden">.</span></h2>
+                    <div class="marco-foto">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Imagen del destino">
+                    </div>
+                    <h2 class="titulo-descripcion">Descripción</h2>
+                    <div class="texto-descripcion">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="sidebar-compra">
+                    <div class="caja-precio">
+                        <h3>Precio</h3>
+                        <div class="precio-numero"></div>
+                        <ul class="lista-incluye">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
                     </div>
 
-                    <div class="sidebar-compra">
-                        
-                        <div class="caja-precio">
-                            <h3>Precio</h3>
-                            <div class="precio-numero"></div>
-                            <ul class="lista-incluye">
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </div>
-
-                        <div class="formulario-registro">
-                            <h2>Formulario de compra</h2>
-
-                            <form id="formularioCompra" name="compra" novalidate>
-                                <input type="text" id="nombreCompleto" name="nombreCompleto" placeholder="Nombre Completo*" required>
+                    <div class="formulario-registro">
+                        <h2>Formulario de compra</h2>
+                        <form id="formularioCompra" name="compra" novalidate>
+                            <div class="campo">
+                                <label for="nombreCompleto">Nombre Completo*</label>
+                                <input type="text" id="nombreCompleto" name="nombreCompleto" required>
                                 <p class="error-texto" id="errorNombreCompleto"></p>
+                            </div>
 
-                                <input type="email" id="correo" name="correo" placeholder="Correo electrónico*" required>
+                            <div class="campo">
+                                <label for="correo">Correo electrónico*</label>
+                                <input type="email" id="correo" name="correo" required>
                                 <p class="error-texto" id="errorCorreo"></p>
+                            </div>
 
-                                <div class="bloque-opciones">
-                                    <button type="button" id="btnOpcionesAdicionales" class="btn-toggle-opciones">
-                                        Opciones adicionales del viaje <span>&#9660;</span>
-                                    </button>
-                                    
-                                    <div id="contenidoOpciones" class="contenido-desplegable">
-                                        
-                                        <div class="item-opcion">
-                                            <label class="check-label">
-                                                <input type="checkbox" id="checkAcompanantes"> Viajo con acompañantes
-                                            </label>
-                                            <div id="infoAcompanantes" class="bloque-oculto">
-                                                <div id="listaAcompanantes">
-                                                    <div class="fila-acompanante">
-                                                        <input type="text" name="nombreAcompanante[]" placeholder="Nombre completo">
-                                                        <input type="email" name="emailAcompanante[]" placeholder="Email">
-                                                    </div>
+                            <div class="bloque-opciones">
+                                <button type="button" id="btnOpcionesAdicionales" class="btn-toggle-opciones" aria-expanded="false">
+                                    Opciones adicionales del viaje <span>&#9660;</span>
+                                </button>
+
+                                <div id="contenidoOpciones" class="contenido-desplegable" hidden>
+                                    <div class="item-opcion">
+                                        <input type="checkbox" id="checkAcompanantes" name="checkAcompanantes">
+                                        <label for="checkAcompanantes">Viajo con acompañantes</label>
+                                        <div id="infoAcompanantes" class="bloque-oculto">
+                                            <div id="listaAcompanantes">
+                                                <div class="fila-acompanante">
+                                                    <label for="nombreAcompanante1" class="visually-hidden">Nombre del acompañante 1</label>
+                                                    <input type="text" id="nombreAcompanante1" name="nombreAcompanante[]" placeholder="Nombre completo">
+
+                                                    <label for="emailAcompanante1" class="visually-hidden">Email del acompañante 1</label>
+                                                    <input type="email" id="emailAcompanante1" name="emailAcompanante[]" placeholder="Email">
                                                 </div>
-                                                <button type="button" id="btnMasAcompanante" class="btn-anadir-small">+ Añadir otro</button>
                                             </div>
-                                        </div>
-
-                                        <div class="item-opcion">
-                                            <label class="check-label">
-                                                <input type="checkbox" id="checkMascota"> Viajo con mascota
-                                            </label>
-                                            <div id="infoMascota" class="bloque-oculto">
-                                                <div id="listaMascotas">
-                                                    <div class="fila-mascota">
-                                                        <input type="text" name="tipoMascota[]" placeholder="Tipo (ej. Perro)">
-                                                        <select name="tamanoMascota[]" class="select-mascota">
-                                                            <option value="">Tamaño</option>
-                                                            <option value="pequeno">Pequeño (&lt;10kg)</option>
-                                                            <option value="mediano">Mediano (10-25kg)</option>
-                                                            <option value="grande">Grande (&gt;25kg)</option>
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <button type="button" id="btnMasMascota" class="btn-anadir-small">+ Añadir otra mascota</button>
-                                            </div>
-                                        </div>
-
-                                        <div class="item-opcion">
-                                            <label class="label-alergias">Intolerancias o Alergias:</label>
-                                            <textarea name="alergias" rows="3" placeholder="Indica aquí si algún viajero tiene alergias..."></textarea>
+                                            <button type="button" id="btnMasAcompanante" class="btn-anadir-small">+ Añadir otro</button>
                                         </div>
                                     </div>
+
+                                    <div class="item-opcion">
+                                        <input type="checkbox" id="checkMascota" name="checkMascota">
+                                        <label for="checkMascota">Viajo con mascota</label>
+                                        <div id="infoMascota" class="bloque-oculto">
+                                            <div id="listaMascotas">
+                                                <div class="fila-mascota">
+                                                    <label for="tipoMascota1" class="visually-hidden">Tipo de mascota</label>
+                                                    <input type="text" id="tipoMascota1" name="tipoMascota[]" placeholder="Tipo (ej. Perro)">
+
+                                                    <label for="tamanoMascota1" class="visually-hidden">Tamaño de la mascota</label>
+                                                    <select id="tamanoMascota1" name="tamanoMascota[]" class="select-mascota">
+                                                        <option value="">Tamaño</option>
+                                                        <option value="pequeno">Pequeño (&lt;10kg)</option>
+                                                        <option value="mediano">Mediano (10-25kg)</option>
+                                                        <option value="grande">Grande (&gt;25kg)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button type="button" id="btnMasMascota" class="btn-anadir-small">+ Añadir otra mascota</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="item-opcion">
+                                        <label for="alergias">Intolerancias o Alergias:</label>
+                                        <textarea id="alergias" name="alergias" rows="3" placeholder="Indica aquí si algún viajero tiene alergias..."></textarea>
+                                    </div>
                                 </div>
+                            </div>
+
+                            <div class="campo">
+                                <label for="tipoTarjeta">Tipo de tarjeta*</label>
                                 <select id="tipoTarjeta" name="tipoTarjeta" required>
                                     <option value="">Tipo de tarjeta*</option>
                                     <option value="Visa">Visa</option>
@@ -157,70 +163,75 @@
                                     <option value="AMEX">American Express</option>
                                 </select>
                                 <p class="error-texto" id="errorTipoTarjeta"></p>
+                            </div>
 
-                                <input type="text" id="numeroTarjeta" name="numeroTarjeta" placeholder="Número de tarjeta*" required>
+                            <div class="campo">
+                                <label for="numeroTarjeta">Número de tarjeta*</label>
+                                <input type="text" id="numeroTarjeta" name="numeroTarjeta" required>
                                 <p class="error-texto" id="errorNumeroTarjeta"></p>
+                            </div>
 
-                                <input type="text" id="titularTarjeta" name="titularTarjeta" placeholder="Titular de la tarjeta*" required>
+                            <div class="campo">
+                                <label for="titularTarjeta">Titular de la tarjeta*</label>
+                                <input type="text" id="titularTarjeta" name="titularTarjeta" required>
                                 <p class="error-texto" id="errorTitularTarjeta"></p>
+                            </div>
 
-                                <div class="pago-tarjeta">
+                            <div class="pago-tarjeta">
+                                <div class="campo">
+                                    <label for="fechaCaducidad">Fecha de caducidad*</label>
                                     <input type="month" id="fechaCaducidad" name="fechaCaducidad" required>
-                                    <input type="text" id="cvv" name="cvv" placeholder="CVV*" required>
-                                </div>
-                                <div class="fila-error">
                                     <p class="error-texto" id="errorFechaCaducidad"></p>
+                                </div>
+                                <div class="campo">
+                                    <label for="cvv">CVV*</label>
+                                    <input type="text" id="cvv" name="cvv" required>
                                     <p class="error-texto" id="errorCvv"></p>
                                 </div>
-                                
-                                <div class="botones-form">
-                                    <button type="submit" id="btnComprar">Comprar</button>
-                                    <button type="button" id="btnBorrar">Borrar</button>
-                                </div>
-                            </form>
-                        </div> 
-                    </div> </div> </div> 
-        </main>
+                            </div>
 
-        <footer>
-            <div class="footer-grid" id="redes-sociales">
-                <div id="enlaces-redes">
-                    <a href="https://www.instagram.com" target="_blank">
-                        <img src="images/logo_instagram.png" alt="Instagram">
-                    </a>
-                    <a href="https://www.tiktok.com/" target="_blank">
-                        <img src="images/logo_tiktok.png" alt="TikTok">
-                    </a>
-                    <a href="https://www.youtube.com/" target="_blank">
-                        <img src="images/logo_youtube.png" alt="YouTube">
-                    </a>
-                </div>
-                <p>&copy; 2025 Mochileros sin fronteras</p>
-            </div>
-            <div class="footer-grid" id="compania">
-                <h4>Compañía</h4>
-                <a href="sobre-nosotros.html">Sobre Nosotros</a>
-                <a href="">Contacto</a>
-                <a href="">Trabaja con Nosotros</a>
-                <a href="">Blog</a>
-            </div>
-            <div class="footer-grid" id="legal">
-                <h4>Legal</h4>
-                <a href="">Términos</a>
-                <a href="">Privacidad</a>
-                <a href="">Cookies</a>
-                <a href="">Política de Reembolso</a>
-            </div>
-            <div class="footer-grid" id="newsletter">
-                <h4>Newsletter</h4>
-                <div id="campos-newsletter">
-                    <a href="">Recibe ofertas y consejos de viaje</a>
-                    <form action="#" method="get">
-                        <input id="input-email" type="text" name="Tu Email" placeholder="Email">
-                        <button class="btnRegistro" type="submit">Registro</button>
-                    </form>
+                            <div class="botones-form">
+                                <button type="submit" id="btnComprar">Comprar</button>
+                                <button type="button" id="btnBorrar">Borrar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </footer>
-    </body>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid" id="redes-sociales">
+            <div id="enlaces-redes">
+                <a href="https://www.instagram.com" target="_blank"><img src="images/logo_instagram.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/" target="_blank"><img src="images/logo_tiktok.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/" target="_blank"><img src="images/logo_youtube.png" alt="YouTube"></a>
+            </div>
+            <p>&copy; 2025 Mochileros sin fronteras</p>
+        </div>
+        <div class="footer-grid" id="compania">
+            <h4>Compañía</h4>
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="">Contacto</a>
+            <a href="">Trabaja con Nosotros</a>
+            <a href="">Blog</a>
+        </div>
+        <div class="footer-grid" id="legal">
+            <h4>Legal</h4>
+            <a href="">Términos</a>
+            <a href="">Privacidad</a>
+            <a href="">Cookies</a>
+            <a href="">Política de Reembolso</a>
+        </div>
+        <div class="footer-grid" id="newsletter">
+            <h4>Newsletter</h4>
+            <div id="campos-newsletter">
+                <label for="input-email" class="visually-hidden">Correo electrónico</label>
+                <input id="input-email" type="text" name="Tu Email" placeholder="Email">
+                <button class="btnRegistro" type="submit">Registro</button>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>

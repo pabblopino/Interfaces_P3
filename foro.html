@@ -15,7 +15,7 @@
         <header>
             <!-- Izquierda -->
             <div class="" id="foto-perfil">
-                <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
+                <img id="imagenUsuario" src="images/foto_perfil.png" alt="Foto de perfil del usuario">
             </div>
             <!-- Centro -->
             <div class="enlaces-iniciales">
@@ -38,12 +38,15 @@
                 <!--Apartado de registro-->
                 <div class="registro">
                     <div class="input-usuario">
+                        <label for="usuario" class="visually-hidden">Nombre de usuario</label>
                         <input type="text" id="usuario" placeholder="Usuario">
                     </div>
+
                     <div class="input-usuario">
+                        <label for="password" class="visually-hidden">Contraseña</label>
                         <input type="password" id="password" placeholder="Contraseña">
-                
                     </div>
+
 
                     <div class="botones">
                         <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
@@ -62,32 +65,35 @@
             <div class="cabecera-seccion">
                     <h1>ESCRIBE TU RESEÑA</h1>
                     <div class="selector-idioma">
-                        <select>
-                            <option value="es" selected>ESP</option>
-                            <option value="en">ENG</option>
-                        </select>
+                        <label for="idiomaSelect" class="visually-hidden">Selecciona idioma</label>
+                            <select id="idiomaSelect">
+                                <option value="es" selected>ESP</option>
+                                <option value="en">ENG</option>
+                            </select>
                     </div>
             </div>
             <div class="contenedor-review">
 
                 <form class="form-review">
                     <!-- NOMBRE -->
+                    <!-- NOMBRE -->
                     <div class="campo-foro">
-                        <label>Tu nombre</label>
+                        <label for="nombreReseña">Tu nombre</label>
                         <input type="text" placeholder="Ingresa tu nombre" id="nombreReseña" disabled>
                     </div>
 
                     <!-- TÍTULO -->
                     <div class="campo-foro">
-                        <label>Título de la reseña</label>
-                        <input type="text" placeholder="Ej: Una experiencia inolvidable">
+                        <label for="tituloReseña">Título de la reseña</label>
+                        <input type="text" placeholder="Ej: Una experiencia inolvidable" id="tituloReseña">
                     </div>
 
                     <!-- DESCRIPCIÓN -->
                     <div class="campo-foro">
-                        <label>Descripción</label>
-                        <textarea rows="5" placeholder="Escribe aquí tu reseña..."></textarea>
+                        <label for="descripcionReseña">Descripción</label>
+                        <textarea id="descripcionReseña" rows="5" placeholder="Escribe aquí tu reseña..."></textarea>
                     </div>
+
 
                     <!-- BOTÓN -->
                     <button type="submit" class="btn-enviar">Enviar reseña</button>
@@ -135,9 +141,11 @@
                 <div id="campos-newsletter">
                     <a href="">Recibe ofertas y consejos de viaje</a>
                     <form action="#" method="get">
+                        <label for="input-email" class="visually-hidden">Correo electrónico</label>
                         <input id="input-email" type="text" name="Tu Email" placeholder="Email">
                         <button class="btnRegistro" type="submit">Registro</button>
                     </form>
+
                 </div>
             </div>
         </footer>

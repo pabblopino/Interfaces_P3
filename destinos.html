@@ -1,233 +1,208 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Destinos - Mochileros sin fronteras</title>
-        <link rel="stylesheet" href="style/styles.css">
-        <script type="module" src="script/sesion.js"></script>
-        <script type="module" src="script/destinos.js"></script>
-    </head>
-    <body>
-        <header>
-            <div class="" id="foto-perfil">
-                <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
-            </div>
-            <div class="enlaces-iniciales">
-                <a href="index.html">Inicio</a>
-                <a href="" class="activo">Destinos</a>
-                <a href="foro.html">Foro/Comunidad</a>
-                <a href="sobre-nosotros.html">Sobre Nosotros</a>
-                <a href="" id="linkRecientes">Recientes</a>
-                <a href="otros-rincones.html">Otros Rincones</a>
-                <button id="btnDaltonico" class="btn-accesibilidad" title="Modo Daltónico">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    </svg>
-                </button>
-            </div>
-            <div class="inicio-sesion">
-                <div class="registro">
-                    <div class="input-usuario">
-                        <input type="text" id="usuario" placeholder="Usuario">
-                    </div>
-                    <div class="input-usuario">
-                        <input type="password" id="password" placeholder="Contraseña">
-                    </div>
-                    <div class="botones">
-                        <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
-                        <button type="button" class="btnRegistro">Registro</button>
-                    </div>
-                </div> 
-            </div>
-            <div class="usuario-activo" style="display:none;">
-                <span id="nombreUsuario"></span>
-                <button class="boton-cerrar">Cerrar sesión</button>
-            </div>
-        </header>
-
-        <main class="pagina-destinos">
-            
-            <div class="cabecera-seccion">
-                    <h1>DESTINOS</h1>
-                    <div class="selector-idioma">
-                        <select>
-                            <option value="es" selected>ESP</option>
-                            <option value="en">ENG</option>
-                        </select>
-                    </div>
-                    <div class="selector-moneda">
-                        <select>
-                            <option value="EUR" selected>€</option>
-                            <option value="DOL">$</option>
-                            <option value="LIB">£</option>
-                        </select>
-                    </div>
-            </div>
-            <section class="cabecera-destinos">
-                <div class="contenedor-buscador">
-                    <input type="text" placeholder="¿A dónde quieres ir? (Ej: Playa, Montaña...)">
-                    <button>🔍 Buscar</button>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinos - Mochileros sin fronteras</title>
+    <link rel="stylesheet" href="style/styles.css">
+    <script type="module" src="script/sesion.js"></script>
+    <script type="module" src="script/destinos.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div id="foto-perfil">
+            <img id="imagenUsuario" src="images/foto_perfil.png" alt="Foto de perfil del usuario">
+        </div>
+        <div class="enlaces-iniciales">
+            <a href="index.html">Inicio</a>
+            <a href="" class="activo">Destinos</a>
+            <a href="foro.html">Foro/Comunidad</a>
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="" id="linkRecientes">Recientes</a>
+            <a href="otros-rincones.html">Otros Rincones</a>
+            <button id="btnDaltonico" class="btn-accesibilidad" title="Modo Daltónico" aria-label="Activar modo daltónico">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+            </button>
+        </div>
+        <div class="inicio-sesion">
+            <div class="registro">
+                <div class="input-usuario">
+                    <label for="usuario" class="visually-hidden">Nombre de usuario</label>
+                    <input type="text" id="usuario" placeholder="Usuario">
                 </div>
-            </section>
-
-            <section class="layout-grid-destinos">
-                
-                <aside class="sidebar-filtros">
-                    <div class="bloque-filtro">
-                        <h3>Categorías</h3>
-                        <button class="btn-filtro-lateral activo">Todos</button>
-                        <button class="btn-filtro-lateral">Montaña</button>
-                        <button class="btn-filtro-lateral">Playa</button>
-                        <button class="btn-filtro-lateral">Nieve</button>
-                        <button class="btn-filtro-lateral">Ciudad</button>
-                        <button class="btn-filtro-lateral">Rural</button>
-                    </div>
-
-                    <div class="bloque-filtro">
-                        <h3>Precio Máximo</h3>
-                        <input type="range" min="100" max="1000" value="1000" class="slider-precio">
-                        <p>Hasta: 1000€</p>
-                    </div>
-                </aside>
-
-                <div class="galeria-resultados" id="contenedorTarjetas">
-    
-                    <div class="card" data-categoria="rural" data-precio="450">
-                        <img src="images/camping.jpg" alt="Camping">
-                        <h3>Camping al Atardecer</h3>
-                        <p class="precio">450 €</p>
-                        <div class="acciones">
-                            <button class="btn-like">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                                </svg>
-                            </button>
-                            <div class="boton-comprar">
-                                <a href="reserva.html?id_pack=camping"><button class="btn-reservar">Reservar ahora</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card" data-categoria="montana" data-precio="520">
-                        <img src="images/desierto.jpg" alt="Desierto">
-                        <h3>Aventura en el Sahara</h3>
-                        <p class="precio">520€</p>
-                        <div class="acciones">
-                            <button class="btn-like">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                                </svg>
-                            </button>
-                            <div class="boton-comprar">
-                                <a href="reserva.html?id_pack=desierto"><button class="btn-reservar">Reservar ahora</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card" data-categoria="nieve" data-precio="380">
-                        <img src="images/islandia.jpg" alt="Islandia">
-                        <h3>Cazadores de Auroras</h3>
-                        <p class="precio">380€</p>
-                        <div class="acciones">
-                            <button class="btn-like">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                                </svg>
-                            </button>
-                            <div class="boton-comprar">
-                                <a href="reserva.html?id_pack=islandia"><button class="btn-reservar">Reservar ahora</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card" data-categoria="montana" data-precio="290">
-                        <img src="images/patagonia.jpg" alt="Patagonia">
-                        <h3>Expedición Patagonia</h3>
-                        <p class="precio">290€</p>
-                        <div class="acciones">
-                            <button class="btn-like">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                                </svg>
-                            </button>
-                            <div class="boton-comprar">
-                                <a href="reserva.html?id_pack=patagonia"><button class="btn-reservar">Reservar ahora</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card" data-categoria="nieve" data-precio="610">
-                        <img src="images/pirineos.jpg" alt="Pirineos">
-                        <h3>Nieve en los Pirineos</h3>
-                        <p class="precio">610€</p>
-                        <div class="acciones">
-                            <button class="btn-like">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                                </svg>
-                            </button>
-                            <div class="boton-comprar">
-                                <a href="reserva.html?id_pack=pirineos"><button class="btn-reservar">Reservar ahora</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card" data-categoria="ciudad" data-precio="450">
-                        <img src="images/santiago2.jpg" alt="Santiago">
-                        <h3>El Camino de Santiago</h3>
-                        <p class="precio">450€</p>
-                        <div class="acciones">
-                            <button class="btn-like">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                                </svg>
-                            </button>
-                            <div class="boton-comprar">
-                                <a href="reserva.html?id_pack=santiago"><button class="btn-reservar">Reservar ahora</button></a>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="input-usuario">
+                    <label for="password" class="visually-hidden">Contraseña</label>
+                    <input type="password" id="password" placeholder="Contraseña">
                 </div>
-            </section>
-
-        </main>
-
-        <footer>
-            <div class="footer-grid" id="redes-sociales">
-                <div id="enlaces-redes">
-                    <a href="https://www.instagram.com" target="_blank"><img src="images/logo_instagram.png" alt="Instagram"></a>
-                    <a href="https://www.tiktok.com/" target="_blank"><img src="images/logo_tiktok.png" alt="TikTok"></a>
-                    <a href="https://www.youtube.com/" target="_blank"><img src="images/logo_youtube.png" alt="YouTube"></a>
+                <div class="botones">
+                    <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
+                    <button type="button" class="btnRegistro">Registro</button>
                 </div>
-                <p>&copy; 2025 Mochileros sin fronteras</p>
+            </div> 
+        </div>
+        <div class="usuario-activo" style="display:none;">
+            <span id="nombreUsuario"></span>
+            <button class="boton-cerrar">Cerrar sesión</button>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="pagina-destinos">
+        <div class="cabecera-seccion">
+            <h1>DESTINOS</h1>
+            <div class="selector-idioma">
+                <label for="select-idioma" class="visually-hidden">Selecciona idioma</label>
+                <select id="select-idioma">
+                    <option value="es" selected>ESP</option>
+                    <option value="en">ENG</option>
+                </select>
             </div>
-            <div class="footer-grid" id="compania">
-                <h4>Compañía</h4>
-                <a href="sobre-nosotros.html">Sobre Nosotros</a>
-                <a href="">Contacto</a>
-                <a href="">Trabaja con Nosotros</a>
-                <a href="">Blog</a>
+            <div class="selector-moneda">
+                <label for="select-moneda" class="visually-hidden">Selecciona moneda</label>
+                <select id="select-moneda">
+                    <option value="EUR" selected>€</option>
+                    <option value="DOL">$</option>
+                    <option value="LIB">£</option>
+                </select>
             </div>
-            <div class="footer-grid" id="legal">
-                <h4>Legal</h4>
-                <a href="">Términos</a>
-                <a href="">Privacidad</a>
-                <a href="">Cookies</a>
-                <a href="">Política de Reembolso</a>
+        </div>
+
+        <section class="cabecera-destinos">
+            <h2>Buscar destino</h2>
+            <div class="contenedor-buscador">
+                <label for="input-buscador" class="visually-hidden">Buscar destino</label>
+                <input type="text" id="input-buscador" placeholder="¿A dónde quieres ir? (Ej: Playa, Montaña...)">
+                <button aria-label="Buscar destino">🔍 Buscar</button>
             </div>
-            <div class="footer-grid" id="newsletter">
-                <h4>Newsletter</h4>
-                <div id="campos-newsletter">
-                    <a href="">Recibe ofertas y consejos de viaje</a>
-                    <form action="#" method="get">
-                        <input id="input-email" type="text" name="Tu Email" placeholder="Email">
-                        <button class="btnRegistro" type="submit">Registro</button>
-                    </form>
+        </section>
+
+        <section class="layout-grid-destinos">
+            <aside class="sidebar-filtros">
+                <h2>Filtros</h2>
+                <div class="bloque-filtro">
+                    <h3>Categorías</h3>
+                    <button class="btn-filtro-lateral activo" aria-label="Filtrar todos los destinos">Todos</button>
+                    <button class="btn-filtro-lateral" aria-label="Filtrar montañas">Montaña</button>
+                    <button class="btn-filtro-lateral" aria-label="Filtrar playas">Playa</button>
+                    <button class="btn-filtro-lateral" aria-label="Filtrar nieve">Nieve</button>
+                    <button class="btn-filtro-lateral" aria-label="Filtrar ciudades">Ciudad</button>
+                    <button class="btn-filtro-lateral" aria-label="Filtrar zonas rurales">Rural</button>
                 </div>
+
+                <div class="bloque-filtro">
+                    <h3>Precio Máximo</h3>
+                    <label for="slider-precio" class="visually-hidden">Precio máximo</label>
+                    <input id="slider-precio" type="range" min="100" max="1000" value="1000" class="slider-precio">
+                    <p>Hasta: 1000€</p>
+                </div>
+            </aside>
+
+            <div class="galeria-resultados" id="contenedorTarjetas">
+
+                <!-- Tarjetas completas -->
+                <div class="card" data-categoria="rural" data-precio="450">
+                    <img src="images/camping.jpg" alt="Camping al Atardecer, vista panorámica">
+                    <h3>Camping al Atardecer</h3>
+                    <p class="precio">450 €</p>
+                    <div class="acciones">
+                        <button class="btn-like" aria-label="Agregar a favoritos"></button>
+                        <a href="reserva.html?id_pack=camping" class="btn-reservar" role="button" aria-label="Reservar viaje a Camping al Atardecer">Reservar ahora</a>
+                    </div>
+                </div>
+
+                <div class="card" data-categoria="montana" data-precio="520">
+                    <img src="images/desierto.jpg" alt="Aventura en el Sahara">
+                    <h3>Aventura en el Sahara</h3>
+                    <p class="precio">520€</p>
+                    <div class="acciones">
+                        <button class="btn-like" aria-label="Agregar a favoritos"></button>
+                        <a href="reserva.html?id_pack=desierto" class="btn-reservar" role="button" aria-label="Reservar viaje a Aventura en el Sahara">Reservar ahora</a>
+                    </div>
+                </div>
+
+                <div class="card" data-categoria="nieve" data-precio="380">
+                    <img src="images/islandia.jpg" alt="Cazadores de Auroras en Islandia">
+                    <h3>Cazadores de Auroras</h3>
+                    <p class="precio">380€</p>
+                    <div class="acciones">
+                        <button class="btn-like" aria-label="Agregar a favoritos"></button>
+                        <a href="reserva.html?id_pack=islandia" class="btn-reservar" role="button" aria-label="Reservar viaje a Cazadores de Auroras">Reservar ahora</a>
+                    </div>
+                </div>
+
+                <div class="card" data-categoria="montana" data-precio="290">
+                    <img src="images/patagonia.jpg" alt="Expedición Patagonia">
+                    <h3>Expedición Patagonia</h3>
+                    <p class="precio">290€</p>
+                    <div class="acciones">
+                        <button class="btn-like" aria-label="Agregar a favoritos"></button>
+                        <a href="reserva.html?id_pack=patagonia" class="btn-reservar" role="button" aria-label="Reservar viaje a Expedición Patagonia">Reservar ahora</a>
+                    </div>
+                </div>
+
+                <div class="card" data-categoria="nieve" data-precio="610">
+                    <img src="images/pirineos.jpg" alt="Nieve en los Pirineos">
+                    <h3>Nieve en los Pirineos</h3>
+                    <p class="precio">610€</p>
+                    <div class="acciones">
+                        <button class="btn-like" aria-label="Agregar a favoritos"></button>
+                        <a href="reserva.html?id_pack=pirineos" class="btn-reservar" role="button" aria-label="Reservar viaje a Nieve en los Pirineos">Reservar ahora</a>
+                    </div>
+                </div>
+
+                <div class="card" data-categoria="ciudad" data-precio="450">
+                    <img src="images/santiago2.jpg" alt="El Camino de Santiago">
+                    <h3>El Camino de Santiago</h3>
+                    <p class="precio">450€</p>
+                    <div class="acciones">
+                        <button class="btn-like" aria-label="Agregar a favoritos"></button>
+                        <a href="reserva.html?id_pack=santiago" class="btn-reservar" role="button" aria-label="Reservar viaje a El Camino de Santiago">Reservar ahora</a>
+                    </div>
+                </div>
+
             </div>
-        </footer>
-    </body>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid" id="redes-sociales">
+            <div id="enlaces-redes">
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><img src="images/logo_instagram.png" alt="Instagram"></a>
+                <a href="https://www.tiktok.com/" target="_blank" aria-label="TikTok"><img src="images/logo_tiktok.png" alt="TikTok"></a>
+                <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube"><img src="images/logo_youtube.png" alt="YouTube"></a>
+            </div>
+            <p>&copy; 2025 Mochileros sin fronteras</p>
+        </div>
+        <div class="footer-grid" id="compania">
+            <h4>Compañía</h4>
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="" aria-label="Formulario de contacto">Contacto</a>
+            <a href="" aria-label="Trabaja con nosotros">Trabaja con Nosotros</a>
+            <a href="" aria-label="Blog de la compañía">Blog</a>
+        </div>
+        <div class="footer-grid" id="legal">
+            <h4>Legal</h4>
+            <a href="">Términos</a>
+            <a href="">Privacidad</a>
+            <a href="">Cookies</a>
+            <a href="">Política de Reembolso</a>
+        </div>
+        <div class="footer-grid" id="newsletter">
+            <h4>Newsletter</h4>
+            <div id="campos-newsletter">
+                <a href="">Recibe ofertas y consejos de viaje</a>
+                <form action="#" method="get">
+                    <label for="input-email" class="visually-hidden">Correo electrónico</label>
+                    <input id="input-email" type="text" name="Tu Email" placeholder="Email">
+                    <button class="btnRegistro" type="submit">Registro</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
