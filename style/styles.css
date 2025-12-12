@@ -698,7 +698,8 @@ a:hover {
 }
 
 .btn-reservar:hover {
-    background: #187bdb;
+    transform: translateY(-2px); /* Se levanta un poquito hacia arriba */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* La sombra crece */
 }
 
 .titulo-seccion {

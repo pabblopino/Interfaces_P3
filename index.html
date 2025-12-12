@@ -5,18 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mochileros sin fronteras</title>
         <link rel="stylesheet" href="style/styles.css">
-        <script type="module" src="script/sesion.js" defer></script>
-        <script type="module" src="script/index.js" defer></script>
+        <script type="module" src="script/sesion.js"></script>
+        <script type="module" src="script/index.js"></script>
 
     </head>
     <body>
-        <!-- HEADER -->
         <header>
-            <!-- Izquierda -->
             <div class="" id="foto-perfil">
                 <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
             </div>
-            <!-- Centro -->
             <div class="enlaces-iniciales">
                 <a href="" class="activo">Inicio</a>
                 <a href="destinos.html">Destinos</a>
@@ -32,9 +29,7 @@
                 </button>
             </div>
 
-            <!-- Derecha -->
             <div class="inicio-sesion">
-                <!--Apartado de registro-->
                 <div class="registro">
                     <div class="input-usuario">
                         <input type="text" id="usuario" placeholder="Usuario">
@@ -52,12 +47,10 @@
             </div>
             <div class="usuario-activo" style="display:none;">
                 <span id="nombreUsuario"></span>
-                <img id="imagenUsuario" src="" alt="">
                 <button class="boton-cerrar">Cerrar sesión</button>
             </div>
         </header>
 
-        <!-- MAIN -->
         <main>
             <div class="cabecera-seccion">
                 <h1>INICIO</h1>
@@ -85,7 +78,6 @@
                     <hr>
                 </div>
 
-                <!-- GALERÍA DE VIAJES -->
                 <div class="galeria">
 
                     <div class="card"  data-precio="450">
@@ -101,8 +93,8 @@
                                 </svg>
                             </button>
                             <div class="boton-comprar">
-                                <a href="reserva.html?id_pack=camping">
-                                    <button class="btn-reservar">Reservar ahora</button>
+                                <a href="reserva.html?id_pack=camping" class="btn-reservar">
+                                    Reservar ahora
                                 </a>
                             </div>
                         </div>
@@ -121,8 +113,8 @@
                                 </svg>
                             </button>
                             <div class="boton-comprar">
-                                <a href="reserva.html?id_pack=desierto">
-                                    <button class="btn-reservar">Reservar ahora</button>
+                                <a href="reserva.html?id_pack=desierto" class="btn-reservar">
+                                    Reservar ahora
                                 </a>
                             </div>
                         </div>
@@ -141,8 +133,8 @@
                                 </svg>
                             </button>
                             <div class="boton-comprar">
-                                <a href="reserva.html?id_pack=islandia">
-                                    <button class="btn-reservar">Reservar ahora</button>
+                                <a href="reserva.html?id_pack=islandia" class="btn-reservar">
+                                    Reservar ahora
                                 </a>
                             </div>
                         </div>
@@ -161,8 +153,8 @@
                                 </svg>
                             </button>
                             <div class="boton-comprar">
-                                <a href="reserva.html?id_pack=patagonia">
-                                    <button class="btn-reservar">Reservar ahora</button>
+                                <a href="reserva.html?id_pack=patagonia" class="btn-reservar">
+                                    Reservar ahora
                                 </a>
                             </div>
                         </div>
@@ -181,8 +173,8 @@
                                 </svg>
                             </button>
                             <div class="boton-comprar">
-                                <a href="reserva.html?id_pack=pirineos">
-                                    <button class="btn-reservar">Reservar ahora</button>
+                                <a href="reserva.html?id_pack=pirineos" class="btn-reservar">
+                                    Reservar ahora
                                 </a>
                             </div>
                         </div>
@@ -201,8 +193,8 @@
                                 </svg>
                             </button>
                             <div class="boton-comprar">
-                                <a href="reserva.html?id_pack=santiago">
-                                    <button class="btn-reservar">Reservar ahora</button>
+                                <a href="reserva.html?id_pack=santiago" class="btn-reservar">
+                                    Reservar ahora
                                 </a>
                             </div>
                         </div>
@@ -220,7 +212,6 @@
             </div>
         </main>
 
-        <!-- FOOTER -->
         <footer>
             <div class="footer-grid" id="redes-sociales">
                 <div id="enlaces-redes">
@@ -254,7 +245,7 @@
                 <h4>Newsletter</h4>
                 <div id="campos-newsletter">
                     <a href="">Recibe ofertas y consejos de viaje</a>
-                    <form action="" method="get">
+                    <form action="#" method="get">
                         <input id="input-email" type="text" name="Tu Email" placeholder="Email">
                         <button class="btnRegistro" type="submit">Registro</button>
                     </form>
@@ -262,3 +253,4 @@
             </div>
         </footer>
     </body>
+</html>

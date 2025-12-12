@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Backpackers Without Borders</title>
         <link rel="stylesheet" href="../style/styles.css">
-        <script type="module" src="../script/sesion.js" defer></script>
-        <script type="module" src="../script/index.js" defer></script>
+        <script type="module" src="../script/sesion.js"></script>
+        <script type="module" src="../script/index.js"></script>
     </head>
     <body>
         <header>
@@ -43,7 +43,7 @@
             </div>
             <div class="usuario-activo" style="display:none;">
                 <span id="nombreUsuario"></span>
-                <img id="imagenUsuario" src="" alt="">
+                <img id="imagenUsuarioActivo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">
                 <button class="boton-cerrar">Log Out</button>
             </div>
         </header>
@@ -90,9 +90,7 @@
                                 </svg>
                             </button>
                             <div class="boton-comprar">
-                                <a href="reserva-en.html?id_pack=camping">
-                                    <button class="btn-reservar">Book Now</button>
-                                </a>
+                                <a href="reserva-en.html?id_pack=camping" class="btn-reservar">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -110,9 +108,7 @@
                                 </svg>
                             </button>
                             <div class="boton-comprar">
-                                <a href="reserva-en.html?id_pack=desierto">
-                                    <button class="btn-reservar">Book Now</button>
-                                </a>
+                                <a href="reserva-en.html?id_pack=desierto" class="btn-reservar">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -130,9 +126,7 @@
                                 </svg>
                             </button>
                             <div class="boton-comprar">
-                                <a href="reserva-en.html?id_pack=islandia">
-                                    <button class="btn-reservar">Book Now</button>
-                                </a>
+                                <a href="reserva-en.html?id_pack=islandia" class="btn-reservar">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -150,9 +144,7 @@
                                 </svg>
                             </button>
                             <div class="boton-comprar">
-                                <a href="reserva-en.html?id_pack=patagonia">
-                                    <button class="btn-reservar">Book Now</button>
-                                </a>
+                                <a href="reserva-en.html?id_pack=patagonia" class="btn-reservar">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -170,9 +162,7 @@
                                 </svg>
                             </button>
                             <div class="boton-comprar">
-                                <a href="reserva-en.html?id_pack=pirineos">
-                                    <button class="btn-reservar">Book Now</button>
-                                </a>
+                                <a href="reserva-en.html?id_pack=pirineos" class="btn-reservar">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -190,9 +180,7 @@
                                 </svg>
                             </button>
                             <div class="boton-comprar">
-                                <a href="reserva-en.html?id_pack=santiago">
-                                    <button class="btn-reservar">Book Now</button>
-                                </a>
+                                <a href="reserva-en.html?id_pack=santiago" class="btn-reservar">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -235,7 +223,7 @@
                 <h4>Newsletter</h4>
                 <div id="campos-newsletter">
                     <a href="">Receive offers and travel tips</a>
-                    <form action="" method="get">
+                    <form action="#" method="get">
                         <input id="input-email" type="text" name="Tu Email" placeholder="Email">
                         <button class="btnRegistro" type="submit">Sign Up</button>
                     </form>

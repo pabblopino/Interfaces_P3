@@ -6,8 +6,8 @@
     <title>Detalles del Destino</title>
     <link rel="stylesheet" href="style/styles.css">
     
-    <script type="module" src="script/sesion.js" defer></script>
-    <script type="module" src="script/detalles.js" defer></script>
+    <script type="module" src="script/sesion.js"></script>
+    <script type="module" src="script/detalles.js"></script>
 </head>
 <body>
     <header>
@@ -44,7 +44,6 @@
         </div>
         <div class="usuario-activo" style="display:none;">
             <span id="nombreUsuario"></span>
-            <img id="imagenUsuarioActivo" src="" alt="">
             <button class="boton-cerrar">Cerrar sesión</button>
         </div>
     </header>
@@ -52,7 +51,7 @@
     <main>
         <div class="ficha-viaje">
             <div class="cabecera-seccion">
-                <h1 id="titulo-destino"></h1> 
+                <h1 id="titulo-destino">Cargando destino...</h1> 
                 
                 <div class="selector-moneda">
                         <select>
@@ -67,7 +66,7 @@
             <div class="contenido-ficha">
                 
                 <div class="hero-imagen">
-                    <img id="img-destino" src="" alt="Imagen del destino">
+                    <img id="img-destino" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Imagen del destino">
                 </div>
 
                 <div class="panel-info">
@@ -80,8 +79,8 @@
                     <ul id="lista-incluye" class="lista-check"></ul>
 
                     <div class="acciones-ficha">
-                        <a id="btn-reservar-link" href="#">
-                            <button class="btn-reservar-grande">Reservar Plaza</button>
+                        <a id="btn-reservar-link" href="#" class="btn-reservar-grande">
+                            Reservar Plaza
                         </a>
                     </div>
                 </div>
@@ -91,11 +90,10 @@
         <div class="seccion-opiniones">
             <div class="cabecera-seccion">
                     <h2>DEJA TU OPINIÓN</h2>
-                                </div>
+            </div>
 
             <div class="galeria-carrusel" id="contenedor-reseñas">
-                <!-- Se generarán dinámicamente las tarjetas de reseñas -->
-            </div>
+                </div>
 
 
             <div class="contenedor-review">
@@ -159,7 +157,7 @@
             <h4>Newsletter</h4>
             <div id="campos-newsletter">
                 <a href="">Recibe ofertas y consejos de viaje</a>
-                <form action="" method="get">
+                <form action="#" method="get">
                     <input id="input-email" type="text" name="Tu Email" placeholder="Email">
                     <button class="btnRegistro" type="submit">Registro</button>
                 </form>
