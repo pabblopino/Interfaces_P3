@@ -31,10 +31,10 @@
         <div class="inicio-sesion">
             <div class="registro">
                 <div class="input-usuario">
-                    <input type="text" id="usuario" placeholder="Username">
+                    <input type="text" id="usuario" placeholder="Username" aria-label="Username">
                 </div>
                 <div class="input-usuario">
-                    <input type="password" id="password" placeholder="Password">
+                    <input type="password" id="password" placeholder="Password" aria-label="Password">
                 </div>
                 <div class="botones">
                     <button type="button" id="btnIniciarSesion">Log in</button>
@@ -55,7 +55,7 @@
                 <h1 id="titulo-destino"></h1> 
 
                 <div class="selector-moneda">
-                    <select>
+                    <select aria-label="Select currency">
                         <option value="EUR" selected>€</option>
                         <option value="DOL">$</option>
                         <option value="LIB">£</option>
@@ -101,12 +101,12 @@
             <div class="contenedor-review">
                 <form class="form-review">
                     <div class="campo-foro">
-                        <label>Your name:</label>
+                        <label for="nombreReseña">Your name:</label>
                         <input type="text" id="nombreReseña" placeholder="Name" disabled>
                     </div>
 
                     <div class="campo-foro">
-                        <label>Rating:</label>
+                        <span style="font-weight: bold; display: block; margin-bottom: 5px;">Rating:</span>
                         <div class="rating">
                             <span data-star="5">★</span>
                             <span data-star="4">★</span>
@@ -117,12 +117,12 @@
                     </div>
 
                     <div class="campo-foro">
-                        <label>Title:</label>
+                        <label for="tituloExperiencia">Title:</label>
                         <input type="text" id="tituloExperiencia" placeholder="Summary of your experience" required>
                     </div>
                     
                     <div class="campo-foro">
-                        <label>Experience:</label>
+                        <label for="descExperiencia">Experience:</label>
                         <textarea id="descExperiencia" placeholder="Tell us about your trip..." rows="4" required></textarea>
                     </div>
 
@@ -160,7 +160,7 @@
             <div id="campos-newsletter">
                 <a href="">Get travel deals and tips</a>
                 <form action="" method="get">
-                    <input id="input-email" type="text" name="Your Email" placeholder="Email">
+                    <input id="input-email" type="text" name="Your Email" placeholder="Email" aria-label="Enter your email address">
                     <button class="btnRegistro" type="submit">Sign up</button>
                 </form>
             </div>

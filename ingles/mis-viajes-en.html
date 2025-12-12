@@ -20,7 +20,7 @@
                 <a href="sobre-nosotros-en.html">About Us</a>
                 <a href="" id="linkRecientes">Recent</a>
                 <a href="otros-rincones-en.html">Other Spots</a>
-                <button id="btnDaltonico" class="btn-accesibilidad" title="Color Blind Mode">
+                <button id="btnDaltonico" class="btn-accesibilidad" title="Color Blind Mode" aria-label="Toggle color blind mode">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -31,10 +31,10 @@
             <div class="inicio-sesion">
                 <div class="registro">
                     <div class="input-usuario">
-                        <input type="text" id="usuario" placeholder="Username">
+                        <input type="text" id="usuario" placeholder="Username" aria-label="Username">
                     </div>
                     <div class="input-usuario">
-                        <input type="password" id="password" placeholder="Password">
+                        <input type="password" id="password" placeholder="Password" aria-label="Password">
                     </div>
                     <div class="botones">
                         <button type="button" id="btnIniciarSesion">Log In</button>
@@ -52,7 +52,7 @@
             <div class="cabecera-seccion">
                 <h1>TRAVEL LOG</h1>
                 <div class="selector-idioma">
-                    <select>
+                    <select aria-label="Select language">
                         <option value="es" selected>ESP</option>
                         <option value="en">ENG</option>
                     </select>
@@ -60,19 +60,19 @@
             </div>
             <div class="contenedor-flex">
                 <div class="titulo-seccion">
-                    <h3>Past Trips</h3>
+                    <h2>Past Trips</h2>
                     <hr>
                 </div>
                 <div class="galeria-carrusel" id="contenedor-realizados"></div>
 
                 <div class="titulo-seccion">
-                    <h3>Favourite Trips</h3>
+                    <h2>Favourite Trips</h2>
                     <hr>
                 </div>
                 <div class="galeria-carrusel" id="contenedor-favoritos"></div>
 
                 <div class="titulo-seccion">
-                    <h3>Booked Trips</h3>
+                    <h2>Booked Trips</h2>
                     <hr>
                 </div>
                 <div class="galeria-carrusel" id="contenedor-reservados"></div>
@@ -89,25 +89,25 @@
                 <p>&copy; 2025 Backpackers Without Borders</p>
             </div>
             <div class="footer-grid" id="compania">
-                <h4>Company</h4>
+                <h3>Company</h3>
                 <a href="sobre-nosotros-en.html">About Us</a>
                 <a href="">Contact</a>
                 <a href="">Work with Us</a>
                 <a href="">Blog</a>
             </div>
             <div class="footer-grid" id="legal">
-                <h4>Legal</h4>
+                <h3>Legal</h3>
                 <a href="">Terms</a>
                 <a href="">Privacy</a>
                 <a href="">Cookies</a>
                 <a href="">Refund Policy</a>
             </div>
             <div class="footer-grid" id="newsletter">
-                <h4>Newsletter</h4>
+                <h3>Newsletter</h3>
                 <div id="campos-newsletter">
                     <a href="">Receive offers and travel tips</a>
                     <form action="#" method="get">
-                        <input id="input-email" type="text" name="Tu Email" placeholder="Email">
+                        <input id="input-email" type="text" name="Tu Email" placeholder="Email" aria-label="Enter your email address">
                         <button class="btnRegistro" type="submit">Sign Up</button>
                     </form>
                 </div>

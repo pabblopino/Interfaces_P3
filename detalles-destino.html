@@ -31,10 +31,10 @@
         <div class="inicio-sesion">
             <div class="registro">
                 <div class="input-usuario">
-                    <input type="text" id="usuario" placeholder="Usuario">
+                    <input type="text" id="usuario" placeholder="Usuario" aria-label="Nombre de usuario">
                 </div>
                 <div class="input-usuario">
-                    <input type="password" id="password" placeholder="Contraseña">
+                    <input type="password" id="password" placeholder="Contraseña" aria-label="Contraseña">
                 </div>
                 <div class="botones">
                     <button type="button" id="btnIniciarSesion">Iniciar sesión</button>
@@ -53,8 +53,8 @@
             <div class="cabecera-seccion">
                 <h1 id="titulo-destino">Cargando destino...</h1> 
                 
-                <div class="selector-moneda">
-                        <select>
+                <div class="selector-moneda" >
+                        <select aria-label="Seleccionar moneda">
                             <option value="EUR" selected>€</option>
                             <option value="DOL">$</option>
                             <option value="LIB">£</option>
@@ -99,12 +99,12 @@
             <div class="contenedor-review">
                 <form class="form-review">
                     <div class="campo-foro">
-                        <label>Tu nombre:</label>
+                        <label for="nombreReseña">Tu nombre:</label>
                         <input type="text" id="nombreReseña" placeholder="Nombre" disabled>
                     </div>
 
                     <div class="campo-foro">
-                        <label>Valoración:</label>
+                        <span style="font-weight: bold; display: block; margin-bottom: 5px;">Valoración:</span>
                         <div class="rating">
                             <span data-star="5">★</span>
                             <span data-star="4">★</span>
@@ -115,12 +115,12 @@
                     </div>
 
                     <div class="campo-foro">
-                        <label>Título:</label>
+                        <label for="tituloExperiencia">Título:</label>
                         <input type="text" id="tituloExperiencia" placeholder="Resumen de tu experiencia" required>
                     </div>
                     
                     <div class="campo-foro">
-                        <label>Experiencia:</label>
+                        <label for="descExperiencia">Experiencia:</label>
                         <textarea id="descExperiencia" placeholder="Cuéntanos qué tal fue el viaje..." rows="4" required></textarea>
                     </div>
 
@@ -158,7 +158,7 @@
             <div id="campos-newsletter">
                 <a href="">Recibe ofertas y consejos de viaje</a>
                 <form action="#" method="get">
-                    <input id="input-email" type="text" name="Tu Email" placeholder="Email">
+                    <input id="input-email" type="text" name="Tu Email" placeholder="Email" aria-label="Introduce tu dirección Email">
                     <button class="btnRegistro" type="submit">Registro</button>
                 </form>
             </div>

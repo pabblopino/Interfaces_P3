@@ -729,7 +729,7 @@ a:hover {
 
 /* Flechas */
 .flecha {
-    background: gray;
+    background: #525252;
     color: white;
     border: none;
     padding: 10px 14px;
@@ -930,13 +930,13 @@ a:hover {
 
 .rating span {
     font-size: 28px;
-    color: #ccc;
+    color: #555;
     transition: 0.2s;
 }
 
 .rating span:hover,
 .rating span:hover ~ span {
-    color: gold;
+    color: #c49102;
 }
 
 /* BOTÓN */

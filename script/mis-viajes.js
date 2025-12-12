@@ -77,11 +77,13 @@ function pintarSeccion(listaViajes, idContenedor) {
     const btnPrev = document.createElement('button');
     btnPrev.className = 'flecha prev';
     btnPrev.innerText = '⟨';
+    btnPrev.setAttribute('aria-label', isEn ? 'Previous' : 'Anterior');
 
     // Botón Derecha
     const btnNext = document.createElement('button');
     btnNext.className = 'flecha next';
     btnNext.innerText = '⟩';
+    btnNext.setAttribute('aria-label', isEn ? 'Next' : 'Siguiente');
 
     // Ventana y Track
     const ventana = document.createElement('div');
@@ -147,7 +149,7 @@ function pintarSeccion(listaViajes, idContenedor) {
             const titleCompletar = isEn ? "Mark as completed" : "Marcar como realizado";
             // Usamos un SVG de Check
             botonCompletarHTML = `
-                <button class="btn-completar" title="${titleCompletar}">
+                <button class="btn-completar" title="${titleCompletar}" aria-label="${titleCompletar}">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
@@ -162,13 +164,14 @@ function pintarSeccion(listaViajes, idContenedor) {
             </a>
             <p class="precio">${textoDesde} ${viaje.precio}€</p>
             <div class="acciones">
-                <button class="btn-like ${claseFavorito}">
+                <button class="btn-like ${claseFavorito}" aria-label="${isEn ? 'Add to favorites' : 'Añadir a favoritos'}">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                     </svg>
                 </button>
                 ${botonCompletarHTML}
-                <a href="${paginaDetalle}?id_pack=${viaje.id}">
+
+                <a href="${paginaDetalle}?id_pack=${viaje.id}" tabindex="-1" aria-hidden="true">
                     <button class="btn-reservar">${textoVer}</button>
                 </a>
             </div>
