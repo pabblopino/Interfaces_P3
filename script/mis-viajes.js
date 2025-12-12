@@ -171,9 +171,9 @@ function pintarSeccion(listaViajes, idContenedor) {
                 </button>
                 ${botonCompletarHTML}
 
-                <a href="${paginaDetalle}?id_pack=${viaje.id}" tabindex="-1" aria-hidden="true">
-                    <button class="btn-reservar">${textoVer}</button>
-                </a>
+                <button class="btn-reservar" onclick="window.location.href='${paginaDetalle}?id_pack=${viaje.id}'" aria-hidden="true" tabindex="-1">
+                    ${textoVer}
+                </button>
             </div>
         `;
 
