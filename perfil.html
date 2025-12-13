@@ -76,6 +76,26 @@
                 <p id="perfil-correo">correo@ejemplo.com</p>
 
                 <button id="btnCambiarPassword">Cambiar contraseña</button>
+                <div id="modalPassword" class="modal-overlay">
+                    <div class="modal-content">
+                        <h3>Cambiar Contraseña</h3>
+                        
+                        <label>Contraseña Actual:</label>
+                        <input type="password" id="oldPass" placeholder="Tu contraseña actual">
+                        
+                        <label>Nueva Contraseña:</label>
+                        <input type="password" id="newPass" placeholder="Mín. 8 caracteres, mayús, núms...">
+                        
+                        <label>Confirmar Nueva Contraseña:</label>
+                        <input type="password" id="confirmPass" placeholder="Repite la nueva contraseña">
+                        
+                        <div class="modal-botones">
+                            <button id="btnGuardarPass">Guardar Cambios</button>
+                            <button id="btnCancelarPass" class="btn-cancelar">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+                
                 <button id="btnMisViajes">Mis viajes</button>
                 <button id="btnCerrarSesion">Cerrar sesión</button>
             </div>
