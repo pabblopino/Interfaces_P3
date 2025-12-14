@@ -239,11 +239,21 @@ document.addEventListener("DOMContentLoaded", () => {
     estrellas.forEach(star => {
         star.addEventListener("click", () => {
             estrellasSeleccionadas = parseInt(star.dataset.star);
+            
             estrellas.forEach(s => {
-                s.style.color = parseInt(s.dataset.star) <= estrellasSeleccionadas ? "#b8860b" : "#666666";
+                // Limpiamos el color inline para que mande el CSS
+                s.style.color = ""; 
+                
+                // Si la estrella es menor o igual a la clicada, añadimos la clase
+                if (parseInt(s.dataset.star) <= estrellasSeleccionadas) {
+                    s.classList.add('seleccionada');
+                } else {
+                    s.classList.remove('seleccionada');
+                }
             });
         });
     });
+    
 
     const form = document.querySelector(".form-review");
 
@@ -315,14 +325,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement('div');
             card.className = 'card card-resena-detalle';
             const numEstrellas = r.estrellas || 0;
-            const estrellasHTML = '★'.repeat(numEstrellas) + '<span style="color:#666666;">' + '★'.repeat(5 - numEstrellas) + '</span>';
+            const estrellasHTML = '★'.repeat(numEstrellas) + 
+                    '<span style="color:#666666;">' + '★'.repeat(5 - numEstrellas) + '</span>';
 
             card.innerHTML = `
                 <div class="reseña-header">
                     <img src="${r.foto}" alt="${r.nombre}" class="foto-autor">
                     <div class="datos-autor">
                         <span class="nombre-autor">${r.nombre}</span>
-                        <div class="estrellas-autor" style="color:#7a5c00; letter-spacing:2px;">${estrellasHTML}</div>
+                        <div class="estrellas-autor" style="letter-spacing:2px;">${estrellasHTML}</div> 
                     </div>
                 </div>
                 <h4 class="titulo-reseña">${r.titulo}</h4>

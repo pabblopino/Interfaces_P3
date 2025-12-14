@@ -970,12 +970,7 @@ a:hover {
     padding: 10px;
 }
 
-/* FOTO PERFIL */
-.foto-perfil input {
-    border: none;
-}
-
-/* ESTRELLAS */
+/* --- ESTILOS BASE (MODO NORMAL) --- */
 .rating {
     display: flex;
     flex-direction: row-reverse;
@@ -985,14 +980,22 @@ a:hover {
 
 .rating span {
     font-size: 28px;
-    color: #555;
+    color: #555; /* Color gris por defecto */
     transition: 0.2s;
 }
 
+/* Color dorado cuando pasas el ratón (HOVER) */
 .rating span:hover,
 .rating span:hover ~ span {
-    color: #c49102;
+    color: #7a5c00; 
 }
+
+/* Color dorado cuando se hace click (CLASE SELECCIONADA) */
+.rating span.seleccionada {
+    color: #7a5c00;
+}
+.estrellas-autor { color: #7a5c00; } /* Dorado por defecto */
+
 
 /* BOTÓN */
 .btn-enviar {
@@ -2390,14 +2393,22 @@ body.modo-daltonico .lista-check li::before {
     color: #0044cc !important;
 }
 
-
-/* 4. ESTRELLAS DE VALORACIÓN */
-body.modo-daltonico .estrellas span, 
-body.modo-daltonico .estrellas-autor,
+/* Hover en modo daltónico */
 body.modo-daltonico .rating span:hover,
 body.modo-daltonico .rating span:hover ~ span {
-    color: #e67e22 !important;
+    color: blue !important;
 }
+
+/* Estrellas seleccionadas en modo daltónico */
+body.modo-daltonico .rating span.seleccionada {
+    color: blue !important;
+}
+
+/* Estrellas ya publicadas (autor) en modo daltónico */
+body.modo-daltonico .estrellas-autor {
+    color: blue !important;
+}
+
 
 /* 5. ESTILO BOTÓN OJO (SVG) */
 .btn-accesibilidad {
