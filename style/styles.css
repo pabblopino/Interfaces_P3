@@ -603,18 +603,43 @@ a:hover {
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     width: 100%;
-    max-width: 1260px; /* opcional para no crecer demasiado */
+    max-width: 1260px;
 }
 
 .galeria-carrusel {
     display: flex;           
-    align-items: center;     /* Centra verticalmente las flechas */
-    justify-content: center;
-    gap: 15px;
-    overflow-x: auto;        /* Permite scroll si no caben */
+    align-items: center;     
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
     max-width: 1200px;
-    margin: 0 auto 40px auto; /* Centrado horizontal (auto a los lados) */
+    margin: 0 auto 40px auto;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
 
+/* LA VENTANA DEBE ADAPTARSE, NO EMPUJAR */
+.ventana-carrusel {
+    flex: 1;
+    width: auto;
+    min-width: 0; /* Impide que el carrusel empuje las flechas fuera de la pantalla en móviles */
+    overflow: hidden;        
+    position: relative;
+}
+
+/* LAS FLECHAS NO DEBEN ENCOGERSE */
+.flecha {
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+/* EL TRACK SE MUEVE DENTRO DE LA VENTANA */
+.track-carrusel {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .galeria-carrusel .card {
@@ -625,6 +650,25 @@ a:hover {
 
 .galeria-carrusel .flecha {
     flex-shrink: 0;          
+}
+
+/* PARA TABLETS */
+@media (max-width: 900px) {
+    .galeria {
+        /* Cambiamos a 2 columnas */
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+}
+
+/* PARA MÓVILES */
+@media (max-width: 600px) {
+    .galeria {
+        /* Cambiamos a 1 sola columna */
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
 }
 
 /* tarjetas, botones y demás quedan igual que antes */
@@ -2033,16 +2077,10 @@ textarea {
 /* ========================================= */
 
 /* Cuando activamos el modo centrado: */
+/* Centramos el contenido del track */
 
-/* 1. Ocultamos las flechas porque no hacen falta */
-.contenedor-centrado .flecha {
-    display: none !important;
-}
-
-/* 2. Centramos el contenido del track */
 .contenedor-centrado .track-carrusel {
     justify-content: center; /* Centra las tarjetas en el medio */
-    transform: none !important; /* Anula cualquier movimiento del JS */
 }
 
 
@@ -2580,3 +2618,50 @@ body.modo-daltonico #btnGuardarPass {
 body.modo-daltonico #btnGuardarPass:hover {
     background-color: #001c3a;
 }
+
+/* ========================================= */
+/* RESPONSIVE CARRUSEL (CORRECCIÓN DEFINITIVA) */
+/* ========================================= */
+
+/* --- TABLET (Hasta 1000px) --- */
+@media (max-width: 1000px) {
+    
+    /* CABEN 2 TARJETAS */
+    .track-carrusel .card,
+    .contenedor-centrado .track-carrusel .card,
+    .track-carrusel .card.card-opinion,
+    .track-carrusel .card.card-resena-detalle {
+        flex: 0 0 calc(50% - 20px) !important;
+        width: calc(50% - 20px) !important;
+        min-width: 0 !important; /* IMPORTANTE: Elimina el ancho mínimo que las hacía gigantes */
+        max-width: none !important;
+    }
+
+    .contenedor-centrado .track-carrusel { justify-content: flex-start !important; }
+    .contenedor-centrado .ventana-carrusel { max-width: 100% !important; }
+}
+
+/* --- MÓVIL (Hasta 600px) --- */
+@media (max-width: 600px) {
+
+    /* CABE 1 TARJETA (100%) */
+    .track-carrusel .card,
+    .contenedor-centrado .track-carrusel .card,
+    .track-carrusel .card.card-opinion,
+    .track-carrusel .card.card-resena-detalle {
+        flex: 0 0 calc(100% - 20px) !important;
+        width: calc(100% - 20px) !important;
+        min-width: 0 !important; /* IMPORTANTE */
+        max-width: none !important;
+    }
+
+    .contenedor-centrado .track-carrusel { justify-content: flex-start !important; }
+    
+    /* Quitamos padding lateral para que quepa bien la tarjeta entera */
+    .galeria-carrusel, .ventana-carrusel {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: 100% !important;
+    }
+}
+

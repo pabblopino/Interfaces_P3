@@ -223,14 +223,14 @@ function pintarSeccion(listaViajes, idContenedor) {
     // Metemos el track en la ventana
     ventana.appendChild(track);
 
-    // --- LÓGICA INTELIGENTE: ¿NECESITAMOS CARRUSEL? ---
+    contenedor.appendChild(btnPrev);
+    contenedor.appendChild(ventana);
+    contenedor.appendChild(btnNext);
+
+    // Solo añadimos la clase para el centrado inicial CSS, pero SIN quitar las flechas
     if (listaViajes.length <= 3) {
         contenedor.classList.add('contenedor-centrado');
-        contenedor.appendChild(ventana);
     } else {
         contenedor.classList.remove('contenedor-centrado');
-        contenedor.appendChild(btnPrev);
-        contenedor.appendChild(ventana);
-        contenedor.appendChild(btnNext);
     }
 }
