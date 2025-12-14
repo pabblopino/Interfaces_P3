@@ -9,11 +9,15 @@
     <script type="module" src="script/reserva.js"></script>
     <script type="module" src="script/sesion.js"></script>
 </head>
+<!-- Cuerpo principal -->
 <body>
+    <!-- Encabezado con navegación y login -->
     <header>
+        <!-- Foto de perfil -->
         <div id="foto-perfil">
             <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
         </div>
+        <!-- Enlaces de navegación -->
         <div class="enlaces-iniciales">
             <a href="index.html">Inicio</a>
             <a href="destinos.html">Destinos</a>
@@ -21,6 +25,7 @@
             <a href="sobre-nosotros.html">Sobre Nosotros</a>
             <a href="" id="linkRecientes">Recientes</a>
             <a href="otros-rincones.html">Otros Rincones</a>
+            <!-- Botón para modo daltónico -->
             <button id="btnDaltonico" class="btn-accesibilidad" aria-label="Modo Daltónico">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>
@@ -28,6 +33,7 @@
                 </svg>
             </button>
         </div>
+        <!-- Sección de inicio de sesión -->
         <div class="inicio-sesion">
             <div class="registro">
                 <div class="input-usuario">
@@ -44,13 +50,16 @@
                 </div>
             </div>
         </div>
+        <!-- Usuario logueado (oculto por defecto) -->
         <div class="usuario-activo" style="display:none;">
             <span id="nombreUsuario"></span>
             <button class="boton-cerrar">Cerrar sesión</button>
         </div>
     </header>
 
+    <!-- Contenido principal: página de reserva -->
     <main class="reserva">
+        <!-- Cabecera con título y selector de moneda -->
         <div class="cabecera-seccion">
             <h1>RESERVA DE VIAJES</h1>
             <div class="selector-moneda">
@@ -63,23 +72,33 @@
             </div>
         </div>
 
+        <!-- Contenedor principal de la reserva -->
         <div class="contenedor-reserva-page">
+            <!-- Grid para info del viaje y sidebar de compra -->
             <div class="reserva-grid">
+                <!-- Información del viaje (dinámica) -->
                 <div class="info-viaje">
+                    <!-- Título dinámico con ARIA para accesibilidad -->
                     <h2 class="titulo-destino" aria-live="polite"><span style="visibility:hidden">.</span></h2>
+                    <!-- Marco para imagen del destino -->
                     <div class="marco-foto">
                         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Imagen del destino">
                     </div>
                     <h2 class="titulo-descripcion">Descripción</h2>
+                    <!-- Descripción dinámica -->
                     <div class="texto-descripcion">
                         <p></p>
                     </div>
                 </div>
 
+                <!-- Sidebar para precio y formulario -->
                 <div class="sidebar-compra">
+                    <!-- Caja de precio e inclusiones -->
                     <div class="caja-precio">
                         <h3>Precio</h3>
+                        <!-- Precio dinámico -->
                         <div class="precio-numero"></div>
+                        <!-- Lista de lo que incluye (dinámica) -->
                         <ul class="lista-incluye">
                             <li></li>
                             <li></li>
@@ -87,27 +106,35 @@
                         </ul>
                     </div>
 
+                    <!-- Formulario de compra -->
                     <div class="formulario-registro">
                         <h2>Formulario de compra</h2>
+                        <!-- Form con validación JS (novalidate) -->
                         <form id="formularioCompra" name="compra" novalidate>
+                            <!-- Campo nombre -->
                             <div class="campo">
                                 <label for="nombreCompleto">Nombre Completo*</label>
                                 <input type="text" id="nombreCompleto" name="nombreCompleto" required>
+                                <!-- Mensaje de error -->
                                 <p class="error-texto" id="errorNombreCompleto"></p>
                             </div>
 
+                            <!-- Campo correo -->
                             <div class="campo">
                                 <label for="correo">Correo electrónico*</label>
                                 <input type="email" id="correo" name="correo" required>
                                 <p class="error-texto" id="errorCorreo"></p>
                             </div>
 
+                            <!-- Bloque de opciones adicionales -->
                             <div class="bloque-opciones">
                                 <button type="button" id="btnOpcionesAdicionales" class="btn-toggle-opciones" aria-expanded="false">
                                     Opciones adicionales del viaje <span>&#9660;</span>
                                 </button>
 
+                                <!-- Contenido oculto por defecto -->
                                 <div id="contenidoOpciones" class="contenido-desplegable" hidden>
+                                    <!-- Opciones como num viajeros, mascotas, alergias -->
                                     <div class="item-opcion">
                                         <input type="checkbox" id="checkAcompanantes" name="checkAcompanantes">
                                         <label for="checkAcompanantes">Viajo con acompañantes</label>
@@ -154,6 +181,7 @@
                                 </div>
                             </div>
 
+                            <!-- Tipo de tarjeta -->
                             <div class="campo">
                                 <label for="tipoTarjeta">Tipo de tarjeta*</label>
                                 <select id="tipoTarjeta" name="tipoTarjeta" required>
@@ -165,18 +193,21 @@
                                 <p class="error-texto" id="errorTipoTarjeta"></p>
                             </div>
 
+                            <!-- Número de tarjeta -->
                             <div class="campo">
                                 <label for="numeroTarjeta">Número de tarjeta*</label>
                                 <input type="text" id="numeroTarjeta" name="numeroTarjeta" required>
                                 <p class="error-texto" id="errorNumeroTarjeta"></p>
                             </div>
 
+                            <!-- Titular de tarjeta -->
                             <div class="campo">
                                 <label for="titularTarjeta">Titular de la tarjeta*</label>
                                 <input type="text" id="titularTarjeta" name="titularTarjeta" required>
                                 <p class="error-texto" id="errorTitularTarjeta"></p>
                             </div>
 
+                            <!-- Campos de caducidad y CVV -->
                             <div class="pago-tarjeta">
                                 <div class="campo">
                                     <label for="fechaCaducidad">Fecha de caducidad*</label>
@@ -190,6 +221,7 @@
                                 </div>
                             </div>
 
+                            <!-- Botones del form -->
                             <div class="botones-form">
                                 <button type="submit" id="btnComprar">Comprar</button>
                                 <button type="button" id="btnBorrar">Borrar</button>
@@ -201,7 +233,9 @@
         </div>
     </main>
 
+    <!-- Pie de página -->
     <footer>
+        <!-- Redes sociales -->
         <div class="footer-grid" id="redes-sociales">
             <div id="enlaces-redes">
                 <a href="https://www.instagram.com" target="_blank"><img src="images/logo_instagram.png" alt="Instagram"></a>
@@ -210,6 +244,7 @@
             </div>
             <p>&copy; 2025 Mochileros sin fronteras</p>
         </div>
+        <!-- Compañía -->
         <div class="footer-grid" id="compania">
             <h4>Compañía</h4>
             <a href="sobre-nosotros.html">Sobre Nosotros</a>
@@ -217,6 +252,7 @@
             <a href="">Trabaja con Nosotros</a>
             <a href="">Blog</a>
         </div>
+        <!-- Legal -->
         <div class="footer-grid" id="legal">
             <h4>Legal</h4>
             <a href="">Términos</a>
@@ -224,6 +260,7 @@
             <a href="">Cookies</a>
             <a href="">Política de Reembolso</a>
         </div>
+        <!-- Newsletter -->
         <div class="footer-grid" id="newsletter">
             <h4>Newsletter</h4>
             <div id="campos-newsletter">

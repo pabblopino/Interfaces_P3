@@ -9,21 +9,23 @@
         <script type="module" src="script/mis-viajes.js"></script>
 
     </head>
+    <!-- Cuerpo principal -->
     <body>
-        <!-- HEADER -->
+        <!-- HEADER --> <!-- Encabezado con navegación y login -->
         <header>
-            <!-- Izquierda -->
+            <!-- Izquierda --> <!-- Foto de perfil -->
             <div class="" id="foto-perfil">
                 <img id="imagenUsuario" src="images/foto_perfil.png" alt="foto_perfil">
             </div>
-            <!-- Centro -->
+            <!-- Centro --> <!-- Enlaces de navegación -->
             <div class="enlaces-iniciales">
                 <a href="index.html">Inicio</a>
                 <a href="destinos.html">Destinos</a>
                 <a href="foro.html">Foro/Comunidad</a>
                 <a href="sobre-nosotros.html">Sobre Nosotros</a>
-                <a href="" id="linkRecientes">Recientes</a>
+                <a href="" id="linkRecientes" class="activo">Recientes</a>
                 <a href="otros-rincones.html">Otros Rincones</a>
+                <!-- Botón para modo daltónico -->
                 <button id="btnDaltonico" class="btn-accesibilidad" title="Modo Daltónico" aria-label="Activar modo daltonico">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
@@ -32,7 +34,7 @@
                 </button>
             </div>
 
-            <!-- Derecha -->
+            <!-- Derecha --> <!-- Inicio de sesión -->
             <div class="inicio-sesion">
                 <!--Apartado de registro-->
                 <div class="registro">
@@ -50,14 +52,16 @@
                     </div>
                 </div> 
             </div>
+            <!-- Usuario logueado (oculto) -->
             <div class="usuario-activo" style="display:none;">
                 <span id="nombreUsuario"></span>
                 <button class="boton-cerrar">Cerrar sesión</button>
             </div>
         </header>
 
-        <!-- MAIN -->
+        <!-- MAIN --> <!-- Contenido principal: registro de viajes -->
         <main>
+            <!-- Cabecera con título y selector de idioma -->
             <div class="cabecera-seccion">
                 <h1>REGISTRO DE VIAJES</h1>
                 <div class="selector-idioma">
@@ -67,29 +71,37 @@
                     </select>
                 </div>
             </div>
+            <!-- Contenedor flexible para secciones de viajes -->
             <div class="contenedor-flex">
+                <!-- Título de sección -->
                 <div class="titulo-seccion">
                     <h2>Viajes realizados</h2>
                     <hr>
                 </div>
+                <!-- Contenedor dinámico para viajes realizados -->
                 <div class="galeria-carrusel" id="contenedor-realizados"></div>
 
+                <!-- Título de sección -->
                 <div class="titulo-seccion">
                     <h2>Viajes en favoritos</h2>
                     <hr>
                 </div>
+                <!-- Contenedor dinámico para favoritos -->
                 <div class="galeria-carrusel" id="contenedor-favoritos"></div>
 
+                <!-- Título de sección -->
                 <div class="titulo-seccion">
                     <h2>Viajes reservados</h2>
                     <hr>
                 </div>
+                <!-- Contenedor dinámico para reservados -->
                 <div class="galeria-carrusel" id="contenedor-reservados"></div>
             </div>
         </main>
 
-        <!-- FOOTER -->
+        <!-- FOOTER --> <!-- Pie de página -->
         <footer>
+            <!-- Redes sociales -->
             <div class="footer-grid" id="redes-sociales">
                 <div id="enlaces-redes">
                     <a href="https://www.instagram.com" target="_blank">
@@ -104,6 +116,7 @@
                 </div>
                 <p>&copy; 2025 Mochileros sin fronteras</p>
             </div>
+            <!-- Compañía -->
             <div class="footer-grid" id="compania">
                 <h3>Compañía</h3>
                 <a href="sobre-nosotros.html">Sobre Nosotros</a>
@@ -111,6 +124,7 @@
                 <a href="">Trabaja con Nosotros</a>
                 <a href="">Blog</a>
             </div>
+            <!-- Legal -->
             <div class="footer-grid" id="legal">
                 <h3>Legal</h3>
                 <a href="">Términos</a>
@@ -118,6 +132,7 @@
                 <a href="">Cookies</a>
                 <a href="">Política de Reembolso</a>
             </div>
+            <!-- Newsletter -->
             <div class="footer-grid" id="newsletter">
                 <h3>Newsletter</h3>
                 <div id="campos-newsletter">
