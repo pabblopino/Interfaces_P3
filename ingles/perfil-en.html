@@ -74,7 +74,7 @@
         </div>
 
         <!-- Contenedor de perfil -->
-        <div id="mi-perfil">
+        <div id="mi-perfil" class="perfil-container">
             <div class="perfil-card">
                 <img id="perfil-foto" src="../images/foto_perfil.png" alt="User photo">
                 <h2 id="perfil-nombre">Username</h2>
@@ -86,13 +86,13 @@
                     <div class="modal-content">
                         <h3>Change Password</h3>
                         
-                        <label>Current Password:</label>
+                        <label for="oldPass">Current Password:</label>
                         <input type="password" id="oldPass" placeholder="Enter current password">
                         
-                        <label>New Password:</label>
+                        <label for="newPass">New Password:</label>
                         <input type="password" id="newPass" placeholder="Min 8 chars, 1 Upper, 2 nums...">
                         
-                        <label>Confirm New Password:</label>
+                        <label for="confirmPass">Confirm New Password:</label>
                         <input type="password" id="confirmPass" placeholder="Repeat new password">
                         
                         <div class="modal-botones">
