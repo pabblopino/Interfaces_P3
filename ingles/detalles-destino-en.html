@@ -9,18 +9,24 @@
     <script type="module" src="../script/sesion.js"></script>
     <script type="module" src="../script/detalles.js"></script>
 </head>
+<!-- Cuerpo principal -->
 <body>
+    <!-- Encabezado con navegación y login -->
     <header>
+        <!-- Foto de perfil -->
         <div id="foto-perfil">
             <img id="imagenUsuario" src="../images/foto_perfil.png" alt="profile_photo">
         </div>
+        <!-- Enlaces de navegación -->
         <div class="enlaces-iniciales">
             <a href="index-en.html">Home</a>
+            <!-- Página activa -->
             <a href="destinos-en.html" class="activo">Destinations</a>
             <a href="foro-en.html">Forum/Community</a>
             <a href="sobre-nosotros-en.html">About Us</a>
             <a href="" id="linkRecientes">Recent</a>
             <a href="otros-rincones-en.html">Other Spots</a>
+            <!-- Botón modo daltónico -->
             <button id="btnDaltonico" class="btn-accesibilidad" title="Color Blind Mode">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
@@ -28,6 +34,7 @@
                 </svg>
             </button>
         </div>
+        <!-- Inicio de sesión -->
         <div class="inicio-sesion">
             <div class="registro">
                 <div class="input-usuario">
@@ -42,17 +49,22 @@
                 </div>
             </div> 
         </div>
+        <!-- Usuario logueado (oculto) -->
         <div class="usuario-activo" style="display:none;">
             <span id="nombreUsuario"></span>
             <button class="boton-cerrar">Log Out</button>
         </div>
     </header>
 
+    <!-- Contenido principal: detalles del destino -->
     <main>
+        <!-- Ficha del viaje -->
         <div class="ficha-viaje">
             <div class="cabecera-seccion">
+                <!-- Título dinámico -->
                 <h1 id="titulo-destino">Loading destination…</h1> 
                 
+                <!-- Selector de moneda -->
                 <div class="selector-moneda">
                     <select aria-label="Select currency">
                         <option value="EUR" selected>€</option>
@@ -62,20 +74,27 @@
                 </div>
             </div>
 
+            <!-- Contenido de la ficha -->
             <div class="contenido-ficha">
+                <!-- Imagen principal -->
                 <div class="hero-imagen">
                     <img id="img-destino" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Destination image">
                 </div>
 
+                <!-- Panel de información -->
                 <div class="panel-info">
+                    <!-- Precio dinámico -->
                     <div class="precio-etiqueta" id="precio-destino"></div>
                     
+                    <!-- Descripción dinámica -->
                     <h3>Description</h3>
                     <p id="desc-destino" class="texto-descripcion"></p>
                     
+                    <!-- Lista de inclusiones dinámica -->
                     <h3>What's included?</h3>
                     <ul id="lista-incluye" class="lista-check"></ul>
 
+                    <!-- Acciones -->
                     <div class="acciones-ficha">
                         <a id="btn-reservar-link" href="#" class="btn-reservar-grande">
                             Book Now
@@ -85,24 +104,29 @@
             </div>
         </div>
 
+        <!-- Sección de opiniones -->
         <div class="seccion-opiniones">
             <div class="cabecera-seccion">
                 <h2>LEAVE YOUR REVIEW</h2>
             </div>
 
+            <!-- Contenedor de reseñas dinámicas -->
             <div class="galeria-carrusel" id="contenedor-reseñas">
                 <!-- Se generarán dinámicamente las tarjetas de reseñas -->
             </div>
 
+            <!-- Formulario de reseña -->
             <div class="contenedor-review">
                 <form class="form-review">
                     <div class="campo-foro">
                         <label for="nombreReseña">Your name:</label>
+                        <!-- Nombre disabled (probablemente auto-llenado) -->
                         <input type="text" id="nombreReseña" placeholder="Name" disabled>
                     </div>
 
                     <div class="campo-foro">
                         <span style="font-weight: bold; display: block; margin-bottom: 5px;">Rating:</span>
+                        <!-- Sistema de estrellas -->
                         <div class="rating">
                             <span data-star="5">★</span>
                             <span data-star="4">★</span>
@@ -128,7 +152,9 @@
         </div>
     </main>
 
+    <!-- Pie de página -->
     <footer>
+        <!-- Redes sociales -->
         <div class="footer-grid" id="redes-sociales">
             <div id="enlaces-redes">
                 <a href="https://www.instagram.com" target="_blank"><img src="../images/logo_instagram.png" alt="Instagram"></a>
@@ -137,6 +163,7 @@
             </div>
             <p>&copy; 2025 Backpackers Without Borders</p>
         </div>
+        <!-- Compañía -->
         <div class="footer-grid" id="compania">
             <h4>Company</h4>
             <a href="sobre-nosotros-en.html">About Us</a>
@@ -144,6 +171,7 @@
             <a href="">Work With Us</a>
             <a href="">Blog</a>
         </div>
+        <!-- Legal -->
         <div class="footer-grid" id="legal">
             <h4>Legal</h4>
             <a href="">Terms</a>
@@ -151,6 +179,7 @@
             <a href="">Cookies</a>
             <a href="">Refund Policy</a>
         </div>
+        <!-- Newsletter -->
         <div class="footer-grid" id="newsletter">
             <h4>Newsletter</h4>
             <div id="campos-newsletter">

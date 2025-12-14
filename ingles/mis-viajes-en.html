@@ -8,11 +8,15 @@
         <script type="module" src="../script/sesion.js"></script>
         <script type="module" src="../script/mis-viajes.js"></script>
     </head>
+    <!-- Cuerpo principal -->
     <body>
+        <!-- HEADER --> <!-- Encabezado con navegación y login -->
         <header>
+            <!-- Izquierda --> <!-- Foto de perfil -->
             <div class="" id="foto-perfil">
                 <img id="imagenUsuario" src="../images/foto_perfil.png" alt="profile_pic">
             </div>
+            <!-- Centro --> <!-- Enlaces de navegación -->
             <div class="enlaces-iniciales">
                 <a href="index-en.html">Home</a>
                 <a href="destinos-en.html">Destinations</a>
@@ -20,6 +24,7 @@
                 <a href="sobre-nosotros-en.html">About Us</a>
                 <a href="" id="linkRecientes" class="activo">Recent</a>
                 <a href="otros-rincones-en.html">Other Spots</a>
+                <!-- Botón para modo daltónico -->
                 <button id="btnDaltonico" class="btn-accesibilidad" title="Color Blind Mode" aria-label="Toggle color blind mode">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
@@ -28,7 +33,9 @@
                 </button>
             </div>
 
+            <!-- Derecha --> <!-- Inicio de sesión -->
             <div class="inicio-sesion">
+                <!--Apartado de registro-->
                 <div class="registro">
                     <div class="input-usuario">
                         <input type="text" id="usuario" placeholder="Username" aria-label="Username">
@@ -42,13 +49,16 @@
                     </div>
                 </div> 
             </div>
+            <!-- Usuario logueado (oculto) -->
             <div class="usuario-activo" style="display:none;">
                 <span id="nombreUsuario"></span>
                 <button class="boton-cerrar">Log Out</button>
             </div>
         </header>
 
+        <!-- MAIN --> <!-- Contenido principal: registro de viajes -->
         <main>
+            <!-- Cabecera con título y selector de idioma -->
             <div class="cabecera-seccion">
                 <h1>TRAVEL LOG</h1>
                 <div class="selector-idioma">
@@ -58,28 +68,37 @@
                     </select>
                 </div>
             </div>
+            <!-- Contenedor flexible para secciones de viajes -->
             <div class="contenedor-flex">
+                <!-- Título de sección -->
                 <div class="titulo-seccion">
                     <h2>Past Trips</h2>
                     <hr>
                 </div>
+                <!-- Contenedor dinámico para viajes realizados -->
                 <div class="galeria-carrusel" id="contenedor-realizados"></div>
 
+                <!-- Título de sección -->
                 <div class="titulo-seccion">
                     <h2>Favourite Trips</h2>
                     <hr>
                 </div>
+                <!-- Contenedor dinámico para favoritos -->
                 <div class="galeria-carrusel" id="contenedor-favoritos"></div>
 
+                <!-- Título de sección -->
                 <div class="titulo-seccion">
                     <h2>Booked Trips</h2>
                     <hr>
                 </div>
+                <!-- Contenedor dinámico para reservados -->
                 <div class="galeria-carrusel" id="contenedor-reservados"></div>
             </div>
         </main>
 
+        <!-- FOOTER --> <!-- Pie de página -->
         <footer>
+            <!-- Redes sociales -->
             <div class="footer-grid" id="redes-sociales">
                 <div id="enlaces-redes">
                     <a href="https://www.instagram.com" target="_blank"><img src="../images/logo_instagram.png" alt="Instagram"></a>
@@ -88,6 +107,7 @@
                 </div>
                 <p>&copy; 2025 Backpackers Without Borders</p>
             </div>
+            <!-- Compañía -->
             <div class="footer-grid" id="compania">
                 <h3>Company</h3>
                 <a href="sobre-nosotros-en.html">About Us</a>
@@ -95,6 +115,7 @@
                 <a href="">Work with Us</a>
                 <a href="">Blog</a>
             </div>
+            <!-- Legal -->
             <div class="footer-grid" id="legal">
                 <h3>Legal</h3>
                 <a href="">Terms</a>
@@ -102,6 +123,7 @@
                 <a href="">Cookies</a>
                 <a href="">Refund Policy</a>
             </div>
+            <!-- Newsletter -->
             <div class="footer-grid" id="newsletter">
                 <h3>Newsletter</h3>
                 <div id="campos-newsletter">

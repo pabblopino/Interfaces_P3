@@ -9,25 +9,29 @@
     <script type="module" src="../script/destinos.js"></script>
 </head>
 <body>
-    <!-- HEADER -->
+    <!-- HEADER --> <!--Encabezado con navegación y login-->
     <header>
+        <!--Foto de perfil del usuario-->
         <div id="foto-perfil">
             <img id="imagenUsuario" src="../images/foto_perfil.png" alt="User profile picture">
         </div>
+        <!--Enlaces de navegación-->
         <div class="enlaces-iniciales">
             <a href="index-en.html">Home</a>
+            <!-- Página actual marcada como activa -->
             <a href="" class="activo">Destinations</a>
             <a href="foro-en.html">Forum/Community</a>
             <a href="sobre-nosotros-en.html">About Us</a>
             <a href="" id="linkRecientes">Recent</a>
             <a href="otros-rincones-en.html">Other Spots</a>
-            <button id="btnDaltonico" class="btn-accesibilidad" title="Color Blind Mode" aria-label="Activate color blind mode">
+            <button id="btnDaltonico" class="btn-accesibilidad" title="Color Blind Mode" aria-label="Activate color blind mode"> <!-- Botón para modo daltónico -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                 </svg>
             </button>
         </div>
+        <!-- Sección de inicio de sesión -->
         <div class="inicio-sesion">
             <div class="registro">
                 <div class="input-usuario">
@@ -44,23 +48,26 @@
                 </div>
             </div> 
         </div>
+        <!-- Sección para usuario logueado (oculta por defecto) -->
         <div class="usuario-activo" style="display:none;">
             <span id="nombreUsuario"></span>
             <button class="boton-cerrar">Log Out</button>
         </div>
     </header>
 
-    <!-- MAIN -->
+    <!-- MAIN --> <!-- Contenido principal: página de destinos -->
     <main class="pagina-destinos">
-        <div class="cabecera-seccion">
+        <div class="cabecera-seccion"> 
             <h1>DESTINATIONS</h1>
-            <div class="selector-idioma">
+            <!-- Selector de idioma -->
+            <div class="selector-idioma"> 
                 <label for="select-idioma" class="visually-hidden">Select language</label>
                 <select id="select-idioma">
                     <option value="es">ESP</option>
                     <option value="en" selected>ENG</option>
                 </select>
             </div>
+            <!-- Selector de moneda -->
             <div class="selector-moneda">
                 <label for="select-moneda" class="visually-hidden">Select currency</label>
                 <select id="select-moneda">
@@ -71,11 +78,13 @@
             </div>
         </div>
 
+        <!-- Sección de búsqueda de destinos -->
         <section class="cabecera-destinos">
             <h2>Search destination</h2>
             <div class="contenedor-buscador">
                 <label for="input-buscador" class="visually-hidden">Search destination</label>
                 <input type="text" id="input-buscador" placeholder="Where do you want to go? (Ex: Beach, Mountain...)">
+                <!-- Botón de búsqueda -->
                 <button id="btnBusquedaIndex" aria-label="Search destination">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -85,9 +94,12 @@
             </div>
         </section>
 
+        <!-- Layout grid para filtros y galería -->
         <section class="layout-grid-destinos">
+            <!-- Barra lateral de filtros -->
             <aside class="sidebar-filtros">
                 <h2>Filters</h2>
+                <!-- Filtros por categorías -->
                 <div class="bloque-filtro">
                     <h3>Categories</h3>
                     <button class="btn-filtro-lateral activo" aria-label="Filter all destinations">All</button>
@@ -98,6 +110,7 @@
                     <button class="btn-filtro-lateral" aria-label="Filter rural areas">Rural</button>
                 </div>
 
+                <!-- Filtro por precio máximo -->
                 <div class="bloque-filtro">
                     <h3>Max Price</h3>
                     <label for="slider-precio" class="visually-hidden">Max price</label>
@@ -106,13 +119,15 @@
                 </div>
             </aside>
 
+            <!-- Galería de tarjetas de destinos -->
             <div class="galeria-resultados" id="contenedorTarjetas">
 
-                <!-- Cards -->
+                <!-- Tarjetas completas --> <!-- Ejemplos de tarjetas de destinos con datos de categoría y precio -->
                 <div class="card" data-categoria="rural" data-precio="450">
                     <img src="../images/camping.jpg" alt="Sunset Alpine Camping">
                     <h3>Sunset Alpine Camping</h3>
                     <p class="precio">450 €</p>
+                    <!-- Botones de favorito y reserva -->
                     <div class="acciones">
                         <button class="btn-like" aria-label="Add to favorites"></button>
                         <a href="reserva-en.html?id_pack=camping" class="btn-reservar" role="button" aria-label="Book trip to Sunset Alpine Camping">Book Now</a>
@@ -123,6 +138,7 @@
                     <img src="../images/desierto.jpg" alt="Sahara Desert Adventure">
                     <h3>Sahara Desert Adventure</h3>
                     <p class="precio">520€</p>
+                    <!-- Botones de favorito y reserva -->
                     <div class="acciones">
                         <button class="btn-like" aria-label="Add to favorites"></button>
                         <a href="reserva-en.html?id_pack=desierto" class="btn-reservar" role="button" aria-label="Book trip to Sahara Desert Adventure">Book Now</a>
@@ -134,6 +150,7 @@
                     <h3>Iceland Aurora Hunt</h3>
                     <p class="precio">380€</p>
                     <div class="acciones">
+                        <!-- Botones de favorito y reserva -->
                         <button class="btn-like" aria-label="Add to favorites"></button>
                         <a href="reserva-en.html?id_pack=islandia" class="btn-reservar" role="button" aria-label="Book trip to Iceland Aurora Hunt">Book Now</a>
                     </div>
@@ -144,6 +161,7 @@
                     <h3>Patagonia Expedition</h3>
                     <p class="precio">290€</p>
                     <div class="acciones">
+                        <!-- Botones de favorito y reserva -->
                         <button class="btn-like" aria-label="Add to favorites"></button>
                         <a href="reserva-en.html?id_pack=patagonia" class="btn-reservar" role="button" aria-label="Book trip to Patagonia Expedition">Book Now</a>
                     </div>
@@ -154,6 +172,7 @@
                     <h3>Pyrenees Snow Escape</h3>
                     <p class="precio">610€</p>
                     <div class="acciones">
+                        <!-- Botones de favorito y reserva -->
                         <button class="btn-like" aria-label="Add to favorites"></button>
                         <a href="reserva-en.html?id_pack=pirineos" class="btn-reservar" role="button" aria-label="Book trip to Pyrenees Snow Escape">Book Now</a>
                     </div>
@@ -164,6 +183,7 @@
                     <h3>The Way of St. James</h3>
                     <p class="precio">450€</p>
                     <div class="acciones">
+                        <!-- Botones de favorito y reserva -->
                         <button class="btn-like" aria-label="Add to favorites"></button>
                         <a href="reserva-en.html?id_pack=santiago" class="btn-reservar" role="button" aria-label="Book trip to The Way of St. James">Book Now</a>
                     </div>
@@ -173,8 +193,9 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER --> <!-- Pie de página con redes, enlaces y newsletter -->
     <footer>
+        <!-- Redes sociales -->
         <div class="footer-grid" id="redes-sociales">
             <div id="enlaces-redes">
                 <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><img src="../images/logo_instagram.png" alt="Instagram"></a>
@@ -183,6 +204,8 @@
             </div>
             <p>&copy; 2025 Backpackers Without Borders</p>
         </div>
+        
+        <!-- Compañía -->
         <div class="footer-grid" id="compania">
             <h4>Company</h4>
             <a href="sobre-nosotros-en.html">About Us</a>
@@ -190,6 +213,7 @@
             <a href="" aria-label="Work with us">Work with Us</a>
             <a href="" aria-label="Company blog">Blog</a>
         </div>
+        <!-- Legal -->
         <div class="footer-grid" id="legal">
             <h4>Legal</h4>
             <a href="">Terms</a>
@@ -197,10 +221,12 @@
             <a href="">Cookies</a>
             <a href="">Refund Policy</a>
         </div>
+        <!-- Newsletter -->
         <div class="footer-grid" id="newsletter">
             <h4>Newsletter</h4>
             <div id="campos-newsletter">
                 <a href="">Receive offers and travel tips</a>
+                <!-- Relleno de Newsletter y botón de envío -->
                 <form action="#" method="get">
                     <label for="input-email" class="visually-hidden">Email</label>
                     <input id="input-email" type="text" name="Tu Email" placeholder="Email">

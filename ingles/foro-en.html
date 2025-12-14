@@ -8,134 +8,146 @@
     <script src="../script/foro.js" type="module"></script>
     <script type="module" src="../script/sesion.js"></script>
 </head>
+    <!-- Cuerpo principal -->
 <body>
-    <!-- HEADER -->
-    <header>
-        <!-- Left -->
-        <div id="foto-perfil">
-            <img id="imagenUsuario" src="../images/foto_perfil.png" alt="Profile picture of the user">
-        </div>
+        <!-- HEADER --> <!-- Encabezado con navegación y login -->
+        <header>
+            <!-- Izquierda --> <!-- Foto de perfil -->
+            <div id="foto-perfil">
+                <img id="imagenUsuario" src="../images/foto_perfil.png" alt="Profile picture of the user">
+            </div>
+            <!-- Centro --> <!-- Enlaces de navegación -->
+            <div class="enlaces-iniciales">
+                <a href="index-en.html">Home</a>
+                <a href="destinos-en.html">Destinations</a>
+                <!-- Página activa -->
+                <a href="foro-en.html" class="activo">Forum/Community</a>
+                <a href="sobre-nosotros-en.html">About Us</a>
+                <a href="" id="linkRecientes">Recent</a>
+                <a href="otros-rincones-en.html">Other Spots</a>
+                <!-- Botón modo daltónico -->
+                <button id="btnDaltonico" class="btn-accesibilidad" title="Color Blind Mode">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                </button>
+            </div>
 
-        <!-- Center -->
-        <div class="enlaces-iniciales">
-            <a href="index-en.html">Home</a>
-            <a href="destinos-en.html">Destinations</a>
-            <a href="foro-en.html" class="activo">Forum/Community</a>
-            <a href="sobre-nosotros-en.html">About Us</a>
-            <a href="" id="linkRecientes">Recent</a>
-            <a href="otros-rincones-en.html">Other Spots</a>
-            <button id="btnDaltonico" class="btn-accesibilidad" title="Color Blind Mode">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                </svg>
-            </button>
-        </div>
-
-        <!-- Right -->
-        <div class="inicio-sesion">
-            <div class="registro">
-                <div class="input-usuario">
-                    <label for="usuario" class="visually-hidden">Username</label>
-                    <input type="text" id="usuario" placeholder="Username">
-                </div>
-                <div class="input-usuario">
-                    <label for="password" class="visually-hidden">Password</label>
-                    <input type="password" id="password" placeholder="Password">
-                </div>
-                <div class="botones">
-                    <button type="button" id="btnIniciarSesion">Log In</button>
-                    <button type="button" class="btnRegistro">Sign Up</button>
+            <!-- Derecha --> <!-- Inicio de sesión -->
+            <div class="inicio-sesion">
+                <!--Apartado de registro-->
+                <div class="registro">
+                    <div class="input-usuario">
+                        <label for="usuario" class="visually-hidden">Username</label>
+                        <input type="text" id="usuario" placeholder="Username">
+                    </div>
+                    <div class="input-usuario">
+                        <label for="password" class="visually-hidden">Password</label>
+                        <input type="password" id="password" placeholder="Password">
+                    </div>
+                    <div class="botones">
+                        <button type="button" id="btnIniciarSesion">Log In</button>
+                        <button type="button" class="btnRegistro">Sign Up</button>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="usuario-activo" style="display:none;">
-            <span id="nombreUsuario"></span>
-            <button class="boton-cerrar">Log Out</button>
-        </div>
-    </header>
-
-    <!-- MAIN -->
-    <main>
-        <div class="cabecera-seccion">
-            <h1>WRITE YOUR REVIEW</h1>
-            <div class="selector-idioma">
-                <label for="idiomaSelect" class="visually-hidden">Select language</label>
-                <select id="idiomaSelect">
-                    <option value="es">ESP</option>
-                    <option value="en" selected>ENG</option>
-                </select>
+            <!-- Usuario logueado (oculto) -->
+            <div class="usuario-activo" style="display:none;">
+                <span id="nombreUsuario"></span>
+                <button class="boton-cerrar">Log Out</button>
             </div>
-        </div>
+        </header>
 
-        <div class="contenedor-review">
-            <form class="form-review">
-                <!-- NAME -->
-                <div class="campo-foro">
-                    <label for="nombreReseña">Your name</label>
-                    <input type="text" placeholder="Enter your name" id="nombreReseña" disabled>
+        <!-- MAIN --> <!-- Contenido principal: formulario de reseña y lista -->
+        <main>
+            <!-- Cabecera con título y selector de idioma -->
+            <div class="cabecera-seccion">
+                <h1>WRITE YOUR REVIEW</h1>
+                <div class="selector-idioma">
+                    <label for="idiomaSelect" class="visually-hidden">Select language</label>
+                    <select id="idiomaSelect">
+                        <option value="es">ESP</option>
+                        <option value="en" selected>ENG</option>
+                    </select>
                 </div>
-
-                <!-- TITLE -->
-                <div class="campo-foro">
-                    <label for="tituloReseña">Review Title</label>
-                    <input type="text" placeholder="Ex: An unforgettable experience" id="tituloReseña">
-                </div>
-
-                <!-- DESCRIPTION -->
-                <div class="campo-foro">
-                    <label for="descripcionReseña">Description</label>
-                    <textarea id="descripcionReseña" rows="5" placeholder="Write your review here..."></textarea>
-                </div>
-
-                <!-- BUTTON -->
-                <button type="submit" class="btn-enviar">Submit Review</button>
-            </form>
-
-            <h2>Published Reviews</h2>
-            <div id="lista-reseñas" class="lista-reseñas"></div>
-        </div>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-grid" id="redes-sociales">
-            <div id="enlaces-redes">
-                <a href="https://www.instagram.com" target="_blank"><img src="../images/logo_instagram.png" alt="Instagram"></a>
-                <a href="https://www.tiktok.com/" target="_blank"><img src="../images/logo_tiktok.png" alt="TikTok"></a>
-                <a href="https://www.youtube.com/" target="_blank"><img src="../images/logo_youtube.png" alt="YouTube"></a>
             </div>
-            <p>&copy; 2025 Backpackers Without Borders</p>
-        </div>
+            <!-- Contenedor de reseñas -->
+            <div class="contenedor-review">
 
-        <div class="footer-grid" id="compania">
-            <h4>Company</h4>
-            <a href="sobre-nosotros-en.html">About Us</a>
-            <a href="">Contact</a>
-            <a href="">Work with Us</a>
-            <a href="">Blog</a>
-        </div>
+                <!-- Formulario para enviar reseña -->
+                <form class="form-review">
+                    <!-- NOMBRE -->
+                    <div class="campo-foro">
+                        <label for="nombreReseña">Your name</label>
+                        <!-- Nombre disabled (auto-llenado) -->
+                        <input type="text" placeholder="Enter your name" id="nombreReseña" disabled>
+                    </div>
 
-        <div class="footer-grid" id="legal">
-            <h4>Legal</h4>
-            <a href="">Terms</a>
-            <a href="">Privacy</a>
-            <a href="">Cookies</a>
-            <a href="">Refund Policy</a>
-        </div>
+                    <!-- TÍTULO -->
+                    <div class="campo-foro">
+                        <label for="tituloReseña">Review Title</label>
+                        <input type="text" placeholder="Ex: An unforgettable experience" id="tituloReseña">
+                    </div>
 
-        <div class="footer-grid" id="newsletter">
-            <h4>Newsletter</h4>
-            <div id="campos-newsletter">
-                <a href="">Receive offers and travel tips</a>
-                <form action="#" method="get">
-                    <label for="input-email" class="visually-hidden">Email</label>
-                    <input id="input-email" type="text" name="Tu Email" placeholder="Email">
-                    <button class="btnRegistro" type="submit">Sign Up</button>
+                    <!-- DESCRIPCIÓN -->
+                    <div class="campo-foro">
+                        <label for="descripcionReseña">Description</label>
+                        <textarea id="descripcionReseña" rows="5" placeholder="Write your review here..."></textarea>
+                    </div>
+
+
+                    <!-- BOTÓN -->
+                    <button type="submit" class="btn-enviar">Submit Review</button>
+
                 </form>
+
+                <h2>Published Reviews</h2>
+                <!-- Contenedor dinámico para reseñas publicadas -->
+                <div id="lista-reseñas" class="lista-reseñas"></div>
+
             </div>
-        </div>
-    </footer>
+        </main>
+
+        <!-- FOOTER --> <!-- Pie de página -->
+        <footer>
+            <!-- Redes sociales -->
+            <div class="footer-grid" id="redes-sociales">
+                <div id="enlaces-redes">
+                    <a href="https://www.instagram.com" target="_blank"><img src="../images/logo_instagram.png" alt="Instagram"></a>
+                    <a href="https://www.tiktok.com/" target="_blank"><img src="../images/logo_tiktok.png" alt="TikTok"></a>
+                    <a href="https://www.youtube.com/" target="_blank"><img src="../images/logo_youtube.png" alt="YouTube"></a>
+                </div>
+                <p>&copy; 2025 Backpackers Without Borders</p>
+            </div>
+            <!-- Compañía -->
+            <div class="footer-grid" id="compania">
+                <h4>Company</h4>
+                <a href="sobre-nosotros-en.html">About Us</a>
+                <a href="">Contact</a>
+                <a href="">Work with Us</a>
+                <a href="">Blog</a>
+            </div>
+            <!-- Legal -->
+            <div class="footer-grid" id="legal">
+                <h4>Legal</h4>
+                <a href="">Terms</a>
+                <a href="">Privacy</a>
+                <a href="">Cookies</a>
+                <a href="">Refund Policy</a>
+            </div>
+            <!-- Newsletter -->
+            <div class="footer-grid" id="newsletter">
+                <h4>Newsletter</h4>
+                <div id="campos-newsletter">
+                    <a href="">Receive offers and travel tips</a>
+                    <form action="#" method="get">
+                        <label for="input-email" class="visually-hidden">Email</label>
+                        <input id="input-email" type="text" name="Tu Email" placeholder="Email">
+                        <button class="btnRegistro" type="submit">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </footer>
 </body>
 </html>
