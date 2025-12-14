@@ -10,21 +10,24 @@
 
 
     </head>
+    <!-- Cuerpo principal -->
     <body>
-        <!-- HEADER -->
+        <!-- HEADER --> <!-- Encabezado con navegación y login -->
         <header>
-            <!-- Izquierda -->
+            <!-- Izquierda --> <!-- Foto de perfil -->
             <div class="" id="foto-perfil">
                 <img id="imagenUsuario" src="images/foto_perfil.png" alt="Foto de perfil del usuario">
             </div>
-            <!-- Centro -->
+            <!-- Centro --> <!-- Enlaces de navegación -->
             <div class="enlaces-iniciales">
                 <a href="index.html">Inicio</a>
                 <a href="destinos.html">Destinos</a>
+                <!-- Página activa -->
                 <a href="foro.html" class="activo">Foro/Comunidad</a>
                 <a href="sobre-nosotros.html">Sobre Nosotros</a>
                 <a href="" id="linkRecientes">Recientes</a>
                 <a href="otros-rincones.html">Otros Rincones</a>
+                <!-- Botón modo daltónico -->
                 <button id="btnDaltonico" class="btn-accesibilidad" title="Modo Daltónico">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
@@ -33,7 +36,7 @@
                 </button>
             </div>
 
-            <!-- Derecha -->
+            <!-- Derecha --> <!-- Inicio de sesión -->
             <div class="inicio-sesion">
                 <!--Apartado de registro-->
                 <div class="registro">
@@ -54,14 +57,16 @@
                     </div>
                 </div> 
             </div>
+            <!-- Usuario logueado (oculto) -->
             <div class="usuario-activo" style="display:none;">
                 <span id="nombreUsuario"></span>
                 <button class="boton-cerrar">Cerrar sesión</button>
             </div>
         </header>
 
-        <!-- MAIN -->
+        <!-- MAIN --> <!-- Contenido principal: formulario de reseña y lista -->
         <main>
+            <!-- Cabecera con título y selector de idioma -->
             <div class="cabecera-seccion">
                     <h1>ESCRIBE TU RESEÑA</h1>
                     <div class="selector-idioma">
@@ -72,13 +77,15 @@
                             </select>
                     </div>
             </div>
+            <!-- Contenedor de reseñas -->
             <div class="contenedor-review">
 
+                <!-- Formulario para enviar reseña -->
                 <form class="form-review">
-                    <!-- NOMBRE -->
                     <!-- NOMBRE -->
                     <div class="campo-foro">
                         <label for="nombreReseña">Tu nombre</label>
+                        <!-- Nombre disabled (auto-llenado) -->
                         <input type="text" placeholder="Ingresa tu nombre" id="nombreReseña" disabled>
                     </div>
 
@@ -101,13 +108,15 @@
                 </form>
 
                 <h2>Reseñas publicadas</h2>
+                <!-- Contenedor dinámico para reseñas publicadas -->
                 <div id="lista-reseñas" class="lista-reseñas"></div>
 
             </div>
         </main>
 
-        <!-- FOOTER -->
+        <!-- FOOTER --> <!-- Pie de página -->
         <footer>
+            <!-- Redes sociales -->
             <div class="footer-grid" id="redes-sociales">
                 <div id="enlaces-redes">
                     <a href="https://www.instagram.com" target="_blank">
@@ -122,6 +131,7 @@
                 </div>
                 <p>&copy; 2025 Mochileros sin fronteras</p>
             </div>
+            <!-- Compañía -->
             <div class="footer-grid" id="compania">
                 <h4>Compañía</h4>
                 <a href="sobre-nosotros.html">Sobre Nosotros</a>
@@ -129,6 +139,7 @@
                 <a href="">Trabaja con Nosotros</a>
                 <a href="">Blog</a>
             </div>
+            <!-- Legal -->
             <div class="footer-grid" id="legal">
                 <h4>Legal</h4>
                 <a href="">Términos</a>
@@ -136,6 +147,7 @@
                 <a href="">Cookies</a>
                 <a href="">Política de Reembolso</a>
             </div>
+            <!-- Newsletter -->
             <div class="footer-grid" id="newsletter">
                 <h4>Newsletter</h4>
                 <div id="campos-newsletter">
